@@ -40,7 +40,7 @@ var config = {
     loaders: [
       {
         test: /\.tsx?$/,
-        loader: 'react-hot!ts'
+        loader: 'react-hot-loader/webpack!ts'
       },
       {
         test: /\.jsx$/,
