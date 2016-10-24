@@ -1,7 +1,6 @@
 {
-  "name": "vortigern",
-  "version": "0.1.0",
-  "description": "A universal boilerplate for building web applications w/ TypeScript, React, Redux and more.",
+  "name": "test",
+  "version": "0.0.1",
   "main": "build/server.js",
   "scripts": {
     "postinstall": "if [ -z \"$npm_config_production\" ]; then typings install; fi",
@@ -16,49 +15,21 @@
     "test": "node_modules/.bin/karma start config/test/karma.conf.js",
     "lint": "node_modules/.bin/tslint \"src/**/**.ts*\""
   },
-  "author": "Barbar Startup Factory <hey@barbar.com.tr>",
-  "contributors": [
-    {
-      "name": "Altay Aydemir",
-      "email": "altay@peergust.com",
-      "url": "http://altayaydemir.com/"
-    },
-    {
-      "name": "Batuhan Icoz",
-      "email": "hey@batuhanicoz.com",
-      "url": "http://batuhanicoz.com/"
-    },
-    {
-      "name": "Omer Ufuk Efendioglu",
-      "email": "ufukomer@gmail.com",
-      "url": "http://ufukomer.com/"
-    }
-  ],
-  "homepage": "https://github.com/barbar/vortigern.git",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/barbar/vortigern.git"
+  "dependencies": {
+    "es6-promise": "^4.0.5",
+    "express": "^4.14.0",
+    "history": "^4.3.0",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-helmet": "^3.1.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.6.0",
+    "redux-connect": "^3.0.0",
+    "redux-thunk": "^2.1.0"
   },
-  "bugs": {
-    "url": "https://github.com/barbar/vortigern/issues"
-  },
-  "keywords": [
-    "react",
-    "redux",
-    "typescript",
-    "webpack",
-    "universal",
-    "isomorphic",
-    "starter",
-    "kit",
-    "boilerplate",
-    "hot reload",
-    "react-hot-loader",
-    "enzyme",
-    "mocha",
-    "chai"
-  ],
-  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
@@ -100,10 +71,8 @@
     "serve-favicon": "^2.3.0",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.4.2",
     "ts-loader": "^0.9.3",
     "tslint": "^3.15.1",
-    "tslint-loader": "^2.1.5",
     "tslint-react": "^0.4.0",
     "typescript": "^1.8.10",
     "typings": "^1.4.0",
@@ -113,20 +82,5 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0",
     "webpack-manifest-plugin": "^1.0.1"
-  },
-  "dependencies": {
-    "es6-promise": "^4.0.5",
-    "express": "^4.14.0",
-    "history": "^4.3.0",
-    "isomorphic-fetch": "^2.2.1",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-helmet": "^3.1.0",
-    "react-redux": "^4.4.5",
-    "react-router": "^2.8.1",
-    "react-router-redux": "^4.0.6",
-    "redux": "^3.6.0",
-    "redux-connect": "^3.0.0",
-    "redux-thunk": "^2.1.0"
   }
 }

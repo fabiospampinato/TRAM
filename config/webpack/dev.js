@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var postcssAssets = require('postcss-assets');
 var postcssNext = require('postcss-cssnext');
-var stylelint = require('stylelint');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var config = {
@@ -31,12 +30,6 @@ var config = {
   },
 
   module: {
-    preLoaders: [
-      {
-        test: /\.tsx?$/,
-        loader: 'tslint'
-      }
-    ],
     loaders: [
       {
         test: /\.tsx?$/,
@@ -91,16 +84,10 @@ var config = {
   },
   postcss: function () {
     return [
-      stylelint({ files: '../../src/app/*.css' }),
       postcssNext(),
       postcssAssets({ relative: true })
     ];
   },
-
-  tslint: {
-    failOnHint: true
-  },
-
   plugins: [
     new ManifestPlugin({
       fileName: '../manifest.json'
