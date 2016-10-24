@@ -14,7 +14,7 @@ interface IProps {
   state => ({ counter: state.counter }),
   dispatch => ({
     decrement: () => dispatch(decrement()),
-    increment: () => dispatch(increment()),
+    increment: () => dispatch(increment())
   })
 )
 class Counter extends React.Component<IProps, void> {

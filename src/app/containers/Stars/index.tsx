@@ -12,7 +12,7 @@ interface IProps {
 @asyncConnect([{
   promise: ({ store: { dispatch } }) => {
     return dispatch(getStars());
-  },
+  }
 }])
 @connect(
   state => ({ stars: state.stars })
