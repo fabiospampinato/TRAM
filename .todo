@@ -1,0 +1,15 @@
+
+Migration:
+  ✔ Remove useless files @done (10/24/2016, 3:13:57 PM)
+  ☐ Move to the usual project structure
+  ☐ Understand all the code
+  ✔ Disable tslint checks @done (10/24/2016, 3:08:10 PM)
+  ☐ Remove useless sections
+  ☐ Make it more similar to PKO structure (for easier migration)
+  ☐ Upgrade to Typescript 2.0
+  ☐ Upgrade to WebPack 2
+  ☐ Upgrade to awesome-typescript-loader
+  ☐ Upgrade to HappyPack
+  ☐ Integrate GraphQL
+  ☐ Integrate Apollo
+  ☐ Integrate an ORM
