@@ -1,19 +1,32 @@
 {
+  "compileOnSave": false,
+  "buildOnSafe": false,
   "compilerOptions": {
-    "outDir": "build",
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "inlineSourceMap": false,
-    "inlineSources": false,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "moduleResolution": "node"
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "outDir": "build",
+    "pretty": true,
+    "sourceMap": true,
+    "target": "es5"
   },
   "exclude": [
     "node_modules",
     "build",
     "typings/main",
     "typings/main.d.ts"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "doTypeCheck": true,
+    "forkChecker": false,
+    "ignoreDiagnostics": [2441, 2374, 2403, 2687, 2430],
+    "useBabel": false,
+    "useCache": true
+  }
 }
