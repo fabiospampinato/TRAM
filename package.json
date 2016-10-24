@@ -12,8 +12,11 @@
     "prestart": "npm run build",
     "start": "node build/server.js",
     "start:prod": "NODE_ENV=production npm start",
-    "test": "node_modules/.bin/karma start ./karma.conf.js",
-    "lint": "node_modules/.bin/tslint \"src/**/**.ts*\""
+    "pretest": "rimraf coverage",
+    "test": "npm-run karma start ./karma.conf.js",
+    "pretest-phantom": "npm run pretest",
+    "test-phantom": "PHANTOM=1 npm-run karma start ./karma.conf.js",
+    "lint": "npm-run tslint \"src/**/**.ts*\""
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
@@ -81,5 +84,8 @@
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0",
     "webpack-manifest-plugin": "^1.0.1"
+  },
+  "engines": {
+    "node": "6.7.0"
   }
 }

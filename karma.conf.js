@@ -7,28 +7,24 @@ let path = require ( 'path' ),
 /* CONFIGURATOR */
 
 let configurator = function ( karma ) {
+
+  let isCI = process.env.NODE_ENV === 'ci',
+      isPhantom = !!process.env.PHANTOM;
+
   let config = {
     frameworks: ['mocha', 'chai', 'es6-shim'],
     browsers: ['PhantomJS'],
     files: ['./webpack/test.js'],
     preprocessors: {
-      './src/**/*.ts': ['coverage'],
-      './src/**/*.tsx': ['coverage'],
+      '**/*.ts': ['coverage'],
+      '**/*.tsx': ['coverage'],
       './webpack/test.js': ['webpack']
     },
-    plugins: ['karma-*'],
     reporters: ['mocha', 'coverage'],
     coverageReporter: {
       dir: './coverage',
       reporters: []
     },
-    hostname: 'localhost',
-    port: 9876,
-    colors: true,
-    logLevel: karma.LOG_INFO,
-    autoWatch: true,
-    singleRun: false,
-    concurrency: Infinity,
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
@@ -85,19 +81,20 @@ let configurator = function ( karma ) {
     }
   };
 
-  let isCI = process.env.NODE_ENV === 'ci';
-
   if ( isCI ) {
 
     config.autoWatch = false;
     config.singleRun = true;
-    config.browsers.push ( 'Firefox' );
+
     config.coverageReporter.reporters.push ({ type: 'lcov', subdir: '.' });
+
+    if ( !isPhantom ) config.browsers.push ( 'Firefox' );
 
   } else {
 
-    config.browsers.push ( 'Chrome' );
     config.coverageReporter.reporters.push ({ type: 'html', subdir: 'html' });
+
+    if ( !isPhantom ) config.browsers.push ( 'Chrome' );
 
   }
 

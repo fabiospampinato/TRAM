@@ -6,6 +6,13 @@ var config = {
   port: process.env.PORT || 8889,
   karmaPort: 9876,
 
+  isTest1 () {
+    return true;
+  },
+  isTest2 () {
+    return false;
+  },
+
   // This part goes to React-Helmet for Head of our HTML
   app: {
     head: {
