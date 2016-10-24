@@ -1,63 +1,55 @@
-var path = require('path');
-var fs = require('fs');
 
-var nodeModules = {};
-fs.readdirSync('node_modules')
-  .filter(function (x) {
-    return ['.bin'].indexOf(x) === -1;
+/* IMPORT */
+
+let path = require ( 'path' ),
+    fs = require ( 'fs' );
+
+/* EXTERNALS */
+
+let externals = {};
+fs.readdirSync ( 'node_modules' )
+  .filter ( function ( x ) {
+    return ['.bin'].indexOf ( x ) === -1;
   })
-  .forEach(function (mod) {
-    nodeModules[mod] = 'commonjs ' + mod;
+  .forEach ( function ( mod ) {
+    externals[mod] = 'commonjs ' + mod;
   });
 
-var config = {
-  externals: nodeModules,
+/* CONFIG */
+
+let config = {
+  externals: externals,
   target: 'node',
-
   resolve: {
-    extensions: ['', '.ts', '.tsx', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.ts', '.tsx']
   },
-
-  entry: './src/server/index.tsx',
-
+  entry: './src/server',
   output: {
-    path: path.resolve('./build/public'),
+    path: path.resolve ( './build/public' ),
     filename: '../server.js',
     publicPath: '/public/',
     libraryTarget: 'commonjs2'
   },
-
   module: {
-    loaders: [
-      {
-        test: /\.(jpe?g|png|gif)$/i,
-        loader: 'url?limit=1000&name=images/[hash].[ext]'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.jsx$/,
-        loader: 'babel?presets[]=es2015'
-      },
-      {
+    loaders: [{
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
+      }, {
+        test: /\.jsx$/,
+        loader: 'babel?presets[]=es2015'
+      }, {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }, {
         test: /\.css$/,
-        loaders: [
-          'isomorphic-style-loader',
-          'css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]'
-        ]
-      }
-    ]
+        loaders: ['isomorphic-style-loader', 'css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]']
+      }, {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'url?limit=1000&name=images/[hash].[ext]'
+      }]
   },
-
   plugins: [],
-
   node: {
     console: false,
     global: false,
@@ -67,5 +59,7 @@ var config = {
     __dirname: false
   }
 };
+
+/* EXPORT */
 
 module.exports = config;

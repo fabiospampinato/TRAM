@@ -1,134 +1,110 @@
-var path = require('path');
-var webpack = require('webpack');
-var postcssAssets = require('postcss-assets');
-var postcssNext = require('postcss-cssnext');
 
-module.exports = function (config) {
-  const conf = {
+/* IMPORT */
+
+let path = require ( 'path' ),
+    webpack = require ( 'webpack' );
+
+/* CONFIGURATOR */
+
+let configurator = function ( karma ) {
+  let config = {
     frameworks: ['mocha', 'chai', 'es6-shim'],
-
     browsers: ['PhantomJS'],
-
     files: ['./webpack/test.js'],
-
     preprocessors: {
       './src/**/*.ts': ['coverage'],
       './src/**/*.tsx': ['coverage'],
       './webpack/test.js': ['webpack']
     },
-
     plugins: ['karma-*'],
-
     reporters: ['mocha', 'coverage'],
-
     coverageReporter: {
       dir: './coverage',
       reporters: []
     },
-
     hostname: 'localhost',
-
     port: 9876,
-
     colors: true,
-
-    logLevel: config.LOG_INFO,
-
+    logLevel: karma.LOG_INFO,
     autoWatch: true,
-
     singleRun: false,
-
     concurrency: Infinity,
-
     webpack: {
       devtool: 'inline-source-map',
-
       resolve: {
-        root: path.resolve(__dirname),
+        root: path.resolve ( __dirname ),
         modulesDirectories: [
           './src',
           'node_modules'
         ],
-        extensions: ['', '.json', '.js', '.ts', '.tsx', '.jsx']
+        extensions: ['', '.json', '.js', '.jsx', '.ts', '.tsx']
       },
-
       module: {
-        loaders: [
-          {
+        loaders: [{
             test: /\.tsx?$/,
             loader: 'ts'
-          },
-          {
-            test: /\.(jpe?g|png|gif)$/i,
-            loader: 'url?limit=1000&name=images/[hash].[ext]'
-          },
-          {
+          }, {
             test: /\.json$/,
             loader: 'json-loader'
-          },
-          {
+          }, {
             test: /\.css$/,
-            include: path.resolve('./src'),
-            loaders: [
-              'style',
-              'css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]',
-              'postcss'
-            ]
-          },
-          {
+            include: path.resolve ( './src' ),
+            loaders: ['style', 'css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]']
+          }, {
             test: /\.css$/,
-            exclude: path.resolve('./src'),
+            exclude: path.resolve ( './src' ),
             loader: 'style!css'
-          }
-        ],
-        postLoaders: [
-          {
+          }, {
+            test: /\.(jpe?g|png|gif)$/i,
+            loader: 'url?limit=1000&name=images/[hash].[ext]'
+          }],
+        postLoaders: [{
             test: /\.tsx?$/,
             loader: 'istanbul-instrumenter-loader',
-            include: path.resolve('./src')
-          }
-        ]
+            include: path.resolve ( './src' )
+          }]
       },
-
-      postcss: function () {
-        return [
-          postcssNext(),
-          postcssAssets({ relative: true })
-        ];
-      },
-
       externals: {
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window'
       },
-
       plugins: [
-        new webpack.IgnorePlugin(/^fs$/),
-        new webpack.IgnorePlugin(/^react\/addons$/),
-        new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin({
+        new webpack.IgnorePlugin ( /^fs$/ ),
+        new webpack.IgnorePlugin ( /^react\/addons$/ ),
+        new webpack.NoErrorsPlugin (),
+        new webpack.DefinePlugin ({
           'process.env': {
-            BROWSER: JSON.stringify(true),
-            NODE_ENV: JSON.stringify('development')
+            BROWSER: JSON.stringify ( true ),
+            NODE_ENV: JSON.stringify ( 'development' )
           }
         })
       ]
     },
-
     webpackServer: {
       noInfo: true
     }
   };
 
-  if (process.env.NODE_ENV === 'ci') {
-    conf.autoWatch = false;
-    conf.singleRun = true;
-    conf.browsers.push('Firefox');
-    conf.coverageReporter.reporters.push({ type: 'lcov', subdir: '.' });
+  let isCI = process.env.NODE_ENV === 'ci';
+
+  if ( isCI ) {
+
+    config.autoWatch = false;
+    config.singleRun = true;
+    config.browsers.push ( 'Firefox' );
+    config.coverageReporter.reporters.push ({ type: 'lcov', subdir: '.' });
+
   } else {
-    conf.coverageReporter.reporters.push({ type: 'html', subdir: 'html' });
-    conf.browsers.push('Chrome');
+
+    config.browsers.push ( 'Chrome' );
+    config.coverageReporter.reporters.push ({ type: 'html', subdir: 'html' });
+
   }
 
-  config.set(conf);
+  karma.set ( config );
+
 };
+
+/* EXPORT */
+
+module.exports = configurator;
