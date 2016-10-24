@@ -16,6 +16,7 @@
     "test": "npm-run karma start ./karma.conf.js",
     "pretest-phantom": "npm run pretest",
     "test-phantom": "PHANTOM=1 npm-run karma start ./karma.conf.js",
+    "coverage": "open ./coverage/html/index.html",
     "lint": "npm-run tslint \"src/**/**.ts*\""
   },
   "dependencies": {
