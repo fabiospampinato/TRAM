@@ -1,5 +1,5 @@
-const appConfig = require('../modules/settings');
 
+import appConfig from '../modules/settings';
 import * as e6p from 'es6-promise';
 (e6p as any).polyfill();
 import 'isomorphic-fetch';

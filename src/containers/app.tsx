@@ -1,4 +1,5 @@
-const appConfig = require('../modules/settings');
+
+import appConfig from '../modules/settings';
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import { Header } from '../components';

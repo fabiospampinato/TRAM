@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var postcssAssets = require('postcss-assets');
 var postcssNext = require('postcss-cssnext');
-var appConfig = require('./src/modules/settings');
 
 module.exports = function (config) {
   const conf = {
@@ -27,9 +26,9 @@ module.exports = function (config) {
       reporters: []
     },
 
-    hostname: appConfig.host,
+    hostname: 'localhost',
 
-    port: appConfig.karmaPort,
+    port: 9876,
 
     colors: true,
 
