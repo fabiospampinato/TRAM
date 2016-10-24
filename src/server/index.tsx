@@ -29,7 +29,7 @@ app.use(compression());
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
-  const webpackConfig = require('../../webpack/dev');
+  const webpackConfig = require('../../webpack/development');
   const webpackCompiler = webpack(webpackConfig);
 
   app.use(require('webpack-dev-middleware')(webpackCompiler, {
