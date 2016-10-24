@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var postcssAssets = require('postcss-assets');
 var postcssNext = require('postcss-cssnext');
-var appConfig = require('../main');
+var appConfig = require('./src/modules/settings');
 
 module.exports = function (config) {
   const conf = {
@@ -10,12 +10,12 @@ module.exports = function (config) {
 
     browsers: ['PhantomJS'],
 
-    files: ['../webpack/test.js'],
+    files: ['./webpack/test.js'],
 
     preprocessors: {
-      '../src/**/*.ts': ['coverage'],
-      '../src/**/*.tsx': ['coverage'],
-      '../webpack/test.js': ['webpack']
+      './src/**/*.ts': ['coverage'],
+      './src/**/*.tsx': ['coverage'],
+      './webpack/test.js': ['webpack']
     },
 
     plugins: ['karma-*'],
@@ -23,7 +23,7 @@ module.exports = function (config) {
     reporters: ['mocha', 'coverage'],
 
     coverageReporter: {
-      dir: '../../coverage',
+      dir: './coverage',
       reporters: []
     },
 
@@ -47,7 +47,7 @@ module.exports = function (config) {
       resolve: {
         root: path.resolve(__dirname),
         modulesDirectories: [
-          '../../src',
+          './src',
           'node_modules'
         ],
         extensions: ['', '.json', '.js', '.ts', '.tsx', '.jsx']
@@ -69,7 +69,7 @@ module.exports = function (config) {
           },
           {
             test: /\.css$/,
-            include: path.resolve('./src/app'),
+            include: path.resolve('./src'),
             loaders: [
               'style',
               'css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]',
@@ -78,7 +78,7 @@ module.exports = function (config) {
           },
           {
             test: /\.css$/,
-            exclude: path.resolve('./src/app'),
+            exclude: path.resolve('./src'),
             loader: 'style!css'
           }
         ],
@@ -86,7 +86,7 @@ module.exports = function (config) {
           {
             test: /\.tsx?$/,
             loader: 'istanbul-instrumenter-loader',
-            include: path.resolve('./src/app')
+            include: path.resolve('./src')
           }
         ]
       },

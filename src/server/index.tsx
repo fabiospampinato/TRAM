@@ -1,4 +1,4 @@
-const appConfig = require('../config/main');
+const appConfig = require('../modules/settings');
 
 import * as e6p from 'es6-promise';
 (e6p as any).polyfill();
@@ -11,11 +11,11 @@ import { Provider } from 'react-redux';
 import { createMemoryHistory, match } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 const { ReduxAsyncConnect, loadOnServer } = require('redux-connect');
-import { configureStore } from './app/redux/store';
-import routes from './app/routes';
+import { configureStore } from '../redux/store';
+import routes from '../routes';
 
-import { Html } from './app/containers';
-const manifest = require('../build/manifest.json');
+import { Html } from '../containers';
+const manifest = require('../../build/manifest.json');
 
 const express = require('express');
 const path = require('path');
@@ -29,7 +29,7 @@ app.use(compression());
 
 if (process.env.NODE_ENV !== 'production') {
   const webpack = require('webpack');
-  const webpackConfig = require('../config/webpack/dev');
+  const webpackConfig = require('../../webpack/dev');
   const webpackCompiler = webpack(webpackConfig);
 
   app.use(require('webpack-dev-middleware')(webpackCompiler, {
@@ -46,7 +46,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(require('webpack-hot-middleware')(webpackCompiler));
 }
 
-app.use(favicon(path.join(__dirname, '../src/favicon.ico')));
+app.use(favicon(path.join(__dirname, '../assets/favicon.ico')));
 
 app.use('/public', express.static(path.join(__dirname, '../build/public')));
 

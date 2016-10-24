@@ -14,9 +14,9 @@ var config = {
   },
 
   entry: {
-    app: './src/client.tsx',
+    app: './src/client/index.tsx',
     vendor: [
-      './src/vendor/main.ts',
+      './src/vendor/index.ts',
       'react',
       'react-dom',
       'react-router',

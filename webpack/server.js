@@ -18,7 +18,7 @@ var config = {
     extensions: ['', '.ts', '.tsx', '.js', '.jsx']
   },
 
-  entry: './src/server.tsx',
+  entry: './src/server/index.tsx',
 
   output: {
     path: path.resolve('./build/public'),

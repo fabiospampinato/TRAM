@@ -6,13 +6,13 @@
     "postinstall": "if [ -z \"$npm_config_production\" ]; then typings install; fi",
     "clean": "rimraf build",
     "prebuild": "npm run clean",
-    "build": "webpack --config config/webpack/index.js",
+    "build": "webpack --config ./webpack/index.js",
     "build:prod": "cross-env NODE_ENV=production npm run build",
-    "postbuild": "webpack --config config/webpack/server.js",
+    "postbuild": "webpack --config ./webpack/server.js",
     "prestart": "npm run build",
     "start": "node build/server.js",
     "start:prod": "cross-env NODE_ENV=production npm start",
-    "test": "node_modules/.bin/karma start config/test/karma.conf.js",
+    "test": "node_modules/.bin/karma start ./karma.conf.js",
     "lint": "node_modules/.bin/tslint \"src/**/**.ts*\""
   },
   "dependencies": {
