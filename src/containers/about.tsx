@@ -1,7 +1,12 @@
+
+/* IMPORT */
+
 import * as React from 'react';
 
+/* ABOUT */
+
 class About extends React.Component<any, any> {
-  public render() {
+  render () {
     return (
       <div>
         <h4>About</h4>
@@ -10,4 +15,6 @@ class About extends React.Component<any, any> {
   }
 }
 
-export { About }
+/* EXPORT */
+
+export {About};

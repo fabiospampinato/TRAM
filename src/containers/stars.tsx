@@ -1,33 +1,33 @@
+
+/* IMPORT */
+
 import * as React from 'react';
-import { getStars } from '../redux/modules/stars';
-import { IStars } from '../models/stars';
-const { connect } = require('react-redux');
-const { asyncConnect } = require('redux-connect');
+import {connect} from 'react-redux';
+import {asyncConnect} from 'redux-connect';
+import {getStars} from '../redux/modules/stars';
 
-interface IProps {
-  stars: IStars;
-  getStars: Redux.ActionCreator<any>;
-}
+/* STARS */
 
-@asyncConnect([{
+@asyncConnect ([{
   promise: ({ store: { dispatch } }) => {
-    return dispatch(getStars());
+    return dispatch ( getStars () );
   }
 }])
-@connect(
+@connect (
   state => ({ stars: state.stars })
 )
-class Stars extends React.Component<IProps, {}> {
+class Stars extends React.Component<any, any> {
 
-  public render() {
-    const { stars } = this.props;
-
+  render () {
+    let { stars } = this.props;
     return(
       <div>
-        { stars.isFetching ? 'Fetching Stars' : stars.count }
+        { stars.isFetching ? 'Fetching Stars...' : stars.count }
       </div>
     );
   }
 }
 
-export { Stars }
+/* EXPORT */
+
+export {Stars};

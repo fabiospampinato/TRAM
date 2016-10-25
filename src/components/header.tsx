@@ -1,8 +1,13 @@
+
+/* IMPORT */
+
 import * as React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
+
+/* HEADER */
 
 class Header extends React.Component<any, any> {
-  public render() {
+  render () {
     return (
       <nav>
         <ul>
@@ -16,4 +21,6 @@ class Header extends React.Component<any, any> {
   }
 }
 
-export { Header }
+/* EXPORT */
+
+export {Header};

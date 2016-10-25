@@ -1,33 +1,33 @@
+
+/* IMPORT */
+
 import * as React from 'react';
-import { increment, decrement } from '../redux/modules/counter';
-import { ICounter } from '../models/counter';
-const { connect } = require('react-redux');
+import {connect} from 'react-redux';
+import {increment, decrement} from '../redux/modules/counter';
 
-interface IProps {
-  counter: ICounter;
-  increment: Redux.ActionCreator<any>;
-  decrement: Redux.ActionCreator<any>;
-}
+/* COUNTER */
 
-@connect(
+@connect (
   state => ({ counter: state.counter }),
   dispatch => ({
     decrement: () => dispatch(decrement()),
     increment: () => dispatch(increment())
   })
 )
-class Counter extends React.Component<IProps, void> {
+class Counter extends React.Component<any, any> {
   render () {
-    const { increment, decrement, counter } = this.props;
+    let {increment, decrement, counter} = this.props;
     return (
       <div>
         <h4>Counter Example</h4>
-        <button name="incBtn" onClick={increment}>INCREMENT</button>
-        <button name="decBtn" onClick={decrement} disabled={counter.count <= 0}>DECREMENT</button>
+        <button onClick={increment}>INCREMENT</button>
+        <button onClick={decrement} disabled={counter.count <= 0}>DECREMENT</button>
         <p>{counter.count}</p>
       </div>
     );
   }
 }
 
-export { Counter }
+/* EXPORT */
+
+export {Counter};

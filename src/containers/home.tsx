@@ -1,7 +1,12 @@
+
+/* IMPORT */
+
 import * as React from 'react';
 
+/* HOME */
+
 class Home extends React.Component<any, any> {
-  public render() {
+  render () {
     return (
       <div>
         <img src="images/barbar.png" />
@@ -11,4 +16,6 @@ class Home extends React.Component<any, any> {
   }
 }
 
-export { Home }
+/* EXPORT */
+
+export {Home};

@@ -1,62 +1,53 @@
+
+/* IMPORT */
+
+import * as _ from 'lodash';
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
 
-interface IHtmlProps {
-  manifest?: Object;
-  markup?: string;
-  store?: Redux.Store<any>;
-}
+/* HTML */
 
-class Html extends React.Component<IHtmlProps, {}> {
-  private resolve(files) {
-    let manifests = this.props.manifest;
-    return files.map((src) => {
-      let manifest = manifests ? manifests[src] : undefined;
-      if (!manifest) return;
-      return '/public/' + manifest;
-    }).filter((file) => file !== undefined);
+class Html extends React.Component<any, undefined> {
+
+  private resolve ( files ): string[] {
+    let manifest = this.props.manifest;
+    return _.compact ( files.map ( file => manifest.hasOwnProperty ( file ) ? '/public/' + manifest[file] : undefined ) ) as string[];
   }
 
-  public render() {
-    const head = Helmet.rewind();
-    const { markup, store } = this.props;
+  render () {
+
+    let {markup, store} = this.props;
 
     if ( !markup ) throw new Error ( 'Missing markup' );
     if ( !store ) throw new Error ( 'Missing store' );
 
-    const styles = this.resolve(['vendor.css', 'app.css']);
-    const renderStyles = styles.map((src, i) =>
-      <link key={i} rel="stylesheet" type="text/css" href={src} />
-    );
-
-    const scripts = this.resolve(['vendor.js', 'app.js']);
-    const renderScripts = scripts.map((src, i) =>
-      <script src={src} key={i}></script>
-    );
-
-    // tslint:disable-next-line:max-line-length
-    const initialState = (<script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify(store.getState())};`}} charSet="UTF-8" />);
+    let head = Helmet.rewind (),
+        styles = this.resolve ( ['vendor.css', 'app.css'] ),
+        scripts = this.resolve ( ['vendor.js', 'app.js'] );
 
     return (
       <html>
         <head>
-          {head.base.toComponent()}
-          {head.title.toComponent()}
-          {head.meta.toComponent()}
-          {head.link.toComponent()}
-          {head.script.toComponent()}
-
-          {renderStyles}
+          {head.base.toComponent ()}
+          {head.title.toComponent ()}
+          {head.meta.toComponent ()}
+          {head.link.toComponent ()}
+          {head.script.toComponent ()}
+          {styles.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>
           <main id="app" dangerouslySetInnerHTML={{ __html: markup }}></main>
-          {initialState}
-          {renderScripts}
+          <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify ( store.getState () )};`}} charSet="UTF-8" />
+          {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}
         </body>
       </html>
     );
+
   }
+
 }
 
-export { Html }
+/* EXPORT */
+
+export {Html};
