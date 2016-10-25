@@ -1,7 +1,5 @@
 
 import appConfig from '../modules/settings';
-import * as e6p from 'es6-promise';
-(e6p as any).polyfill();
 import 'isomorphic-fetch';
 
 import * as React from 'react';
@@ -56,6 +54,13 @@ app.get('*', (req, res) => {
   const store = configureStore(memoryHistory);
   const history = syncHistoryWithStore(memoryHistory, store);
 
+  function renderHTML(markup) {
+    const html = ReactDOMServer.renderToString(
+      <Html markup={markup} manifest={manifest} store={store} />
+    );
+    return `<!doctype html> ${html}`;
+  }
+
   match({ history, routes, location },
     (error, redirectLocation, renderProps) => {
       if (error) {
@@ -74,13 +79,6 @@ app.get('*', (req, res) => {
           res.status(200).send(renderHTML(markup));
         });
 
-        function renderHTML(markup) {
-          const html = ReactDOMServer.renderToString(
-            <Html markup={markup} manifest={manifest} store={store} />
-          );
-
-          return `<!doctype html> ${html}`;
-        }
       } else {
         res.status(404).send('Not Found?');
       }

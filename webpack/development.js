@@ -3,16 +3,19 @@
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
-    ManifestPlugin = require ( 'webpack-manifest-plugin' );
+    ManifestPlugin = require ( 'webpack-manifest-plugin' ),
+    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIG */
 
 let config = {
   devtool: 'eval',
-  debug: true,
   resolve: {
-    root: path.resolve ( __dirname ),
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx']
+    modules: [
+      path.resolve ( __dirname ),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   entry: {
     app: [
@@ -30,7 +33,7 @@ let config = {
   module: {
     loaders: [{
         test: /\.tsx?$/,
-        loader: 'react-hot-loader/webpack!ts'
+        loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader']
       }, {
         test: /\.jsx$/,
         loader: 'babel?presets[]=es2015'
@@ -63,8 +66,12 @@ let config = {
       }]
   },
   plugins: [
+    new ForkCheckerPlugin (),
     new ManifestPlugin ({
       fileName: '../manifest.json'
+    }),
+    new webpack.LoaderOptionsPlugin({
+      debug: true
     }),
     new webpack.DefinePlugin ({
       'process.env': {

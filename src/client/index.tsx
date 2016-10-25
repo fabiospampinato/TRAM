@@ -1,7 +1,5 @@
-import * as e6p from 'es6-promise';
-(e6p as any).polyfill();
-import 'isomorphic-fetch';
 
+import 'isomorphic-fetch';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -12,12 +10,14 @@ import { configureStore } from '../redux/store';
 import 'isomorphic-fetch';
 import routes from '../routes';
 
-const store: Redux.Store = configureStore(
+const store: Redux.Store<any> = configureStore(
   browserHistory,
   window.__INITIAL_STATE__
 );
 const history = syncHistoryWithStore(browserHistory, store);
 
+let root = document.getElementById('app');
+if ( !root ) throw new Error ( 'Missing app root' );
 ReactDOM.render(
   <Provider store={store} key="provider">
     <Router
@@ -29,5 +29,5 @@ ReactDOM.render(
       {routes}
     </Router>
   </Provider>,
-  document.getElementById('app')
+  root
 );

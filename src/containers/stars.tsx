@@ -6,7 +6,7 @@ const { asyncConnect } = require('redux-connect');
 
 interface IProps {
   stars: IStars;
-  getStars: Redux.ActionCreator;
+  getStars: Redux.ActionCreator<any>;
 }
 
 @asyncConnect([{

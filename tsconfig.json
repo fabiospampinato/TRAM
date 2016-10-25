@@ -6,26 +6,25 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
+    "lib": ["dom", "scripthost", "es2015", "es2016", "es2017"],
     "module": "commonjs",
     "moduleResolution": "node",
     "newLine": "LF",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "outDir": "build",
+    "noUnusedLocals": true,
     "pretty": true,
     "sourceMap": true,
+    "strictNullChecks": true,
     "target": "es5"
   },
   "exclude": [
     "node_modules",
-    "build",
-    "typings/main",
-    "typings/main.d.ts"
+    "build"
   ],
   "awesomeTypescriptLoaderOptions": {
     "doTypeCheck": true,
-    "forkChecker": false,
-    "ignoreDiagnostics": [2441, 2374, 2403, 2687, 2430],
+    "forkChecker": true,
     "useBabel": false,
     "useCache": true
   }

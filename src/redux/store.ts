@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 const createLogger = require('redux-logger');
 
-export function configureStore(history, initialState?: any): Redux.Store {
+export function configureStore(history, initialState?: any): Redux.Store<any> {
 
   let middlewares: any[] = [
     routerMiddleware(history),
@@ -27,7 +27,7 @@ export function configureStore(history, initialState?: any): Redux.Store {
       ? window.devToolsExtension() : f => f
   )(createStore);
 
-  const store: Redux.Store = finalCreateStore(rootReducer, initialState);
+  const store: Redux.Store<any> = finalCreateStore(rootReducer, initialState);
 
   if (appConfig.env === 'development' && (module as any).hot) {
     (module as any).hot.accept('./reducers', () => {

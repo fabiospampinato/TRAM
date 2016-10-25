@@ -4,20 +4,25 @@ import * as Helmet from 'react-helmet';
 interface IHtmlProps {
   manifest?: Object;
   markup?: string;
-  store?: Redux.Store;
+  store?: Redux.Store<any>;
 }
 
 class Html extends React.Component<IHtmlProps, {}> {
   private resolve(files) {
+    let manifests = this.props.manifest;
     return files.map((src) => {
-      if (!this.props.manifest[src]) return;
-      return '/public/' + this.props.manifest[src];
+      let manifest = manifests ? manifests[src] : undefined;
+      if (!manifest) return;
+      return '/public/' + manifest;
     }).filter((file) => file !== undefined);
   }
 
   public render() {
     const head = Helmet.rewind();
     const { markup, store } = this.props;
+
+    if ( !markup ) throw new Error ( 'Missing markup' );
+    if ( !store ) throw new Error ( 'Missing store' );
 
     const styles = this.resolve(['vendor.css', 'app.css']);
     const renderStyles = styles.map((src, i) =>

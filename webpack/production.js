@@ -11,8 +11,11 @@ let path = require ( 'path' ),
 let config = {
   bail: true,
   resolve: {
-    root: path.resolve ( __dirname ),
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx']
+    modules: [
+      path.resolve ( __dirname ),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   entry: {
     app: './src/client',
@@ -37,7 +40,7 @@ let config = {
   module: {
     loaders: [{
         test: /\.tsx?$/,
-        loader: 'ts'
+        loader: 'awesome-typescript-loader'
       }, {
         test: /\.jsx$/,
         loader: 'babel?presets[]=es2015'

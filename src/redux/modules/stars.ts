@@ -19,12 +19,14 @@ export function starsReducer(state = initialState, action: IStarsAction) {
       });
 
     case GET_SUCCESS:
+      if ( !action.payload ) throw new Error ( 'Missing payload' );
       return Object.assign({}, state, {
         isFetching: false,
         count: action.payload.count,
       });
 
     case GET_FAILURE:
+      if ( !action.payload ) throw new Error ( 'Missing payload' );
       return Object.assign({}, state, {
         isFetching: false,
         message: action.payload.message,
@@ -37,7 +39,7 @@ export function starsReducer(state = initialState, action: IStarsAction) {
 }
 
 /** Async Action Creator */
-export function getStars(): Redux.Dispatch {
+export function getStars(): Redux.Dispatch<any> {
   return dispatch => {
     dispatch(starsRequest());
 

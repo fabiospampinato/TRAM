@@ -5,8 +5,8 @@ const { connect } = require('react-redux');
 
 interface IProps {
   counter: ICounter;
-  increment: Redux.ActionCreator;
-  decrement: Redux.ActionCreator;
+  increment: Redux.ActionCreator<any>;
+  decrement: Redux.ActionCreator<any>;
 }
 
 @connect(

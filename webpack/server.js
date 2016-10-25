@@ -21,7 +21,7 @@ let config = {
   externals: externals,
   target: 'node',
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   entry: './src/server',
   output: {
@@ -33,7 +33,7 @@ let config = {
   module: {
     loaders: [{
         test: /\.tsx?$/,
-        loader: 'ts-loader',
+        loader: 'awesome-typescript-loader',
         exclude: /node_modules/
       }, {
         test: /\.jsx$/,

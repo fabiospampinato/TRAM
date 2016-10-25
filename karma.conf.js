@@ -2,7 +2,8 @@
 /* IMPORT */
 
 let path = require ( 'path' ),
-    webpack = require ( 'webpack' );
+    webpack = require ( 'webpack' ),
+    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIGURATOR */
 
@@ -12,7 +13,7 @@ let configurator = function ( karma ) {
       isPhantom = !!process.env.PHANTOM;
 
   let config = {
-    frameworks: ['mocha', 'chai', 'es6-shim'],
+    frameworks: ['mocha', 'chai'],
     browsers: ['PhantomJS'],
     files: ['./webpack/test.js'],
     preprocessors: {
@@ -28,17 +29,16 @@ let configurator = function ( karma ) {
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
-        root: path.resolve ( __dirname ),
-        modulesDirectories: [
+        modules: [
           './src',
           'node_modules'
         ],
-        extensions: ['', '.json', '.js', '.jsx', '.ts', '.tsx']
+        extensions: ['.json', '.js', '.jsx', '.ts', '.tsx']
       },
       module: {
         loaders: [{
             test: /\.tsx?$/,
-            loader: 'ts'
+            loader: 'awesome-typescript-loader'
           }, {
             test: /\.json$/,
             loader: 'json-loader'
@@ -49,7 +49,7 @@ let configurator = function ( karma ) {
           }, {
             test: /\.css$/,
             exclude: path.resolve ( './src' ),
-            loader: 'style!css'
+            loaders: ['style', 'css']
           }, {
             test: /\.(jpe?g|png|gif)$/i,
             loader: 'url?limit=1000&name=images/[hash].[ext]'
@@ -65,6 +65,7 @@ let configurator = function ( karma ) {
         'react/lib/ReactContext': 'window'
       },
       plugins: [
+        new ForkCheckerPlugin (),
         new webpack.IgnorePlugin ( /^fs$/ ),
         new webpack.IgnorePlugin ( /^react\/addons$/ ),
         new webpack.NoErrorsPlugin (),
