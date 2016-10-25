@@ -1,18 +1,26 @@
 
-let settings = {
-  host: process.env.HOST || 'localhost',
-  port: process.env.PORT || 8889,
-  karmaPort: 9876,
+/* SETTINGS */
 
-  isTest1 () {
-    return true;
+let Settings = {
+  auth: {
+    token: 'auto_token_name',
+    secret: 'd35d1690-7f39-4676-830d-7dc8720b1475'
   },
-  isTest2 () {
-    return false;
+  database: {
+    host: 'localhost',
+    port: 28015,
+    db: 'uibuffs'
   },
-
-  // This part goes to React-Helmet for Head of our HTML
-  app: {
+  graphql: {
+    endpoint: '/api/database'
+  },
+  server: {
+    protocol: 'http',
+    host: 'localhost',
+    port: 8889,
+    url: 'http://localhost:3000'
+  },
+  helmet: {
     head: {
       title: 'barbar-vortigern',
       titleTemplate: 'barbar-vortigern: %s',
@@ -26,4 +34,6 @@ let settings = {
   }
 };
 
-export default settings;
+/* EXPORT */
+
+export default Settings;

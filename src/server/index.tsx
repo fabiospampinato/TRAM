@@ -17,7 +17,7 @@ import {configureStore} from '../redux/store';
 import routes from '../routes';
 import {Html} from '../containers';
 import Environment from '../modules/environment';
-import settings from '../modules/settings';
+import Settings from '../modules/settings';
 let manifest = require ( '../../build/manifest.json' );
 
 /* APP */
@@ -104,7 +104,7 @@ app.get ( '*', ( req, res ) => {
 
 /* LISTEN */
 
-app.listen ( settings.port, settings.host, err => {
+app.listen ( Settings.server.port, Settings.server.host, err => {
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
-  console.info ( Chalk.black.bgGreen ( `Listening at http://${settings.host}:${settings.port}` ) );
+  console.info ( Chalk.black.bgGreen ( `Listening at ${Settings.server.url}` ) );
 });

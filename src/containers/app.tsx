@@ -1,14 +1,18 @@
 
-import appConfig from '../modules/settings';
+/* IMPORT */
+
+import Settings from '../modules/settings';
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
-import { Header } from '../components';
+import {Header} from '../components';
+
+/* APP */
 
 class App extends React.Component<any, any> {
   public render() {
     return (
       <section>
-        <Helmet {...appConfig.app} {...appConfig.app.head}/>
+        <Helmet {...Settings.helmet} {...Settings.helmet.head}/>
         <Header />
         {this.props.children}
       </section>
@@ -16,4 +20,6 @@ class App extends React.Component<any, any> {
   }
 }
 
-export { App }
+/* EXPORT */
+
+export {App};
