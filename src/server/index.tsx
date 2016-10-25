@@ -16,6 +16,7 @@ import {ReduxAsyncConnect, loadOnServer} from 'redux-connect';
 import {configureStore} from '../redux/store';
 import routes from '../routes';
 import {Html} from '../containers';
+import Environment from '../modules/environment';
 import settings from '../modules/settings';
 let manifest = require ( '../../build/manifest.json' );
 
@@ -25,7 +26,7 @@ let app = express ();
 
 app.use ( compression () );
 
-if ( settings.env !== 'production' ) {
+if ( Environment.isDevelopment ) {
 
   let webpack = require ( 'webpack' ),
       config = require ( '../../webpack/development' ),
