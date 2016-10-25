@@ -1,14 +1,21 @@
-import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
-import { counterReducer } from './modules/counter';
-import { starsReducer } from './modules/stars';
-const { reducer } = require('redux-connect');
 
-const rootReducer: Redux.Reducer<any> = combineReducers({
+/* IMPORT */
+
+import {combineReducers} from 'redux';
+import {reducer} from 'redux-connect';
+import {routerReducer} from 'react-router-redux';
+import {counterReducer} from './modules/counter';
+import {starsReducer} from './modules/stars';
+
+/* REDUCERS */
+
+let reducers = combineReducers ({
+  reduxAsyncConnect: reducer,
   routing: routerReducer,
   counter: counterReducer,
-  stars: starsReducer,
-  reduxAsyncConnect: reducer,
+  stars: starsReducer
 });
 
-export default rootReducer;
+/* EXPORT */
+
+export default reducers;

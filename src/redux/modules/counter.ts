@@ -1,37 +1,34 @@
-import { ICounter, ICounterAction } from '../../models/counter';
 
 export const INCREMENT: string = 'counter/INCREMENT';
 export const DECREMENT: string = 'counter/DECREMENT';
 
-const initialState: ICounter = {
-  count: 0,
+const initialState = {
+  count: 0
 };
 
-export function counterReducer(state = initialState, action: ICounterAction) {
-  switch (action.type) {
+export function counterReducer ( state = initialState, action ) {
+  switch ( action.type ) {
     case INCREMENT:
       return {
         count: state.count + 1,
       };
-
     case DECREMENT:
       return {
-        count: ((state.count - 1 > 0) ? state.count - 1 : 0),
+        count: Math.max ( 0, state.count - 1 ),
       };
-
     default:
       return state;
   }
 }
 
-export function increment(): ICounterAction {
+export function increment () {
   return {
-    type: INCREMENT,
+    type: INCREMENT
   };
 }
 
-export function decrement(): ICounterAction {
+export function decrement () {
   return {
-    type: DECREMENT,
+    type: DECREMENT
   };
 }

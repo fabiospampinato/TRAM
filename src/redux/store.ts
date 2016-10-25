@@ -1,39 +1,44 @@
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
-import thunk from 'redux-thunk';
+/* IMPORT */
+
+import {createStore, applyMiddleware, compose} from 'redux';
 import * as createLogger from 'redux-logger';
-import rootReducer from './reducers';
+import thunk from 'redux-thunk';
+import {routerMiddleware} from 'react-router-redux';
+import reducers from './reducers';
 import Environment from '../modules/environment';
 
-export function configureStore ( history, initialState?: any ): Redux.Store<any> {
+/* CONFIGURE */
 
-  let middlewares: any[] = [
-    routerMiddleware(history),
-    thunk
-  ];
+function configureStore ( history, initialState?: any ) {
 
-  if ( Environment.isDevelopment && process.env.BROWSER ) {
-    let logger = createLogger ();
-    middlewares.push ( logger );
+  let enhancers: Function[] = [],
+      middlewares = [
+        routerMiddleware ( history ),
+        thunk
+      ];
+
+  if ( Environment.isDevelopment ) {
+
+    if ( process.env.BROWSER ) middlewares.push ( createLogger () );
+
+    if ( typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ) enhancers.push ( window.devToolsExtension () );
+
   }
 
-  let finalCreateStore = compose(
-    applyMiddleware(...middlewares),
-    Environment.isDevelopment &&
-    typeof window === 'object' &&
-    typeof window.devToolsExtension !== 'undefined'
-      ? window.devToolsExtension() : f => f
-  )(createStore);
+  let storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
+      store = storeCreator ( reducers, initialState );
 
-  let store: Redux.Store<any> = finalCreateStore(rootReducer, initialState);
+  if ( Environment.isDevelopment && module['hot'] ) {
 
-  if (Environment.isDevelopment && (module as any).hot) {
-    (module as any).hot.accept('./reducers', () => {
-      store.replaceReducer((require('./reducers')));
-    });
+    module['hot'].accept ( './reducers', () => store.replaceReducer ( require ( './reducers' ) ) );
+
   }
 
   return store;
 
 }
+
+/* EXPORT */
+
+export {configureStore};
