@@ -23,7 +23,7 @@
     "build"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "doTypeCheck": true,
+    "doTypeCheck": false,
     "forkChecker": true,
     "useBabel": false,
     "useCache": true
