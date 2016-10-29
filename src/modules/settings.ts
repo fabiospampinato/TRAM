@@ -12,7 +12,8 @@ let Settings = {
     db: 'uibuffs'
   },
   graphql: {
-    endpoint: '/api/database'
+    endpoint: '/api/graphql',
+    interface: '/api/graphiql'
   },
   server: {
     protocol: 'http',
