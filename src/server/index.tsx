@@ -16,7 +16,7 @@ import {createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {ReduxAsyncConnect, loadOnServer} from 'redux-connect';
 import Client from '../api/client';
-import Schema from '../api/database/schema';
+import Schema from '../api/schema';
 import {configureStore} from '../redux/store';
 import routes from '../routes';
 import {Html} from '../containers';
@@ -57,15 +57,21 @@ if ( Environment.isDevelopment ) {
 
 }
 
+app.use ( express.static ( path.join ( __dirname, '../assets' ) ) );
+
+app.use ( '/public', express.static ( path.join ( __dirname, '../build/public' ) ) );
+
 app.use ( Settings.graphql.endpoint, bodyParser.json (), graphqlConnect ({
   schema: Schema
 }));
 
-app.use ( Settings.graphql.interface, graphiqlExpress ({
-  endpointURL: Settings.graphql.endpoint,
-}));
+if ( Environment.isDevelopment ) {
 
-app.use ( '/public', express.static ( path.join ( __dirname, '../build/public' ) ) );
+  app.use ( Settings.graphql.interface, graphiqlExpress ({
+    endpointURL: Settings.graphql.endpoint,
+  }));
+
+}
 
 app.get ( '*', ( req, res ) => {
 
