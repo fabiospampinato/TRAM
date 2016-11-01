@@ -6,10 +6,10 @@ let Settings = {
     token: 'auto_token_name',
     secret: 'd35d1690-7f39-4676-830d-7dc8720b1475'
   },
-  database: {
+  rethinkdb: {
     host: 'localhost',
     port: 28015,
-    db: 'uibuffs'
+    db: 'vortigern'
   },
   graphql: {
     endpoint: '/api/graphql',
