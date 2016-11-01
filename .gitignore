@@ -43,3 +43,6 @@ typings
 
 # Awesome Typescript Loader
 .awcache
+
+# RethinkDB
+rethinkdb_data
