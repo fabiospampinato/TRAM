@@ -32,8 +32,6 @@ class Todo extends React.Component<any, any> {
 
   render () {
 
-    console.log(this.props)
-
     let {todos, visibility, toggle, set} = this.props,
         filtered = filter ( todos, visibility );
 

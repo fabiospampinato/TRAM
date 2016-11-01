@@ -3,7 +3,7 @@
 
 let {NODE_ENV} = process.env;
 
-/* INVIRONMENT */
+/* ENVIRONMENT */
 
 let Environment = {
   get () {
