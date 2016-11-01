@@ -2,27 +2,26 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {increment, decrement} from '../redux/modules/counter';
+import {graphql} from 'react-apollo';
+import {get} from '../api/counter/queries';
+import {increment, decrement} from '../api/counter/mutations';
 
 /* COUNTER */
 
-@connect (
-  state => ({ counter: state.counter }),
-  dispatch => ({
-    decrement: () => dispatch(decrement()),
-    increment: () => dispatch(increment())
-  })
-)
+@graphql ( get.query, get )
+@graphql ( increment.mutation, increment )
+@graphql ( decrement.mutation, decrement )
 class Counter extends React.Component<any, any> {
   render () {
-    let {increment, decrement, counter} = this.props;
+    const {increment, decrement, data: {loading, error, counter}} = this.props;
+    if ( loading ) return <div>Loading...</div>;
+    if ( error ) return <div>Error!</div>;
     return (
       <div>
         <h4>Counter Example</h4>
+        <p>{counter.value}</p>
         <button onClick={increment}>INCREMENT</button>
-        <button onClick={decrement} disabled={counter.count <= 0}>DECREMENT</button>
-        <p>{counter.count}</p>
+        <button onClick={decrement} disabled={!counter.value}>DECREMENT</button>
       </div>
     );
   }

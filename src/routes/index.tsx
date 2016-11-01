@@ -11,7 +11,7 @@ let Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="about" component={About} />
-    <Route path="counter" component={Counter} />
+    <Route path="counter" component={Counter} counterId={1} />
     <Route path="stars" component={Stars} />
     <Route path="todo" component={Todo} />
   </Route>
