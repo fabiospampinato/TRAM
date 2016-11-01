@@ -16,9 +16,6 @@ const Components = [
 
 /* SCHEMA */
 
-console.log('schema',DatabaseU.makeSchema ( Components ));
-console.log("resolvers",DatabaseU.makeResolvers ( Components ));
-
 const Schema = makeExecutableSchema ({
   typeDefs: DatabaseU.makeSchema ( Components ),
   resolvers: DatabaseU.makeResolvers ( Components )

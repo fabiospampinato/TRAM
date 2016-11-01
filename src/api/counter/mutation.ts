@@ -15,7 +15,6 @@ const schema = `
 const resolvers = {
   incrementCounter ( root, {id} ) {
     return Counter.get ( id ).run ().then ( function ( counter ) {
-      console.log(new Counter ( counter ).increment ().increment);
       return new Counter ( counter ).increment ().replace ();
     });
   },
