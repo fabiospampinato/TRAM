@@ -1,15 +1,32 @@
 
 Migration:
   ✔ Remove useless files @done (10/24/2016, 3:13:57 PM)
-  ☐ Move to the usual project structure
-  ☐ Understand all the code
+  ✔ Move to the usual project structure @done (10/24/2016, 6:01:16 PM)
+  ✔ Understand all the code @done (10/25/2016, 4:40:43 PM)
   ✔ Disable tslint checks @done (10/24/2016, 3:08:10 PM)
-  ☐ Remove useless sections
+  ✔ Remove useless sections @done (10/25/2016, 4:40:46 PM)
   ☐ Make it more similar to PKO structure (for easier migration)
-  ☐ Upgrade to Typescript 2.0
-  ☐ Upgrade to WebPack 2
-  ☐ Upgrade to awesome-typescript-loader
-  ☐ Upgrade to HappyPack
-  ☐ Integrate GraphQL
-  ☐ Integrate Apollo
+  ✔ Upgrade to Typescript 2.0 @done (10/25/2016, 12:06:27 AM)
+  ✔ Upgrade to WebPack 2 @done (10/25/2016, 12:06:33 AM)
+  ✔ Upgrade to awesome-typescript-loader @done (10/25/2016, 12:06:35 AM)
+  ✔ Fix Typescript type errors @done (10/25/2016, 12:45:15 AM)
+  ☐ Fix serving assets
+  ✔ Add a Todo demo app @done (10/25/2016, 4:34:35 PM)
+  ☐ Maybe move webpack config files to typescript
+  ☐ Add a run script for outputting webpack stats
+  ✔ Integrate GraphQL @done (10/29/2016, 2:20:57 AM)
+  ✔ Integrate Apollo @done (10/29/2016, 2:21:04 AM)
+  ☐ Use const when appropriate
   ☐ Integrate an ORM
+  ☐ Add reachable RethinkDB data explore
+  ☐ Add support for DB setup
+    ☐ Add the counter document
+  ☐ Add signup
+  ☐ Add login
+  ☐ Improve Todo demo
+    ☐ Store list into database
+    ☐ Requires to be logged in to use it
+    ☐ Store different users lists in the database
+  ☐ Remove unused packages from package.json
+  ☐ Make it a little prettier
+  ☐ Maybe integrate Wallaby
