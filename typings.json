@@ -29,9 +29,11 @@
     "serve-favicon": "registry:dt/serve-favicon#0.0.0+20160316155526",
     "source-map": "registry:dt/source-map#0.0.0+20161003134342",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
+    "validator": "registry:dt/validator#5.7.0+20160928122927",
     "webpack": "registry:dt/webpack#1.12.9+20160927034556"
   },
   "dependencies": {
+    "body-parser": "registry:npm/body-parser#1.15.2+20160815132839",
     "chalk": "registry:npm/chalk#1.1.1+20160812215109",
     "express": "registry:npm/express#4.14.0+20160925001530"
   }
