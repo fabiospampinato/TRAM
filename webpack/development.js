@@ -3,6 +3,7 @@
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
     ManifestPlugin = require ( 'webpack-manifest-plugin' ),
     ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
@@ -80,7 +81,10 @@ let config = {
       }
     }),
     new webpack.HotModuleReplacementPlugin (),
-    new webpack.NoErrorsPlugin ()
+    new webpack.NoErrorsPlugin (),
+    // new BundleAnalyzerPlugin ({
+    //   generateStatsFile: true
+    // })
   ]
 };
 

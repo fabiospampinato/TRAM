@@ -90,6 +90,7 @@
     "typings": "^1.4.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.25",
+    "webpack-bundle-analyzer": "^1.3.0",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^2.1.0-beta.9",
     "webpack-hot-middleware": "^2.13.0",
