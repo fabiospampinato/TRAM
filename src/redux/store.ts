@@ -22,7 +22,7 @@ function configureStore ( history, initialState?: any ) {
 
   if ( Environment.isDevelopment ) {
 
-    if ( process.env.BROWSER ) middlewares.push ( createLogger () );
+    if ( Environment.isClient ) middlewares.push ( createLogger () );
 
     if ( typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ) enhancers.push ( window.devToolsExtension () );
 

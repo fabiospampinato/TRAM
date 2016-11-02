@@ -75,7 +75,7 @@ let config = {
     }),
     new webpack.DefinePlugin ({
       'process.env': {
-        BROWSER: JSON.stringify ( true ),
+        CLIENT: JSON.stringify ( true ),
         NODE_ENV: JSON.stringify ( 'development' )
       }
     }),
