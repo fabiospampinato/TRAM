@@ -10,11 +10,11 @@ let path = require ( 'path' ),
 let configurator = function ( karma ) {
 
   let isCI = process.env.NODE_ENV === 'ci',
-      isPhantom = !!process.env.PHANTOM;
+      BROWSER = process.env.BROWSER;
 
   let config = {
     frameworks: ['mocha', 'chai'],
-    browsers: ['PhantomJS'],
+    browsers: BROWSER ? [BROWSER] : ['PhantomJS'],
     files: ['./webpack/test.js'],
     preprocessors: {
       '**/*.ts': ['coverage'],
@@ -42,10 +42,6 @@ let configurator = function ( karma ) {
           }, {
             test: /\.json$/,
             loader: 'json-loader'
-          }, {
-            test: /\.css$/,
-            include: path.resolve ( './src' ),
-            loaders: ['style', 'css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]']
           }, {
             test: /\.css$/,
             exclude: path.resolve ( './src' ),
@@ -89,13 +85,13 @@ let configurator = function ( karma ) {
 
     config.coverageReporter.reporters.push ({ type: 'lcov', subdir: '.' });
 
-    if ( !isPhantom ) config.browsers.push ( 'Firefox' );
+    if ( !BROWSER ) config.browsers.push ( 'Firefox' );
 
   } else {
 
     config.coverageReporter.reporters.push ({ type: 'html', subdir: 'html' });
 
-    if ( !isPhantom ) config.browsers.push ( 'Chrome' );
+    if ( !BROWSER ) config.browsers.push ( 'Chrome' );
 
   }
 
