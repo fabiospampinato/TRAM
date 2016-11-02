@@ -22,7 +22,6 @@ import routes from '../routes';
 import {Html} from '../containers';
 import Environment from '../modules/environment';
 import Settings from '../modules/settings';
-let manifest = require ( '../../build/manifest.json' );
 
 /* APP */
 
@@ -35,7 +34,7 @@ app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
 if ( Environment.isDevelopment ) {
 
   let webpack = require ( 'webpack' ),
-      config = require ( '../../webpack/development' ),
+      config = require ( '../../webpack/client/development' ),
       compiler = webpack ( config ),
       devMiddleware = require ( 'webpack-dev-middleware' ),
       hotMiddleware = require ( 'webpack-hot-middleware' );
@@ -82,7 +81,7 @@ app.get ( '*', ( req, res ) => {
 
   function renderHTML ( markup ) {
     let html = ReactDOMServer.renderToString (
-      <Html markup={markup} manifest={manifest} store={store} />
+      <Html markup={markup} store={store} />
     );
     return `<!doctype html> ${html}`;
   }

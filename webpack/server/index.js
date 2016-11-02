@@ -2,7 +2,10 @@
 /* IMPORT */
 
 let path = require ( 'path' ),
-    fs = require ( 'fs' );
+    fs = require ( 'fs' ),
+    webpack = require ( 'webpack' ),
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* EXTERNALS */
 
@@ -18,16 +21,16 @@ fs.readdirSync ( 'node_modules' )
 /* CONFIG */
 
 let config = {
+  entry: './src/server',
   externals: externals,
   target: 'node',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
-  entry: './src/server',
   output: {
     path: path.resolve ( './build/public' ),
-    filename: '../server.js',
     publicPath: '/public/',
+    filename: '../server.js',
     libraryTarget: 'commonjs2'
   },
   module: {
@@ -49,7 +52,19 @@ let config = {
         loader: 'url?limit=1000&name=images/[hash].[ext]'
       }]
   },
-  plugins: [],
+  plugins: [
+    new ForkCheckerPlugin (),
+    new webpack.DllReferencePlugin ({
+      name: path.resolve ( './build/server.vendor.js' ),
+      context: __dirname,
+      manifest: require ( '../../build/server.vendor.json' ),
+      sourceType: 'commonjs2'
+    }),
+    // new BundleAnalyzerPlugin ({
+    //   generateStatsFile: true,
+    //   openAnalyzer: false
+    // })
+  ],
   node: {
     console: false,
     global: false,

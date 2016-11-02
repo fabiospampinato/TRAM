@@ -4,26 +4,24 @@
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
     BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
-    ManifestPlugin = require ( 'webpack-manifest-plugin' ),
     ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIG */
 
 let config = {
   devtool: 'eval',
+  entry: {
+    client: [
+      'webpack-hot-middleware/client?reload=true',
+      './src/client'
+    ]
+  },
   resolve: {
     modules: [
       path.resolve ( __dirname ),
       'node_modules'
     ],
     extensions: ['.js', '.jsx', '.ts', '.tsx']
-  },
-  entry: {
-    app: [
-      'webpack-hot-middleware/client?reload=true',
-      './src/client',
-      './src/vendor'
-    ]
   },
   output: {
     path: path.resolve ( './build/public' ),
@@ -41,10 +39,6 @@ let config = {
       }, {
         test: /\.json$/,
         loader: 'json-loader'
-      }, {
-        test: /\.css$/,
-        include: path.resolve ( './src' ),
-        loaders: ['style-loader', 'css-loader?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]']
       }, {
         test: /\.css$/,
         exclude: path.resolve ( './src' ),
@@ -68,10 +62,13 @@ let config = {
   },
   plugins: [
     new ForkCheckerPlugin (),
-    new ManifestPlugin ({
-      fileName: '../manifest.json'
+    new webpack.optimize.OccurrenceOrderPlugin (),
+    new webpack.DllReferencePlugin ({
+      context: __dirname,
+      manifest: require ( '../../build/client.vendor.json' ),
+      sourceType: 'var'
     }),
-    new webpack.LoaderOptionsPlugin({
+    new webpack.LoaderOptionsPlugin ({
       debug: true
     }),
     new webpack.DefinePlugin ({
@@ -83,7 +80,8 @@ let config = {
     new webpack.HotModuleReplacementPlugin (),
     new webpack.NoErrorsPlugin (),
     // new BundleAnalyzerPlugin ({
-    //   generateStatsFile: true
+    //   generateStatsFile: true,
+    //   openAnalyzer: false
     // })
   ]
 };

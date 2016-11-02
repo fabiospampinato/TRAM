@@ -9,11 +9,6 @@ import * as Helmet from 'react-helmet';
 
 class Html extends React.Component<any, undefined> {
 
-  private resolve ( files ): string[] {
-    let manifest = this.props.manifest;
-    return _.compact ( files.map ( file => manifest.hasOwnProperty ( file ) ? '/public/' + manifest[file] : undefined ) ) as string[];
-  }
-
   render () {
 
     let {markup, store} = this.props;
@@ -22,8 +17,9 @@ class Html extends React.Component<any, undefined> {
     if ( !store ) throw new Error ( 'Missing store' );
 
     let head = Helmet.rewind (),
-        styles = this.resolve ( ['vendor.css', 'app.css'] ),
-        scripts = this.resolve ( ['vendor.js', 'app.js'] );
+        styles = [],
+        // scripts = ['/public/js/client.js']; //FIXME: Make it more dynamic
+        scripts = ['/public/js/client.vendor.js', '/public/js/client.js']; //FIXME: Make it more dynamic
 
     return (
       <html>

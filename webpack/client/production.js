@@ -3,7 +3,7 @@
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
-    ManifestPlugin = require ( 'webpack-manifest-plugin' ),
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
     ExtractTextPlugin = require ( 'extract-text-webpack-plugin' );
 
 /* CONFIG */
@@ -18,7 +18,7 @@ let config = {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   entry: {
-    app: './src/client',
+    client: './src/client',
     vendor: [
       './src/vendor',
       'react',
@@ -82,19 +82,21 @@ let config = {
     }),
     new webpack.optimize.UglifyJsPlugin ({
       compress: {
-        warnings: false
+        warnings: false,
+        screw_ie8: true
       }
     }),
     new ExtractTextPlugin ( 'css/[name].[hash].css' ),
-    new ManifestPlugin ({
-      fileName: '../manifest.json'
-    }),
     new webpack.DefinePlugin ({
       'process.env': {
         CLIENT: JSON.stringify ( true ),
         NODE_ENV: JSON.stringify ( 'production' )
       }
-    })
+    }),
+    // new BundleAnalyzerPlugin ({
+    //   generateStatsFile: true,
+    //   openAnalyzer: false
+    // })
   ]
 };
 
