@@ -1,9 +1,11 @@
 
+//TODO: Rewrite
+
 /* IMPORT */
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
     ExtractTextPlugin = require ( 'extract-text-webpack-plugin' );
 
 /* CONFIG */
@@ -95,7 +97,8 @@ let config = {
     }),
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,
-    //   openAnalyzer: false
+    //   openAnalyzer: false,
+    //   statsFilename: '../../meta/stats.json'
     // })
   ]
 };

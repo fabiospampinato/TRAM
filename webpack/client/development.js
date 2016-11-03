@@ -3,30 +3,29 @@
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer').BundleAnalyzerPlugin,
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
     ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIG */
 
 let config = {
   devtool: 'eval',
-  entry: {
-    client: [
-      'webpack-hot-middleware/client?reload=true',
-      './src/client'
-    ]
-  },
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?reload=true',
+    './src/client/index.tsx'
+  ],
   resolve: {
     modules: [
-      path.resolve ( __dirname ),
+      path.resolve ( __dirname, '../../src' ),
       'node_modules'
     ],
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   output: {
-    path: path.resolve ( './build/public' ),
-    publicPath: '/public/',
-    filename: 'js/[name].js',
+    path: path.resolve ( 'dist/public/js' ),
+    publicPath: '/public/js/',
+    filename: 'client.js',
     pathinfo: true
   },
   module: {
@@ -35,13 +34,12 @@ let config = {
         loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader']
       }, {
         test: /\.jsx$/,
-        loader: 'babel?presets[]=es2015'
+        loader: 'babel'
       }, {
         test: /\.json$/,
         loader: 'json-loader'
       }, {
         test: /\.css$/,
-        exclude: path.resolve ( './src' ),
         loaders: ['style-loader', 'css-loader']
       }, {
         test: /\.eot(\?.*)?$/,
@@ -62,14 +60,13 @@ let config = {
   },
   plugins: [
     new ForkCheckerPlugin (),
-    new webpack.optimize.OccurrenceOrderPlugin (),
-    new webpack.DllReferencePlugin ({
-      context: __dirname,
-      manifest: require ( '../../build/client.vendor.json' ),
-      sourceType: 'var'
-    }),
     new webpack.LoaderOptionsPlugin ({
       debug: true
+    }),
+    new webpack.DllReferencePlugin ({
+      context: __dirname,
+      manifest: require ( '../../dist/meta/client.vendor.json' ),
+      sourceType: 'var'
     }),
     new webpack.DefinePlugin ({
       'process.env': {
@@ -77,11 +74,13 @@ let config = {
         NODE_ENV: JSON.stringify ( 'development' )
       }
     }),
+    new webpack.optimize.OccurrenceOrderPlugin (),
     new webpack.HotModuleReplacementPlugin (),
     new webpack.NoErrorsPlugin (),
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,
-    //   openAnalyzer: false
+    //   openAnalyzer: false,
+    //   statsFilename: '../../meta/stats.json'
     // })
   ]
 };
