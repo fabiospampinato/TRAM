@@ -4,6 +4,7 @@
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
     BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+    CopyWebpackPlugin = require ( 'copy-webpack-plugin' ),
     ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIG */
@@ -65,6 +66,10 @@ let config = {
     new webpack.LoaderOptionsPlugin ({
       debug: true
     }),
+    new CopyWebpackPlugin ([{
+      from: path.resolve ( 'assets' ),
+      to: path.resolve ( 'dist/assets' )
+    }]),
     new webpack.DllReferencePlugin ({
       context: __dirname,
       manifest: require ( '../../dist/meta/client.vendor.json' ),
