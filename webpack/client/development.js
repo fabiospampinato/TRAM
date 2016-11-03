@@ -12,7 +12,7 @@ let config = {
   devtool: 'eval',
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?reload=true',
+    'webpack-hot-middleware/client',
     './src/client/index.tsx'
   ],
   resolve: {
