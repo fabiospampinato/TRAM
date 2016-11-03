@@ -9,7 +9,7 @@ import renderer from './renderer';
 
 /* VARIABLES */
 
-let store: Redux.Store<any> = configureStore ( browserHistory, window.__INITIAL_STATE__ ),
+let store: Redux.Store<any> = configureStore ( browserHistory ),
     history = syncHistoryWithStore ( browserHistory, store );
 
 /* RENDER */

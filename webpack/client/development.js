@@ -10,11 +10,13 @@ let path = require ( 'path' ),
 
 let config = {
   devtool: 'eval',
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    './src/client/index.tsx'
-  ],
+  entry: {
+    client: [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      './src/client/index.tsx'
+    ]
+  },
   resolve: {
     modules: [
       path.resolve ( __dirname, '../../src' ),

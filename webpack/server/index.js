@@ -18,7 +18,9 @@ fs.readdirSync ( 'node_modules' )
 /* CONFIG */
 
 let config = {
-  entry: './src/server/index.tsx',
+  entry: {
+    server: './src/server/index.tsx'
+  },
   externals,
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx']

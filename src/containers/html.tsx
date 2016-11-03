@@ -8,16 +8,15 @@ import * as Helmet from 'react-helmet';
 
 class Html extends React.Component<any, undefined> {
 
+  private resolveFile ( file ) {
+    return this.props.manifest[file];
+  }
+
   render () {
-
-    let {markup, store} = this.props;
-
-    if ( !markup ) throw new Error ( 'Missing markup' );
-    if ( !store ) throw new Error ( 'Missing store' );
 
     let head = Helmet.rewind (),
         styles = [],
-        scripts = ['/public/js/client.js'];
+        scripts = [this.resolveFile ( 'client.vendor.js' ), '/public/js/client.js'];
 
     return (
       <html>
@@ -31,8 +30,9 @@ class Html extends React.Component<any, undefined> {
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>
-          <main id="app" dangerouslySetInnerHTML={{ __html: markup }}></main>
-          <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${JSON.stringify ( store.getState () )};`}} charSet="UTF-8" />
+          <main id="app">
+            {this.props.children}
+          </main>
           {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}
         </body>
       </html>

@@ -15,7 +15,9 @@ lodashMethods.forEach ( method => alias[`lodash.${method}`] = `lodash/${method}`
 /* CONFIG */
 
 let config = {
-  entry: ['./src/server/vendor.ts'],
+  entry: {
+    'server.vendor': ['./src/server/vendor.ts']
+  },
   resolve: { alias },
   output: {
     path: path.resolve ( 'dist' ),

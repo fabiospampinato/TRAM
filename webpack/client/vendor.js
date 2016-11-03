@@ -3,7 +3,8 @@
 
 let path = require ( 'path' ),
     webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin;
+    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+    ManifestPlugin = require ( 'webpack-manifest-plugin' );
 
 /* ALIAS */
 
@@ -15,11 +16,13 @@ lodashMethods.forEach ( method => alias[`lodash.${method}`] = `lodash/${method}`
 /* CONFIG */
 
 let config = {
-  entry: ['./src/client/vendor.ts'],
+  entry: {
+    'client.vendor': ['./src/client/vendor.ts']
+  },
   resolve: { alias },
   output: {
     path: path.resolve ( 'dist/public/js' ),
-    filename: 'client.vendor.js',
+    filename: 'client.vendor.[chunkhash].js',
     library: 'vendor',
     libraryTarget: 'var'
   },
@@ -28,6 +31,10 @@ let config = {
       path: path.resolve ( 'dist/meta/client.vendor.json' ),
       name: 'vendor',
       context: __dirname
+    }),
+    new ManifestPlugin ({
+      fileName: '../../meta/manifest.json',
+      publicPath: '/public/js/'
     }),
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,

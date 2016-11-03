@@ -10,7 +10,7 @@ import * as path from 'path';
 import * as favicon from 'serve-favicon';
 import * as React from 'react';
 import {ApolloProvider} from 'react-apollo';
-import * as ReactDOMServer from 'react-dom/server';
+import {renderToString} from 'react-dom/server';
 import {AppContainer} from 'react-hot-loader';
 import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
@@ -21,6 +21,7 @@ import routes from '../routes';
 import {Html} from '../containers';
 import Environment from '../modules/environment';
 import Settings from '../modules/settings';
+const manifest = require ( '../../dist/meta/manifest.json' );
 
 /* APP */
 
@@ -57,7 +58,7 @@ app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
 
 app.use ( express.static ( path.join ( __dirname, '../assets' ) ) );
 
-app.use ( '/public', express.static ( path.join ( __dirname, '../build/public' ) ) );
+app.use ( '/public', express.static ( path.join ( __dirname, '../dist/public' ) ) );
 
 app.use ( Settings.graphql.endpoint, bodyParser.json (), graphqlConnect ({
   schema: Schema
@@ -78,13 +79,6 @@ app.get ( '*', ( req, res ) => {
       store = configureStore ( memoryHistory ),
       history = syncHistoryWithStore ( memoryHistory, store );
 
-  function renderHTML ( markup ) {
-    let html = ReactDOMServer.renderToString (
-      <Html markup={markup} store={store} />
-    );
-    return `<!doctype html> ${html}`;
-  }
-
   match ( { history, routes, location }, ( err, redirectLocation, renderProps ) => {
 
     if ( err ) {
@@ -97,15 +91,17 @@ app.get ( '*', ( req, res ) => {
 
     } else if ( renderProps ) {
 
-      let markup = ReactDOMServer.renderToString (
-        <AppContainer>
-          <ApolloProvider store={store} client={Client} key="provider">
-            <RouterContext {...renderProps} />
-          </ApolloProvider>
-        </AppContainer>
+      let page = (
+        <Html manifest={manifest}>
+          <AppContainer>
+            <ApolloProvider store={store} client={Client} key="provider">
+              <RouterContext {...renderProps} />
+            </ApolloProvider>
+          </AppContainer>
+        </Html>
       );
 
-      res.status ( 200 ).send ( renderHTML ( markup ) );
+      res.status ( 200 ).send ( `<!doctype html>${renderToString ( page )}` );
 
     } else {
 
