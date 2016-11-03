@@ -21,7 +21,7 @@
     "test:firefox": "BROWSER=Firefox npm run test",
     "test": "npm-run karma start ./karma.conf.js",
     "coverage": "open ./coverage/html/index.html",
-    "lint": "npm-run tslint \"src/**/**.ts*\""
+    "lint": "npm-run tslint \"src/**/**.ts*\" --force"
   },
   "dependencies": {
     "apollo-client": "^0.5.0",
