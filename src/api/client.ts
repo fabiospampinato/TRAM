@@ -7,7 +7,9 @@ import Settings from '../modules/settings';
 
 /* CLIENT */
 
-let networkInterface = createNetworkInterface ( Settings.graphql.endpoint );
+let networkInterface = createNetworkInterface ({
+  uri: Settings.graphql.endpoint
+});
 
 let Client = new ApolloClient ({
   networkInterface,
