@@ -38,6 +38,11 @@ let configurator = function ( karma ) {
       module: {
         loaders: [{
             test: /\.tsx?$/,
+            loader: 'istanbul-instrumenter-loader',
+            include: path.resolve ( './src' ),
+            enforce: 'post'
+          }, {
+            test: /\.tsx?$/,
             loader: 'awesome-typescript-loader'
           }, {
             test: /\.json$/,
@@ -49,11 +54,6 @@ let configurator = function ( karma ) {
           }, {
             test: /\.(jpe?g|png|gif)$/i,
             loader: 'url?limit=1000&name=images/[hash].[ext]'
-          }],
-        postLoaders: [{
-            test: /\.tsx?$/,
-            loader: 'istanbul-instrumenter-loader',
-            include: path.resolve ( './src' )
           }]
       },
       externals: {
