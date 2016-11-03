@@ -6,7 +6,7 @@ import {ApolloProvider} from 'react-apollo';
 import {render} from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 import {Router} from 'react-router';
-import routes from '../routes';
+import routes from './routes';
 
 /* RENDERER */
 

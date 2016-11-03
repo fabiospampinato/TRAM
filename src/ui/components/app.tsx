@@ -3,19 +3,19 @@
 
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
-import {Header} from '../components';
-import Settings from '../modules/settings';
+import Settings from '../../modules/settings';
+import {Header} from './header';
 
 /* APP */
 
 class App extends React.Component<any, any> {
   render () {
     return (
-      <section>
-        <Helmet {...Settings.helmet} {...Settings.helmet.head}/>
+      <main>
+        <Helmet {...Settings.helmet.head} />
         <Header />
         {this.props.children}
-      </section>
+      </main>
     );
   }
 }

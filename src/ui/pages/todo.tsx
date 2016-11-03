@@ -4,7 +4,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {VISIBILITIES, add, toggle, set, filter} from '../redux/modules/todo';
+import {VISIBILITIES, add, toggle, set, filter} from '../../redux/modules/todo';
 
 /* COUNTER */
 

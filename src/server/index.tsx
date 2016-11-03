@@ -17,10 +17,10 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import Client from '../api/client';
 import Schema from '../api/schema';
 import {configureStore} from '../redux/store';
-import routes from '../routes';
-import {Html} from '../containers';
 import Environment from '../modules/environment';
 import Settings from '../modules/settings';
+import routes from '../ui/routes';
+import {Html} from '../ui/components';
 const manifest = require ( '../../dist/meta/manifest.json' );
 
 /* APP */

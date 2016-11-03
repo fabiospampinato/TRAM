@@ -3,7 +3,8 @@
 
 import * as React from 'react';
 import {IndexRoute, Route} from 'react-router';
-import {App, Home, About, Counter, Todo} from '../containers';
+import {App} from './components';
+import {About, Counter, Home, Todo} from './pages';
 
 /* ROUTES */
 
