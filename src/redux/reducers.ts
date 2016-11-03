@@ -10,7 +10,6 @@ import {todoReducer} from './modules/todo';
 /* REDUCERS */
 
 let reducers = combineReducers ({
-  reduxAsyncConnect: reducer,
   routing: routerReducer,
   todo: todoReducer,
   apollo: Client.reducer ()

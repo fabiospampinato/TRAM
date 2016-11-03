@@ -11,9 +11,9 @@ import * as favicon from 'serve-favicon';
 import * as React from 'react';
 import {ApolloProvider} from 'react-apollo';
 import * as ReactDOMServer from 'react-dom/server';
-import {createMemoryHistory, match} from 'react-router';
+import {AppContainer} from 'react-hot-loader';
+import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import {ReduxAsyncConnect, loadOnServer} from 'redux-connect';
 import Client from '../api/client';
 import Schema from '../api/schema';
 import {configureStore} from '../redux/store';
@@ -27,8 +27,6 @@ import Settings from '../modules/settings';
 let app = express ();
 
 app.use ( compression () );
-
-app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
 
 if ( Environment.isDevelopment ) {
 
@@ -48,12 +46,14 @@ if ( Environment.isDevelopment ) {
     inline: true,
     lazy: false,
     historyApiFallback: true,
-    quiet: true,
+    quiet: true
   }));
 
   app.use ( hotMiddleware ( compiler ) );
 
 }
+
+app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
 
 app.use ( express.static ( path.join ( __dirname, '../assets' ) ) );
 
@@ -97,16 +97,15 @@ app.get ( '*', ( req, res ) => {
 
     } else if ( renderProps ) {
 
-      let asyncRenderData = Object.assign ( {}, renderProps, {store} );
-
-      loadOnServer ( asyncRenderData ).then ( () => {
-        let markup = ReactDOMServer.renderToString (
+      let markup = ReactDOMServer.renderToString (
+        <AppContainer>
           <ApolloProvider store={store} client={Client} key="provider">
-            <ReduxAsyncConnect {...renderProps} />
+            <RouterContext {...renderProps} />
           </ApolloProvider>
-        );
-        res.status ( 200 ).send ( renderHTML ( markup ) );
-      });
+        </AppContainer>
+      );
+
+      res.status ( 200 ).send ( renderHTML ( markup ) );
 
     } else {
 

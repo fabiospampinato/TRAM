@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import * as _ from 'lodash';
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
 
@@ -18,8 +17,7 @@ class Html extends React.Component<any, undefined> {
 
     let head = Helmet.rewind (),
         styles = [],
-        // scripts = ['/public/js/client.js']; //FIXME: Make it more dynamic
-        scripts = ['/public/js/client.vendor.js', '/public/js/client.js']; //FIXME: Make it more dynamic
+        scripts = ['/public/js/client.js'];
 
     return (
       <html>
