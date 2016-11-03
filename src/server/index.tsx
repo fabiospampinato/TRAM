@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import 'isomorphic-fetch';
 import * as bodyParser from 'body-parser';
 import * as Chalk from 'chalk';
 import * as compression from 'compression';

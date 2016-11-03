@@ -1,7 +1,6 @@
 
 /* IMPORT */
 
-import 'isomorphic-fetch';
 import * as React from 'react';
 import {ApolloProvider} from 'react-apollo';
 import * as ReactDOM from 'react-dom';

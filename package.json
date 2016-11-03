@@ -32,7 +32,6 @@
     "graphql-tag": "^0.1.15",
     "graphql-tools": "^0.8.0",
     "history": "^4.4.0",
-    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.6",
     "npm-run": "^4.1.0",
     "npm-run-all": "^3.1.1",
