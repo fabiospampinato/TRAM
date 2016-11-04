@@ -1,15 +1,13 @@
 {
   "globalDependencies": {
     "base16": "registry:dt/base16#1.0.0+20160902130643",
-    "chai": "registry:dt/chai#3.4.0+20160601211834",
+    "bluebird": "registry:dt/bluebird#3.0.0+20160928162057",
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "compression": "registry:dt/compression#0.0.0+20160501162003",
-    "graphql": "registry:dt/graphql#0.7.0+20161019131654",
     "history": "registry:dt/history#1.8.0+20160316155526",
     "jquery": "registry:dt/jquery#1.10.0+20160929162922",
     "lodash": "registry:dt/lodash#4.14.0+20161004174455",
     "mocha": "registry:dt/mocha#2.2.5+20160720003353",
-    "node": "registry:dt/node#6.0.0+20161019125345",
     "react": "registry:dt/react#0.14.0+20161008064207",
     "react-addons-test-utils": "registry:dt/react-addons-test-utils#0.14.0+20160427035638",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
@@ -28,11 +26,11 @@
     "serve-favicon": "registry:dt/serve-favicon#0.0.0+20160316155526",
     "source-map": "registry:dt/source-map#0.0.0+20161003134342",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
-    "validator": "registry:dt/validator#5.7.0+20160928122927",
-    "webpack": "registry:dt/webpack#1.12.9+20160927034556"
+    "validator": "registry:dt/validator#5.7.0+20160928122927"
   },
   "dependencies": {
     "body-parser": "registry:npm/body-parser#1.15.2+20160815132839",
+    "chai": "registry:npm/chai#3.5.0+20160723033700",
     "chalk": "registry:npm/chalk#1.1.1+20160812215109",
     "express": "registry:npm/express#4.14.0+20160925001530"
   }

@@ -55,7 +55,7 @@ const DatabaseU = {
 
   },
 
-  makeResolvers ( components ) {
+  makeResolvers ( components ): {} {
 
     let main = DatabaseU._makeResolversSub ( components ),
         types = DatabaseU._makeResolversSub ( components, 'types' ),

@@ -14,6 +14,10 @@ import {VISIBILITIES, add, toggle, set, filter} from '../../redux/modules/todo';
 )
 class Todo extends React.Component<any, any> {
 
+  refs: {
+    input;
+  };
+
   keydown ( event ) {
 
     if ( event.keyCode !== 13 ) return; // Enter key
@@ -53,7 +57,7 @@ class Todo extends React.Component<any, any> {
             let isActive = visibility === VISIBILITY;
             let style = {
               cursor: isActive ? 'normal' : 'pointer',
-              fontWeight: isActive ? 'bold' : 'normal'
+              fontWeight: isActive ? 700 : 400
             };
             return <div key={VISIBILITY} style={style} onClick={() => set ( VISIBILITY )}>{_.upperFirst ( VISIBILITY.toLowerCase () )}</div>
           })}

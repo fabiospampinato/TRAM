@@ -25,8 +25,9 @@
     "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "doTypeCheck": false,
+    "doTypeCheck": true,
     "forkChecker": true,
+    "forkCheckerSilent": true,
     "useBabel": false,
     "useCache": true
   }

@@ -1,10 +1,12 @@
 
+import {todos} from './types';
+
 export const ADD = 'todo/list/ADD';
 export const TOGGLE = 'todo/list/TOGGLE';
 
-const initialState = [];
+const initialState: todos = [];
 
-export function listReducer ( state = initialState, action ) {
+export function listReducer ( state: todos = initialState, action ) {
   switch ( action.type ) {
     case ADD:
       return [...state, action.payload];

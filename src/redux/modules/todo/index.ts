@@ -15,5 +15,6 @@ let todoReducer = combineReducers ({
 /* EXPORT */
 
 export * from './list';
-export * from './visibility'
+export * from './visibility';
+export * from './types';
 export {todoReducer};

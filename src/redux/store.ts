@@ -20,11 +20,11 @@ function configureStore ( history, initialState?: any ) {
         Client.middleware ()
       ];
 
-  if ( Environment.isDevelopment ) {
+  if ( Environment.isDevelopment && Environment.isClient ) {
 
-    if ( Environment.isClient ) middlewares.push ( createLogger () );
+    middlewares.push ( createLogger () );
 
-    if ( typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ) enhancers.push ( window.devToolsExtension () );
+    if ( window.devToolsExtension ) enhancers.push ( window.devToolsExtension () );
 
   }
 

@@ -25,7 +25,7 @@ Counter.define ( 'decrement', function () {
 
 /* REPLACE */
 
-Counter.define ( 'replace', function () {
+Counter.define ( 'replace', function () { //TODO: Generalize
   this.setSaved ();
   return this.save ();
 });

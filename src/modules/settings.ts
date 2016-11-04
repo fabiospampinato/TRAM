@@ -13,7 +13,8 @@ let Settings = {
   },
   graphql: {
     endpoint: '/api/graphql',
-    interface: '/api/graphiql'
+    interface: '/api/graphiql',
+    batchInverval: 10
   },
   server: {
     protocol: 'http',

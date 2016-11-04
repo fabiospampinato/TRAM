@@ -50,6 +50,7 @@
     "validator": "^6.1.0"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.34",
     "awesome-typescript-loader": "^2.2.4",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
