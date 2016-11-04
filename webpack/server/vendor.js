@@ -18,7 +18,13 @@ let config = {
   entry: {
     'server.vendor': ['./src/server/vendor.ts']
   },
-  resolve: { alias },
+  resolve: {
+    alias,
+    modules: [
+      path.resolve ( 'src' ),
+      'node_modules'
+    ]
+  },
   output: {
     path: path.resolve ( 'dist' ),
     filename: 'server.vendor.js',

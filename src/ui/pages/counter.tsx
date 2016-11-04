@@ -3,8 +3,8 @@
 
 import * as React from 'react';
 import {graphql} from 'react-apollo';
-import {get} from '../../api/counter/queries';
-import {increment, decrement} from '../../api/counter/mutations';
+import {get} from 'api/counter/queries';
+import {increment, decrement} from 'api/counter/mutations';
 
 /* COUNTER */
 

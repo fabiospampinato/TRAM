@@ -2,8 +2,8 @@
 /* IMPORT */
 
 import ApolloClient, {createNetworkInterface} from 'apollo-client';
-import Environment from '../modules/environment';
-import Settings from '../modules/settings';
+import Environment from 'modules/environment';
+import Settings from 'modules/settings';
 
 /* CLIENT */
 

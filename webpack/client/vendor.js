@@ -19,7 +19,13 @@ let config = {
   entry: {
     'client.vendor': ['./src/client/vendor.ts']
   },
-  resolve: { alias },
+  resolve: {
+    alias,
+    modules: [
+      path.resolve ( 'src' ),
+      'node_modules'
+    ]
+  },
   output: {
     path: path.resolve ( 'dist/public/js' ),
     filename: 'client.vendor.[chunkhash].js',

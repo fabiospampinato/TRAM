@@ -3,9 +3,9 @@
 
 import {browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import Client from '../api/client';
+import Client from 'api/client';
 import {configureStore} from '../redux/store';
-import renderer from '../ui/renderer';
+import renderer from 'ui/renderer';
 
 /* VARIABLES */
 
@@ -19,7 +19,7 @@ renderer ( store, Client, history );
 /* HOT */
 
 if ( module.hot ) {
-  module.hot.accept ( '../ui/renderer', function () {
-    require ( '../ui/renderer').default ( store, Client, history );
+  module.hot.accept ( 'ui/renderer', function () {
+    require ( 'ui/renderer').default ( store, Client, history );
   });
 }

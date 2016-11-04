@@ -3,9 +3,9 @@
 
 import * as _ from 'lodash';
 import {makeExecutableSchema} from 'graphql-tools';
+import DatabaseU from 'utilities/database';
 import * as Scalars from './scalars';
 import * as Counter from './counter';
-import DatabaseU from '../utilities/database';
 
 /* COMPONENTS */
 

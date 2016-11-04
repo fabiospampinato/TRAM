@@ -19,11 +19,11 @@ let config = {
     ]
   },
   resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     modules: [
-      path.resolve ( __dirname, '../../src' ),
+      path.resolve ( 'src' ),
       'node_modules'
-    ],
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    ]
   },
   output: {
     path: path.resolve ( 'dist/public/js' ),

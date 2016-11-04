@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
+import {Errors} from 'api/orm';
 import Counter from './model';
-import {Errors} from '../orm';
 
 /* SCHEMA */
 

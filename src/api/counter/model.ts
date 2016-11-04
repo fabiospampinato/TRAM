@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import ORM, {type} from '../orm';
+import ORM, {type} from 'api/orm';
 
 /* COUNTER */
 

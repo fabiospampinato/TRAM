@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import * as thinky from 'thinky';
-import Settings from '../modules/settings';
+import Settings from 'modules/settings';
 
 /* ORM */
 

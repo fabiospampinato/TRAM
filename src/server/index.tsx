@@ -14,13 +14,12 @@ import {renderToString} from 'react-dom/server';
 import {AppContainer} from 'react-hot-loader';
 import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import Client from '../api/client';
-import Schema from '../api/schema';
+import {Client, Schema} from 'api';
 import {configureStore} from '../redux/store';
-import Environment from '../modules/environment';
-import Settings from '../modules/settings';
-import routes from '../ui/routes';
-import {Html} from '../ui/components';
+import Environment from 'modules/environment';
+import Settings from 'modules/settings';
+import routes from 'ui/routes';
+import {Html} from 'ui/components';
 const manifest = require ( '../../dist/meta/manifest.json' );
 
 /* APP */

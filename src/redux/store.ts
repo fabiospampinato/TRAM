@@ -3,11 +3,11 @@
 
 import {createStore, applyMiddleware, compose} from 'redux';
 import * as createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
 import {routerMiddleware} from 'react-router-redux';
+import thunk from 'redux-thunk';
+import Client from 'api/client';
+import Environment from 'modules/environment';
 import reducers from './reducers';
-import Client from '../api/client';
-import Environment from '../modules/environment';
 
 /* CONFIGURE */
 

@@ -23,7 +23,11 @@ let config = {
   },
   externals,
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    modules: [
+      path.resolve ( 'src' ),
+      'node_modules'
+    ]
   },
   output: {
     path: path.resolve ( 'dist' ),

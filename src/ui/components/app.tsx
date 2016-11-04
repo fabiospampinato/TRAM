@@ -3,7 +3,7 @@
 
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
-import Settings from '../../modules/settings';
+import Settings from 'modules/settings';
 import {Header} from './header';
 
 /* APP */
