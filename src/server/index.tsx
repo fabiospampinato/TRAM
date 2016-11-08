@@ -62,7 +62,7 @@ if ( Environment.isDevelopment ) {
 
 app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
 
-app.use ( express.static ( path.join ( __dirname, '../dist/assets' ) ) );
+app.use ( '/assets', express.static ( path.join ( __dirname, '../dist/assets' ) ) );
 
 app.use ( '/public', express.static ( path.join ( __dirname, '../dist/public' ) ) );
 
