@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - Redux - Modules - Todo - Types
+ * ARRRT - Redux - Modules - Todo - Types
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)

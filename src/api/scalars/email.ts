@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - API - Scalars - Email
+ * ARRRT - API - Scalars - Email
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)

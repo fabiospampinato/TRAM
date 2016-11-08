@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - Redux - Store
+ * ARRRT - Redux - Store
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)

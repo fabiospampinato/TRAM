@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - Modules - Settings
+ * ARRRT - Modules - Settings
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)
@@ -37,8 +37,8 @@ const Settings = {
   },
   helmet: {
     head: {
-      defaultTitle: 'REPONAME',
-      titleTemplate: '%s | REPONAME',
+      defaultTitle: 'ARRRT',
+      titleTemplate: '%s | ARRRT',
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },

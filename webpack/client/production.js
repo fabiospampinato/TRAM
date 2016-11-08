@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - Webpack - Client - Production
+ * ARRRT - Webpack - Client - Production
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)

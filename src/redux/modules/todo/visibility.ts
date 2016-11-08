@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - Redux - Modules - Todo - Visibility
+ * ARRRT - Redux - Modules - Todo - Visibility
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)

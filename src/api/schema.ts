@@ -1,6 +1,6 @@
 
 /* =========================================================================
- * REPONAME - API - Schema
+ * ARRRT - API - Schema
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
  * Licensed under MIT (REPOLICENSE)
