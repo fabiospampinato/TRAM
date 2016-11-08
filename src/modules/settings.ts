@@ -16,7 +16,7 @@ const Settings = {
   rethinkdb: {
     host: 'localhost',
     port: 28015,
-    db: 'vortigern'
+    db: 'ARRRT'
   },
   graphql: {
     endpoint: '/api/graphql',
