@@ -9,6 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
+import * as Helmet from 'react-helmet';
 import {graphql} from 'react-apollo';
 import {get} from 'api/counter/queries';
 import {increment, decrement} from 'api/counter/mutations';
@@ -25,6 +26,7 @@ class Counter extends React.Component<any, any> {
     if ( error ) return <div>Error!</div>;
     return (
       <div>
+        <Helmet title="Counter" />
         <h4>Counter</h4>
         <p>{counter.value}</p>
         <button onClick={increment}>INCREMENT</button>

@@ -10,6 +10,7 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
+import * as Helmet from 'react-helmet';
 import {connect} from 'react-redux';
 import {VISIBILITIES, add, toggle, set, filter} from '../../redux/modules/todo';
 
@@ -48,6 +49,7 @@ class Todo extends React.Component<any, any> {
 
     return (
       <div>
+        <Helmet title="Todo" />
         <h4>Todo ({todos.length})</h4>
         <input ref="input" placeholder="New todo..." onKeyDown={this.keydown.bind ( this )} />
         <button onClick={this.add.bind ( this )}>ADD</button>
