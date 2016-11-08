@@ -43,7 +43,7 @@ const Settings = {
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'REPODESCRIPTION' },
+        { name: 'description', content: 'Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.' },
       ]
     }
   }
