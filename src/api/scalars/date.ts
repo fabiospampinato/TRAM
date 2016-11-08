@@ -3,7 +3,7 @@
  * ARRRT - API - Scalars - Date
  * =========================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
- * Licensed under MIT (REPOLICENSE)
+ * Licensed under MIT (https://github.com/fabiospampinato/arrrt/blob/master/LICENSE)
  * ========================================================================= */
 
 /* IMPORT */
