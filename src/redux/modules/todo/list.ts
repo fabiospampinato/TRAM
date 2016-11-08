@@ -6,14 +6,15 @@
  * Licensed under MIT (REPOLICENSE)
  * ========================================================================= */
 
+/* IMPORT */
+
 import {todos} from './types';
 
-export const ADD = 'todo/list/ADD';
-export const TOGGLE = 'todo/list/TOGGLE';
+/* REDUCER */
 
 const initialState: todos = [];
 
-export function listReducer ( state: todos = initialState, action ) {
+function listReducer ( state: todos = initialState, action ) {
   switch ( action.type ) {
     case ADD:
       return [...state, action.payload];
@@ -24,8 +25,13 @@ export function listReducer ( state: todos = initialState, action ) {
   }
 }
 
+/* ACTIONS */
+
+const ADD = 'todo/list/ADD';
+const TOGGLE = 'todo/list/TOGGLE';
+
 let todoId = 1;
-export function add ( text ) {
+function add ( text ) {
   const id = todoId++;
   return {
     type: ADD,
@@ -33,9 +39,15 @@ export function add ( text ) {
   };
 }
 
-export function toggle ( id ) {
+function toggle ( id ) {
   return {
     type: TOGGLE,
     payload: { id }
   };
 }
+
+/* EXPORT */
+
+export {listReducer};
+export {ADD, TOGGLE};
+export {add, toggle};

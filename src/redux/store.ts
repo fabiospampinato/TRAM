@@ -38,9 +38,9 @@ function configureStore ( history, initialState?: any ) {
   const storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
         store = storeCreator ( reducers, initialState );
 
-  if ( Environment.isDevelopment && module['hot'] ) {
+  if ( Environment.isDevelopment && module.hot ) {
 
-    module['hot'].accept ( './reducers', () => store.replaceReducer ( require ( './reducers' ) ) );
+    module.hot.accept ( './reducers', () => store.replaceReducer ( require ( './reducers' ) ) );
 
   }
 

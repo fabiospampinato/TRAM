@@ -6,25 +6,20 @@
  * Licensed under MIT (REPOLICENSE)
  * ========================================================================= */
 
+/* IMPORT */
+
 import * as _ from 'lodash';
+
+/* VISIBILITIES */
 
 const ALL = 'ALL';
 const LEFT = 'LEFT';
 const DONE = 'DONE';
-export const VISIBILITIES = [ALL, LEFT, DONE];
+const VISIBILITIES = [ALL, LEFT, DONE];
 
-const SET = 'todo/visibility/SET';
+/* UTILITIES */
 
-const initialState = ALL;
-
-export function visibilityReducer ( state = initialState, action ) {
-  if ( action.payload && _.includes ( VISIBILITIES, action.payload.visibility ) ) {
-    return action.payload.visibility;
-  }
-  return state;
-}
-
-export function filter ( todos, visibility ) {
+function filter ( todos, visibility ) {
   switch ( visibility ) {
     case ALL:
       return todos;
@@ -37,9 +32,32 @@ export function filter ( todos, visibility ) {
   }
 }
 
-export function set ( visibility ) {
+/* REDUCER */
+
+const initialState = ALL;
+
+function visibilityReducer ( state = initialState, action ) {
+  if ( action.payload && _.includes ( VISIBILITIES, action.payload.visibility ) ) {
+    return action.payload.visibility;
+  }
+  return state;
+}
+
+/* ACTIONS */
+
+const SET = 'todo/visibility/SET';
+
+function set ( visibility ) {
   return {
     type: SET,
     payload: { visibility }
   };
 }
+
+/* EXPORT */
+
+export {ALL, LEFT, DONE, VISIBILITIES};
+export {filter};
+export {visibilityReducer};
+export {SET};
+export {set};
