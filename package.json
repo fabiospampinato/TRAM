@@ -11,6 +11,7 @@
     "build:vendor": "npm-run-all -p build:client:vendor build:server:vendor",
     "build:all": "npm-run-all build:vendor -p build:client build:server",
     "build": "npm-run-all -p build:client build:server",
+    "start:db": "rethinkdb",
     "start:client:hot": "node dist/server.hot.js",
     "start:server:hot:nodemon": "nodemon dist/server.js --watch dist/server.js",
     "start:server:hot:webpack": "webpack --config webpack/server/index.js --watch",
