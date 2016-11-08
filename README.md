@@ -1,9 +1,9 @@
 # ARRRT _[Work in Progress]_
 
-![Dependencies](https://img.shields.io/librariesio/github/svelto/svelto.svg)
-![Issues](https://img.shields.io/github/issues/svelto/svelto.svg)
-![Release](https://img.shields.io/github/release/svelto/svelto.svg)
-![License](https://img.shields.io/github/license/svelto/svelto.svg)
+![Dependencies](https://img.shields.io/librariesio/github/fabiospampinato/ARRRT.svg)
+![Issues](https://img.shields.io/github/issues/fabiospampinato/ARRRT.svg)
+![Release](https://img.shields.io/github/release/fabiospampinato/ARRRT.svg)
+![License](https://img.shields.io/github/license/fabiospampinato/ARRRT.svg)
 
 Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.
 
