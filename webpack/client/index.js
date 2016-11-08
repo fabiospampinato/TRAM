@@ -1,4 +1,11 @@
 
+/* =========================================================================
+ * REPONAME - Webpack - Client
+ * =========================================================================
+ * Copyright (c) 2016-2017 Fabio Spampinato
+ * Licensed under MIT (REPOLICENSE)
+ * ========================================================================= */
+
 /* ENVIRONMENT */
 
 let environment = process.env.NODE_ENV || 'development';

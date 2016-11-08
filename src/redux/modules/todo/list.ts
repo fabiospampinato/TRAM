@@ -1,4 +1,11 @@
 
+/* =========================================================================
+ * REPONAME - Redux - Modules - Todo - List
+ * =========================================================================
+ * Copyright (c) 2016-2017 Fabio Spampinato
+ * Licensed under MIT (REPOLICENSE)
+ * ========================================================================= */
+
 import {todos} from './types';
 
 export const ADD = 'todo/list/ADD';

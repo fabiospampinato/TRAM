@@ -1,4 +1,11 @@
 
+/* =========================================================================
+ * REPONAME - Redux - Store
+ * =========================================================================
+ * Copyright (c) 2016-2017 Fabio Spampinato
+ * Licensed under MIT (REPOLICENSE)
+ * ========================================================================= */
+
 /* IMPORT */
 
 import {createStore, applyMiddleware, compose} from 'redux';
