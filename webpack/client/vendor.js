@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-let path = require ( 'path' ),
+const path = require ( 'path' ),
     webpack = require ( 'webpack' ),
     BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
     ManifestPlugin = require ( 'webpack-manifest-plugin' );
@@ -15,7 +15,7 @@ lodashMethods.forEach ( method => alias[`lodash.${method}`] = `lodash/${method}`
 
 /* CONFIG */
 
-let config = {
+const config = {
   entry: {
     'client.vendor': ['./src/client/vendor.ts']
   },

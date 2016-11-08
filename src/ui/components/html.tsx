@@ -21,9 +21,9 @@ class Html extends React.Component<any, undefined> {
 
   render () {
 
-    let head = Helmet.rewind (),
-        styles = [],
-        scripts = [this.resolveFile ( 'client.vendor.js' ), '/public/js/client.js'];
+    const head = Helmet.rewind (),
+          styles = [],
+          scripts = [this.resolveFile ( 'client.vendor.js' ), '/public/js/client.js'];
 
     return (
       <html>

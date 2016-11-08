@@ -17,9 +17,9 @@ import routes from './routes';
 
 /* RENDERER */
 
-let renderer = function ( store, client, history ) {
+const renderer = function ( store, client, history ) {
 
-  let root = document.getElementById ( 'app' );
+  const root = document.getElementById ( 'app' );
 
   if ( !root ) throw new Error ( 'Missing app root' );
 

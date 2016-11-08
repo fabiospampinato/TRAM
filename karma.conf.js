@@ -8,18 +8,18 @@
 
 /* IMPORT */
 
-let path = require ( 'path' ),
-    webpack = require ( 'webpack' ),
-    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
+const path = require ( 'path' ),
+      webpack = require ( 'webpack' ),
+      ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIGURATOR */
 
-let configurator = function ( karma ) {
+const configurator = function ( karma ) {
 
-  let isCI = process.env.NODE_ENV === 'ci',
-      BROWSER = process.env.BROWSER;
+  const isCI = process.env.NODE_ENV === 'ci',
+        BROWSER = process.env.BROWSER;
 
-  let config = {
+  const config = {
     frameworks: ['mocha', 'chai'],
     browsers: BROWSER ? [BROWSER] : ['PhantomJS'],
     files: ['./webpack/test.js'],

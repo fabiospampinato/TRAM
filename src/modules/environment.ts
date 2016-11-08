@@ -8,11 +8,11 @@
 
 /* IMPORT */
 
-let {NODE_ENV, CLIENT} = process.env;
+const {NODE_ENV, CLIENT} = process.env;
 
 /* ENVIRONMENT */
 
-let Environment = {
+const Environment = {
   get () {
     return NODE_ENV || 'development';
   },

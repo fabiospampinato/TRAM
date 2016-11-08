@@ -8,9 +8,9 @@
 
 /* IMPORT */
 
-let path = require ( 'path' ),
-    webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin;
+const path = require ( 'path' ),
+      webpack = require ( 'webpack' ),
+      BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin;
 
 /* ALIAS */
 
@@ -21,7 +21,7 @@ lodashMethods.forEach ( method => alias[`lodash.${method}`] = `lodash/${method}`
 
 /* CONFIG */
 
-let config = {
+const config = {
   entry: {
     'server.vendor': ['./src/server/vendor.ts']
   },

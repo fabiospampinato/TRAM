@@ -16,8 +16,8 @@ import renderer from 'ui/renderer';
 
 /* VARIABLES */
 
-let store: Redux.Store<any> = configureStore ( browserHistory ),
-    history = syncHistoryWithStore ( browserHistory, store );
+const store: Redux.Store<any> = configureStore ( browserHistory ),
+      history = syncHistoryWithStore ( browserHistory, store );
 
 /* RENDER */
 

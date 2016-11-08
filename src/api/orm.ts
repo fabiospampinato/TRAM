@@ -13,9 +13,9 @@ import Settings from 'modules/settings';
 
 /* ORM */
 
-let ORM = thinky ( Settings.rethinkdb ),
-    type = ORM.type,
-    Errors = ORM.Errors;
+const ORM = thinky ( Settings.rethinkdb ),
+      type = ORM.type,
+      Errors = ORM.Errors;
 
 /* EXPORT */
 

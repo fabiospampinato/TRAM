@@ -15,7 +15,7 @@ import {Counter, Home, Todo} from './pages';
 
 /* ROUTES */
 
-let Routes = (
+const Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="counter" component={Counter} counterId={1} />

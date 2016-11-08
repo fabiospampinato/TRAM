@@ -20,12 +20,12 @@ import reducers from './reducers';
 
 function configureStore ( history, initialState?: any ) {
 
-  let enhancers: Function[] = [],
-      middlewares = [
-        routerMiddleware ( history ),
-        thunk,
-        Client.middleware ()
-      ];
+  const enhancers: Function[] = [],
+        middlewares = [
+          routerMiddleware ( history ),
+          thunk,
+          Client.middleware ()
+        ];
 
   if ( Environment.isDevelopment && Environment.isClient ) {
 
@@ -35,8 +35,8 @@ function configureStore ( history, initialState?: any ) {
 
   }
 
-  let storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
-      store = storeCreator ( reducers, initialState );
+  const storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
+        store = storeCreator ( reducers, initialState );
 
   if ( Environment.isDevelopment && module['hot'] ) {
 

@@ -14,7 +14,7 @@ import {visibilityReducer} from './visibility';
 
 /* TODO REDUCER */
 
-let todoReducer = combineReducers ({
+const todoReducer = combineReducers ({
   todos: listReducer,
   visibility: visibilityReducer
 });

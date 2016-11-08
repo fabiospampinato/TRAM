@@ -8,11 +8,11 @@
 
 /* IMPORT */
 
-let fs = require ( 'fs' ),
-    path = require ( 'path' ),
-    webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
-    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
+const fs = require ( 'fs' ),
+      path = require ( 'path' ),
+      webpack = require ( 'webpack' ),
+      BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+      ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* EXTERNALS */
 
@@ -24,7 +24,7 @@ fs.readdirSync ( 'node_modules' )
 
 /* CONFIG */
 
-let config = {
+const config = {
   entry: {
     server: './src/server/index.tsx'
   },

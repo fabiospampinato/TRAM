@@ -15,7 +15,7 @@ import {todoReducer} from './modules/todo';
 
 /* REDUCERS */
 
-let reducers = combineReducers ({
+const reducers = combineReducers ({
   routing: routerReducer,
   todo: todoReducer,
   apollo: Client.reducer ()

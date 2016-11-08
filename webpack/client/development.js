@@ -8,15 +8,15 @@
 
 /* IMPORT */
 
-let path = require ( 'path' ),
-    webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
-    CopyWebpackPlugin = require ( 'copy-webpack-plugin' ),
-    ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
+const path = require ( 'path' ),
+      webpack = require ( 'webpack' ),
+      BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+      CopyWebpackPlugin = require ( 'copy-webpack-plugin' ),
+      ForkCheckerPlugin = require ( 'awesome-typescript-loader' ).ForkCheckerPlugin;
 
 /* CONFIG */
 
-let config = {
+const config = {
   devtool: 'eval',
   entry: {
     client: [

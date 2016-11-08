@@ -43,8 +43,8 @@ class Todo extends React.Component<any, any> {
 
   render () {
 
-    let {todos, visibility, toggle, set} = this.props,
-        filtered = filter ( todos, visibility );
+    const {todos, visibility, toggle, set} = this.props,
+          filtered = filter ( todos, visibility );
 
     return (
       <div>
@@ -53,7 +53,7 @@ class Todo extends React.Component<any, any> {
         <button onClick={this.add.bind ( this )}>ADD</button>
         <ul>
           {filtered.map ( todo => {
-            let style = {
+            const style = {
               textDecoration: todo.done ? 'line-through' : 'none'
             };
             return <li key={todo.id} style={style} onClick={() => toggle ( todo.id )}>{todo.text}</li>
@@ -61,8 +61,8 @@ class Todo extends React.Component<any, any> {
         </ul>
         <div>
           {VISIBILITIES.map ( VISIBILITY => {
-            let isActive = visibility === VISIBILITY;
-            let style = {
+            const isActive = visibility === VISIBILITY;
+            const style = {
               cursor: isActive ? 'normal' : 'pointer',
               fontWeight: isActive ? 700 : 400
             };

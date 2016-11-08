@@ -26,7 +26,7 @@ export function listReducer ( state: todos = initialState, action ) {
 
 let todoId = 1;
 export function add ( text ) {
-  let id = todoId++;
+  const id = todoId++;
   return {
     type: ADD,
     payload: { text, id, done: false }

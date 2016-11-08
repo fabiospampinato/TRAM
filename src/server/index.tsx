@@ -31,17 +31,17 @@ const manifest = require ( '../../dist/meta/manifest.json' );
 
 /* APP */
 
-let app = express ();
+const app = express ();
 
 app.use ( compression () );
 
 if ( Environment.isDevelopment ) {
 
-  let webpack = require ( 'webpack' ),
-      config = require ( '../../webpack/client/development' ),
-      compiler = webpack ( config ),
-      devMiddleware = require ( 'webpack-dev-middleware' ),
-      hotMiddleware = require ( 'webpack-hot-middleware' );
+  const webpack = require ( 'webpack' ),
+        config = require ( '../../webpack/client/development' ),
+        compiler = webpack ( config ),
+        devMiddleware = require ( 'webpack-dev-middleware' ),
+        hotMiddleware = require ( 'webpack-hot-middleware' );
 
   app.use ( devMiddleware ( compiler, {
     publicPath: config.output.publicPath,
@@ -80,10 +80,10 @@ if ( Environment.isDevelopment ) {
 
 app.get ( '*', ( req, res ) => {
 
-  let location = req.url,
-      memoryHistory = createMemoryHistory ( req.originalUrl ),
-      store = configureStore ( memoryHistory ),
-      history = syncHistoryWithStore ( memoryHistory, store );
+  const location = req.url,
+        memoryHistory = createMemoryHistory ( req.originalUrl ),
+        store = configureStore ( memoryHistory ),
+        history = syncHistoryWithStore ( memoryHistory, store );
 
   match ( { history, routes, location }, ( err, redirectLocation, renderProps ) => {
 
@@ -97,7 +97,7 @@ app.get ( '*', ( req, res ) => {
 
     } else if ( renderProps ) {
 
-      let page = (
+      const page = (
         <Html manifest={manifest}>
           <AppContainer>
             <ApolloProvider store={store} client={Client} key="provider">

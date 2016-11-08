@@ -10,14 +10,14 @@
 
 /* IMPORT */
 
-let path = require ( 'path' ),
-    webpack = require ( 'webpack' ),
-    BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
-    ExtractTextPlugin = require ( 'extract-text-webpack-plugin' );
+const path = require ( 'path' ),
+      webpack = require ( 'webpack' ),
+      BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin,
+      ExtractTextPlugin = require ( 'extract-text-webpack-plugin' );
 
 /* CONFIG */
 
-let config = {
+const config = {
   bail: true,
   resolve: {
     modules: [

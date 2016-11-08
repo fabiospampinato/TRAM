@@ -8,7 +8,7 @@
 
 /* SETTINGS */
 
-let Settings = {
+const Settings = {
   auth: {
     token: 'auto_token_name',
     secret: 'd35d1690-7f39-4676-830d-7dc8720b1475'

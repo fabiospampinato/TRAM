@@ -32,10 +32,10 @@ const DatabaseU = {
 
   makeSchema ( components ) {
 
-    let main = DatabaseU._makeSchemaSub ( components ),
-        types = DatabaseU._makeSchemaSub ( components, 'types' ),
-        query = DatabaseU._makeSchemaSub ( components, 'query' ),
-        mutation = DatabaseU._makeSchemaSub ( components, 'mutation' );
+    const main = DatabaseU._makeSchemaSub ( components ),
+          types = DatabaseU._makeSchemaSub ( components, 'types' ),
+          query = DatabaseU._makeSchemaSub ( components, 'query' ),
+          mutation = DatabaseU._makeSchemaSub ( components, 'mutation' );
 
     return `
       ${main}
@@ -64,10 +64,10 @@ const DatabaseU = {
 
   makeResolvers ( components ): {} {
 
-    let main = DatabaseU._makeResolversSub ( components ),
-        types = DatabaseU._makeResolversSub ( components, 'types' ),
-        Query = DatabaseU._makeResolversSub ( components, 'query' ),
-        Mutation = DatabaseU._makeResolversSub ( components, 'mutation' );
+    const main = DatabaseU._makeResolversSub ( components ),
+          types = DatabaseU._makeResolversSub ( components, 'types' ),
+          Query = DatabaseU._makeResolversSub ( components, 'query' ),
+          Mutation = DatabaseU._makeResolversSub ( components, 'mutation' );
 
     return _.extend ( main, types, {Query, Mutation} );
 

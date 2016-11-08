@@ -14,7 +14,7 @@ import Settings from 'modules/settings';
 
 /* CLIENT */
 
-let networkInterface;
+const networkInterface;
 
 if ( Environment.isProduction ) {
 
@@ -31,7 +31,7 @@ if ( Environment.isProduction ) {
 
 }
 
-let Client = new ApolloClient ({
+const Client = new ApolloClient ({
   networkInterface,
   dataIdFromObject: object => object['id']
 });
