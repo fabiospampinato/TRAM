@@ -26,7 +26,8 @@ fs.readdirSync ( 'node_modules' )
 
 const config = {
   entry: {
-    server: './src/server/index.tsx'
+    server: './src/server/index.tsx',
+    'server.hot': './src/server/hot.ts'
   },
   externals,
   resolve: {
@@ -38,7 +39,7 @@ const config = {
   },
   output: {
     path: path.resolve ( 'dist' ),
-    filename: 'server.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
   module: {

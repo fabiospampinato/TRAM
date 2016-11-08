@@ -21,7 +21,7 @@ const config = {
   entry: {
     client: [
       'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?path=http://localhost:8890/__webpack_hmr', //FIXME: Don't hard code the url
       './src/client/index.tsx'
     ]
   },
@@ -34,7 +34,7 @@ const config = {
   },
   output: {
     path: path.resolve ( 'dist/public/js' ),
-    publicPath: '/public/js/',
+    publicPath: 'http://localhost:8890/public/js/', //FIXME: Don't hard code the url
     filename: 'client.js',
     pathinfo: true
   },

@@ -29,6 +29,12 @@ const Settings = {
     port: 8889,
     url: 'http://localhost:8889'
   },
+  hotServer: {
+    protocol: 'http',
+    host: 'localhost',
+    port: 8890,
+    url: 'http://localhost:8890'
+  },
   helmet: {
     head: {
       defaultTitle: 'REPONAME',

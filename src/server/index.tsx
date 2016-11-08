@@ -35,32 +35,7 @@ const app = express ();
 
 app.use ( compression () );
 
-if ( Environment.isDevelopment ) {
-
-  const webpack = require ( 'webpack' ),
-        config = require ( '../../webpack/client/development' ),
-        compiler = webpack ( config ),
-        devMiddleware = require ( 'webpack-dev-middleware' ),
-        hotMiddleware = require ( 'webpack-hot-middleware' );
-
-  app.use ( devMiddleware ( compiler, {
-    publicPath: config.output.publicPath,
-    stats: {
-      colors: true
-    },
-    noInfo: true,
-    hot: true,
-    inline: true,
-    lazy: false,
-    historyApiFallback: true,
-    quiet: true
-  }));
-
-  app.use ( hotMiddleware ( compiler ) );
-
-}
-
-app.use ( favicon ( path.join ( __dirname, '../assets/favicon.ico' ) ) );
+app.use ( favicon ( path.join ( __dirname, '../dist/assets/favicon.ico' ) ) );
 
 app.use ( '/assets', express.static ( path.join ( __dirname, '../dist/assets' ) ) );
 
@@ -123,5 +98,5 @@ app.get ( '*', ( req, res ) => {
 
 app.listen ( Settings.server.port, Settings.server.host, err => {
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
-  console.info ( Chalk.black.bgGreen ( `Listening at ${Settings.server.url}` ) );
+  console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${Settings.server.url}` ) );
 });
