@@ -12,6 +12,7 @@ import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
+import '../../../assets/custom.css'; //FIXME: Maybe move to a more appropriate place, perhaps split into indipendent chunks
 
 /* HTML */
 
@@ -43,7 +44,7 @@ class Html extends React.Component<any, undefined> {
           <link rel="shortcut icon" href="/assets/favicon.ico" />
         </head>
         <body>
-          <main id="app">
+          <main id="root">
             {this.props.children}
           </main>
           {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}

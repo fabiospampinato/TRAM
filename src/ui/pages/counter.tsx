@@ -25,10 +25,14 @@ class Counter extends React.Component<any, any> {
     if ( loading ) return <div>Loading...</div>;
     if ( error ) return <div>Error!</div>;
     return (
-      <div>
+      <div className="counter">
         <Helmet title="Counter" />
-        <h4>Counter</h4>
-        <p>{counter.value}</p>
+        <h3>Counter</h3>
+        <div className="value-wrp">
+          <div className="value">
+            {counter.value}
+          </div>
+        </div>
         <button onClick={increment}>INCREMENT</button>
         <button onClick={decrement} disabled={!counter.value}>DECREMENT</button>
       </div>

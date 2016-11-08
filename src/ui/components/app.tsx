@@ -18,11 +18,13 @@ import {Header} from './header';
 class App extends React.Component<any, any> {
   render () {
     return (
-      <main>
+      <div className="app">
         <Helmet {...Settings.helmet.head} />
         <Header />
-        {this.props.children}
-      </main>
+        <div className="content">
+          {this.props.children}
+        </div>
+      </div>
     );
   }
 }

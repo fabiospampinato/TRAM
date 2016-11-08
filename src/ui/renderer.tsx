@@ -19,7 +19,7 @@ import routes from './routes';
 
 const renderer = function ( store, client, history ) {
 
-  const root = document.getElementById ( 'app' );
+  const root = document.getElementById ( 'root' );
 
   if ( !root ) throw new Error ( 'Missing app root' );
 

@@ -48,27 +48,20 @@ class Todo extends React.Component<any, any> {
           filtered = filter ( todos, visibility );
 
     return (
-      <div>
+      <div className="todo">
         <Helmet title="Todo" />
-        <h4>Todo ({todos.length})</h4>
+        <h3>Todo ({todos.length})</h3>
         <input ref="input" placeholder="New todo..." onKeyDown={this.keydown.bind ( this )} />
         <button onClick={this.add.bind ( this )}>ADD</button>
-        <ul>
+        <div className="list">
           {filtered.map ( todo => {
-            const style = {
-              textDecoration: todo.done ? 'line-through' : 'none'
-            };
-            return <li key={todo.id} style={style} onClick={() => toggle ( todo.id )}>{todo.text}</li>
+            return <div key={todo.id} className={todo.done ? 'item done' : 'item'} onClick={() => toggle ( todo.id )}>{todo.text}</div>
           })}
-        </ul>
-        <div>
+        </div>
+        <div className="visibilities">
           {VISIBILITIES.map ( VISIBILITY => {
             const isActive = visibility === VISIBILITY;
-            const style = {
-              cursor: isActive ? 'normal' : 'pointer',
-              fontWeight: isActive ? 700 : 400
-            };
-            return <div key={VISIBILITY} style={style} onClick={() => set ( VISIBILITY )}>{_.upperFirst ( VISIBILITY.toLowerCase () )}</div>
+            return <span key={VISIBILITY} className={isActive ? 'active' : ''} onClick={() => set ( VISIBILITY )}>{_.upperFirst ( VISIBILITY.toLowerCase () )}</span>
           })}
         </div>
       </div>
