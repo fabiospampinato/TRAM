@@ -19,13 +19,13 @@ const schema = `scalar Date`;
 
 const resolvers = {
   Date: {
-    __serialize ( value ) {
+    __serialize ( value: Date ): number {
       return value.getTime ();
     },
-    __parseValue ( value ) {
+    __parseValue ( value: number ): Date {
       return new Date ( value );
     },
-    __parseLiteral ({ kind, value }) {
+    __parseLiteral ({ kind, value }): number | null {
       if ( kind === Kind.INT && validator.isDate ( value ) ) {
         return parseInt ( value, 10 );
       }

@@ -13,7 +13,7 @@ const {NODE_ENV, CLIENT} = process.env;
 /* ENVIRONMENT */
 
 const Environment = {
-  get () {
+  get (): string {
     return NODE_ENV || 'development';
   },
   isProduction: NODE_ENV === 'production',

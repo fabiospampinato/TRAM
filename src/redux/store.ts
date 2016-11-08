@@ -18,7 +18,7 @@ import reducers from './reducers';
 
 /* CONFIGURE */
 
-function configureStore ( history, initialState?: any ) {
+function configureStore ( history, initialState? ) {
 
   const enhancers: Function[] = [],
         middlewares = [

@@ -16,7 +16,7 @@ const DatabaseU = {
 
   /* UTILITIES */
 
-  _getComponentSub ( component, sub? ) {
+  _getComponentSub ( component: {}, sub?: string ): {} {
 
     return sub ? component[sub] || {} : component;
 
@@ -24,13 +24,13 @@ const DatabaseU = {
 
   /* SCHEMA */
 
-  _makeSchemaSub ( components, sub? ) {
+  _makeSchemaSub ( components: {}[], sub?: string ): string {
 
     return components.map ( component => DatabaseU._getComponentSub ( component, sub ).schema || '' ).join ( '\n' );
 
   },
 
-  makeSchema ( components ) {
+  makeSchema ( components: {}[] ): string {
 
     const main = DatabaseU._makeSchemaSub ( components ),
           types = DatabaseU._makeSchemaSub ( components, 'types' ),
@@ -56,13 +56,13 @@ const DatabaseU = {
 
   /* RESOLVERS */
 
-  _makeResolversSub ( components, sub? ) {
+  _makeResolversSub ( components: {}[], sub?: string ): {} {
 
     return _.extend ( {}, ...components.map ( component => DatabaseU._getComponentSub ( component, sub ).resolvers ) );
 
   },
 
-  makeResolvers ( components ): {} {
+  makeResolvers ( components: {}[] ): {} {
 
     const main = DatabaseU._makeResolversSub ( components ),
           types = DatabaseU._makeResolversSub ( components, 'types' ),

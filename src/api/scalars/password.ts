@@ -20,7 +20,7 @@ const resolvers = {
   Password: {
     __serialize: value => value,
     __parseValue: value => value,
-    __parseLiteral ({ value }) {
+    __parseLiteral ({ value }): string | null {
       if ( _.inRange ( value, 6, 64 ) ) {
         return String ( value );
       }

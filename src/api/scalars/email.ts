@@ -20,7 +20,7 @@ const resolvers = {
   Email: {
     __serialize: value => value,
     __parseValue: value => value,
-    __parseLiteral ({ value }) {
+    __parseLiteral ({ value }): string | null {
       if ( validator.isEmail ( value ) ) {
         return validator.normalizeEmail ( value );
       }

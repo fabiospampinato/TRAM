@@ -20,7 +20,7 @@ const resolvers = {
   URL: {
     __serialize: value => value,
     __parseValue: value => value,
-    __parseLiteral ({ value }) {
+    __parseLiteral ({ value }): string | null {
       if ( validator.isURL ( value ) ) {
         return value;
       }

@@ -14,7 +14,7 @@ import Settings from 'modules/settings';
 
 /* CLIENT */
 
-const networkInterface;
+let networkInterface;
 
 if ( Environment.isProduction ) {
 
