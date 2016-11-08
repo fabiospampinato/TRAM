@@ -22,6 +22,4 @@ import 'react-redux';
 import 'react-router';
 import 'react-router-redux';
 import 'redux';
-import 'redux-connect';
 import 'redux-logger';
-import 'redux-thunk';

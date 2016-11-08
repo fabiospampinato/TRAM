@@ -14,4 +14,3 @@ import 'react-dom';
 import 'react-apollo';
 import 'react-router';
 import 'react-router-redux';
-import 'redux-connect';

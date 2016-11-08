@@ -36,9 +36,7 @@ const config = {
       'react-helmet',
       'react-redux',
       'react-router-redux',
-      'redux',
-      'redux-connect',
-      'redux-thunk'
+      'redux'
     ]
   },
   output: {

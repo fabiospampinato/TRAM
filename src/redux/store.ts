@@ -11,7 +11,6 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import * as createLogger from 'redux-logger';
 import {routerMiddleware} from 'react-router-redux';
-import thunk from 'redux-thunk';
 import Client from 'api/client';
 import Environment from 'modules/environment';
 import reducers from './reducers';
@@ -23,7 +22,6 @@ function configureStore ( history, initialState? ) {
   const enhancers: Function[] = [],
         middlewares = [
           routerMiddleware ( history ),
-          thunk,
           Client.middleware ()
         ];
 
