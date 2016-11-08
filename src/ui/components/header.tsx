@@ -18,9 +18,13 @@ class Header extends React.Component<any, any> {
       <div className="header">
         <Link to="/">Home</Link>
         <span>•</span>
-        <Link to="counter">Counter</Link>
+        <Link to="/counter">Counter</Link>
         <span>•</span>
-        <Link to="todo">Todo</Link>
+        <Link to="/todo">Todo</Link>
+        <div className="spacer"></div>
+        <Link to="/signup">Sign Up</Link>
+        <span>•</span>
+        <Link to="/login">Log In</Link>
       </div>
     );
   }

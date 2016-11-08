@@ -10,4 +10,6 @@
 
 export {Counter} from './counter';
 export {Home} from './home';
+export {Login} from './login';
 export {Todo} from './todo';
+export {Signup} from './signup';
