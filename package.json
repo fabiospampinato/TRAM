@@ -1,9 +1,10 @@
 {
-  "name": "test",
-  "version": "0.0.1",
+  "name": "arrrt",
+  "description": "Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.",
+  "version": "0.1.0",
+  "license": "MIT",
   "main": "dist/server.js",
   "scripts": {
-    "postinstall": "if [ -z \"$npm_config_production\" ]; then typings install; fi",
     "build:client:vendor": "webpack --config webpack/client/vendor.js",
     "build:client": "webpack --config webpack/client/index.js",
     "build:server:vendor": "webpack --config webpack/server/vendor.js",
@@ -102,6 +103,25 @@
     "webpack-hot-middleware": "^2.13.1",
     "webpack-manifest-plugin": "^1.0.1"
   },
+  "author": {
+    "name": "Fabio Spampinato",
+    "email": "spampinabio@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fabiospampinato/arrrt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiospampinato/arrrt.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "apollo",
+    "react",
+    "redux",
+    "rethinkdb",
+    "typescript"
+  ],
   "engines": {
     "node": "6.7.0"
   }
