@@ -43,9 +43,6 @@ const config = {
         test: /\.tsx?$/,
         loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader']
       }, {
-        test: /\.jsx$/,
-        loader: 'babel'
-      }, {
         test: /\.json$/,
         loader: 'json-loader'
       }, {

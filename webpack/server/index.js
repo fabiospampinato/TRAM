@@ -47,9 +47,6 @@ const config = {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
       }, {
-        test: /\.jsx$/,
-        loader: 'babel'
-      }, {
         test: /\.json$/,
         loader: 'json-loader'
       }, {

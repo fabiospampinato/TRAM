@@ -49,9 +49,6 @@ const config = {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader'
       }, {
-        test: /\.jsx$/,
-        loader: 'babel?presets[]=es2015'
-      }, {
         test: /\.json$/,
         loader: 'json-loader'
       }, {
