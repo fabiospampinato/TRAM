@@ -98,5 +98,10 @@ app.get ( '*', ( req, res ) => {
 
 app.listen ( Settings.server.port, Settings.server.host, err => {
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
+  if ( Environment.isDevelopment ) {
+    let {protocol, host, port} = Settings.server;
+    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${protocol}://${host}:${port}${Settings.graphql.interface}` ) );
+  }
+  console.info ( Chalk.black.bgGreen ( `[RETHINKDB] Dashboard available at ${Settings.rethinkdb.http.url}` ) );
   console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${Settings.server.url}` ) );
 });
