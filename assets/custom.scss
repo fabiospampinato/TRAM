@@ -1,0 +1,96 @@
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  & > * {
+    margin-bottom: 5px;
+  }
+  label {
+    align-self: flex-start;
+  }
+  input {
+    width: 100%;
+  }
+  button {
+    margin-top: 10px;
+    flex-grow: 0;
+  }
+}
+
+.app {
+  text-align: center;
+  .content {
+    margin: 0 1rem;
+  }
+}
+
+.header {
+  display: flex;
+  background-color: #f0f0f0;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 10px;
+  padding: 1rem 1.5rem;
+  a {
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+  .spacer {
+    flex-grow: 1;
+  }
+}
+
+.home .logo {
+  max-width: 100%;
+  width: 400px;
+}
+
+.counter {
+  .value-wrp {
+    margin-bottom: 10px;
+  }
+  .value {
+    display: inline-flex;
+    background-color: #ebebeb;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    min-height: 40px;
+    min-width: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.todo {
+  .list {
+    margin: 10px auto;
+  }
+  .item.done {
+    text-decoration: line-through;
+  }
+  .visibilities span {
+    margin: 0 5px;
+    &:not(.active) {
+      cursor: pointer;
+    }
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

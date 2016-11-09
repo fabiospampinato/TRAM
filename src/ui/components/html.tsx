@@ -12,7 +12,7 @@ import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
-import '../../../assets/custom.css'; //FIXME: Maybe move to a more appropriate place, perhaps split into indipendent chunks
+import '../../../assets/custom.scss'; //FIXME: Maybe move to a more appropriate place, perhaps split into indipendent chunks
 
 /* HTML */
 
