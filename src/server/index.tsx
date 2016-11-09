@@ -35,11 +35,11 @@ const app = express ();
 
 app.use ( compression () );
 
-app.use ( favicon ( path.join ( __dirname, '../dist/assets/favicon.ico' ) ) );
+app.use ( favicon ( path.join ( __dirname, 'assets/favicon.ico' ) ) );
 
-app.use ( '/assets', express.static ( path.join ( __dirname, '../dist/assets' ) ) );
+app.use ( express.static ( path.join ( __dirname, 'assets' ) ) );
 
-app.use ( '/public', express.static ( path.join ( __dirname, '../dist/public' ) ) );
+app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ) );
 
 app.use ( Settings.graphql.endpoint, bodyParser.json (), graphqlConnect ({
   schema: Schema
