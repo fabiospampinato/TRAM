@@ -16,8 +16,7 @@ class Home extends React.Component<any, any> {
   render () {
     return (
       <div className="home">
-        <img src="assets/images/barbar.png" />
-        <p>Hello!</p>
+        <img src="/assets/images/logo.png" className="logo" />
       </div>
     );
   }

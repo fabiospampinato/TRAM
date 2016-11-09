@@ -22,6 +22,10 @@ a:hover {
   margin: 0 1rem;
 }
 
+img.logo {
+  max-width: 400px;
+}
+
 .header {
   display: flex;
   background-color: rgb( 240, 240, 240 );
