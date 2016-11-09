@@ -32,6 +32,7 @@ Boilerplate for building reactive isomorphic applications. Built around Apollo, 
   - [Isomorphic Style Loader](https://github.com/kriasoft/isomorphic-style-loader) for loading styles on server-side.
   - [Style Loader](https://github.com/webpack/style-loader)
   - [CSS Loader](https://github.com/webpack/css-loader)
+  - [SASS Loader](https://github.com/jtangelder/sass-loader)
   - [JSON Loader](https://github.com/webpack/json-loader)
   - [File Loader](https://github.com/webpack/file-loader)
   - [URL Loader](https://github.com/webpack/url-loader)

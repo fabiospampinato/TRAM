@@ -50,6 +50,9 @@ const config = {
         test: /\.json$/,
         loader: 'json-loader'
       }, {
+        test: /\.scss$/,
+        loaders: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
+      }, {
         test: /\.css$/,
         loaders: ['isomorphic-style-loader', 'css-loader']
       }, {
