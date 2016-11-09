@@ -79,6 +79,7 @@ Boilerplate for building reactive isomorphic applications. Built around Apollo, 
 ARRRT
 ├── assets                # Place your static assets here
 ├── dist                  # Built app, ready to serve
+├── resources             # External resources, like Photoshop documents
 ├─┬ src                   # Source files
 │ ├─┬ api                 # Database-related files
 │ │ ├── counter           # Counter component
