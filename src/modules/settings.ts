@@ -1,10 +1,10 @@
 
-/* =================================================================================
- * ARRRT - Modules - Settings
- * =================================================================================
+/* ================================================================================
+ * TRAM - Modules - Settings
+ * ================================================================================
  * Copyright (c) 2016-2017 Fabio Spampinato
- * Licensed under MIT (https://github.com/fabiospampinato/ARRRT/blob/master/LICENSE)
- * ================================================================================= */
+ * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
+ * ================================================================================ */
 
 /* SETTINGS */
 
@@ -16,7 +16,7 @@ const Settings = {
   rethinkdb: {
     host: 'localhost',
     port: 28015,
-    db: 'ARRRT',
+    db: 'TRAM',
     http: {
       protocol: 'http',
       host: 'localhost',
@@ -43,8 +43,8 @@ const Settings = {
   },
   helmet: {
     head: {
-      defaultTitle: 'ARRRT',
-      titleTemplate: '%s | ARRRT',
+      defaultTitle: 'TRAM',
+      titleTemplate: '%s | TRAM',
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },

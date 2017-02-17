@@ -1,9 +1,9 @@
-# ARRRT _[Work in Progress]_
+# TRAM _[Work in Progress]_
 
-![Dependencies](https://img.shields.io/librariesio/github/fabiospampinato/ARRRT.svg)
-![Issues](https://img.shields.io/github/issues/fabiospampinato/ARRRT.svg)
-![Release](https://img.shields.io/github/release/fabiospampinato/ARRRT.svg)
-![License](https://img.shields.io/github/license/fabiospampinato/ARRRT.svg)
+![Dependencies](https://img.shields.io/librariesio/github/fabiospampinato/TRAM.svg)
+![Issues](https://img.shields.io/github/issues/fabiospampinato/TRAM.svg)
+![Release](https://img.shields.io/github/release/fabiospampinato/TRAM.svg)
+![License](https://img.shields.io/github/license/fabiospampinato/TRAM.svg)
 
 Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.
 
@@ -77,7 +77,7 @@ Boilerplate for building reactive isomorphic applications. Built around Apollo, 
 
 ## Project Structure
 ```bash
-ARRRT
+TRAM
 ├── assets                # Place your static assets here
 ├── dist                  # Built app, ready to serve
 ├── resources             # External resources, like Photoshop documents
@@ -156,8 +156,8 @@ lint                         # Lints TypeScript files
 ## Installation
 
 ```bash
-$ git clone https://github.com/fabiospampinato/ARRRT
-$ cd ARRRT
+$ git clone https://github.com/fabiospampinato/TRAM
+$ cd TRAM
 $ npm install
 $ typings install
 ```
@@ -174,4 +174,4 @@ If you want to start in development mode, with Hot Module Replacement enabled on
 
 ## Thanks
 
-ARRRT is a fork of [vortigern](https://github.com/barbar/vortigern), check it out as well.
+TRAM is a fork of [vortigern](https://github.com/barbar/vortigern), check it out as well.

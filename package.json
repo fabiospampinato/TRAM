@@ -1,6 +1,6 @@
 {
-  "name": "ARRRT",
-  "description": "Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.",
+  "name": "tram",
+  "description": "Boilerplate for building reactive isomorphic applications. Built around TypeScript, React, Apollo, MongoDB.",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/server.js",
@@ -107,19 +107,18 @@
     "email": "spampinabio@gmail.com"
   },
   "bugs": {
-    "url": "https://github.com/fabiospampinato/ARRRT/issues"
+    "url": "https://github.com/fabiospampinato/TRAM/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fabiospampinato/ARRRT.git"
+    "url": "https://github.com/fabiospampinato/TRAM.git"
   },
   "keywords": [
     "boilerplate",
-    "apollo",
+    "typescript",
     "react",
-    "redux",
-    "rethinkdb",
-    "typescript"
+    "apollo",
+    "mongodb"
   ],
   "engines": {
     "node": "6.7.0"
