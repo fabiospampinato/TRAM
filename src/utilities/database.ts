@@ -16,7 +16,7 @@ const DatabaseU = {
 
   /* UTILITIES */
 
-  _getComponentSub ( component: {}, sub?: string ): {} {
+  _getComponentSub ( component: {}, sub?: string ) {
 
     return sub ? component[sub] || {} : component;
 
@@ -24,9 +24,17 @@ const DatabaseU = {
 
   /* SCHEMA */
 
+  _getSchemaSub ( component: {}, sub?: string ) : string {
+
+    let schema = DatabaseU._getComponentSub ( component, sub ).schema;
+
+    return _.isString ( schema ) ? schema : '';
+
+  },
+
   _makeSchemaSub ( components: {}[], sub?: string ): string {
 
-    return components.map ( component => DatabaseU._getComponentSub ( component, sub ).schema || '' ).join ( '\n' );
+    return components.map ( component => DatabaseU._getSchemaSub ( component, sub ) ).join ( '\n' );
 
   },
 
@@ -56,9 +64,17 @@ const DatabaseU = {
 
   /* RESOLVERS */
 
+  _getResolversSub ( component: {}, sub?: string ): {} {
+
+    let resolvers = DatabaseU._getComponentSub ( component, sub ).resolvers;
+
+    return _.isPlainObject ( resolvers ) ? resolvers : {};
+
+  },
+
   _makeResolversSub ( components: {}[], sub?: string ): {} {
 
-    return _.extend ( {}, ...components.map ( component => DatabaseU._getComponentSub ( component, sub ).resolvers ) );
+    return _.extend ( {}, ...components.map ( component => DatabaseU._getResolversSub ( component, sub ) ) );
 
   },
 
