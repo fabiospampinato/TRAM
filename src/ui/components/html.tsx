@@ -44,9 +44,7 @@ class Html extends React.Component<any, undefined> {
           <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>
-          <main id="root">
-            {this.props.children}
-          </main>
+          <main id="app-root" dangerouslySetInnerHTML={{ __html: content }}></main>
           {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}
         </body>
       </html>
