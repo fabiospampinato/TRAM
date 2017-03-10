@@ -10,8 +10,8 @@
 
 import {browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import Client from 'api/client';
 import {configureStore} from '../redux/store';
+import Apollo from 'api/apollo';
 import Settings from 'modules/settings';
 import renderer from 'ui/renderer';
 
@@ -22,12 +22,12 @@ const store: Redux.Store<any> = configureStore ( browserHistory ),
 
 /* RENDER */
 
-renderer ( store, Client, history );
+renderer ( store, Apollo, history );
 
 /* HOT */
 
 if ( Settings.hotServer.enabled && module.hot ) {
   module.hot.accept ( 'ui/renderer', function () {
-    require ( 'ui/renderer').default ( store, Client, history );
+    require ( 'ui/renderer').default ( store, Apollo, history );
   });
 }

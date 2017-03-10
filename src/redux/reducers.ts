@@ -10,15 +10,15 @@
 
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import Client from 'api/client';
 import {todoReducer} from './modules/todo';
+import Apollo from 'api/apollo';
 
 /* REDUCERS */
 
 const reducers = combineReducers ({
   routing: routerReducer,
   todo: todoReducer,
-  apollo: Client.reducer ()
+  apollo: Apollo.reducer ()
 });
 
 /* EXPORT */

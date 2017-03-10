@@ -1,8 +1,8 @@
 
 /* ================================================================================
- * TRAM - API - Client
+ * TRAM - API - Apollo
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
@@ -12,30 +12,30 @@ import ApolloClient, {createNetworkInterface, createBatchingNetworkInterface} fr
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 
-/* CLIENT */
+/* APOLLO */
 
 let networkInterface;
 
-if ( Environment.isProduction ) {
+if ( Environment.isDevelopment ) {
 
-  networkInterface = createBatchingNetworkInterface ({
-    uri: Settings.graphql.endpoint,
-    batchInterval: Settings.graphql.batchInverval
+  networkInterface = createNetworkInterface ({
+    uri: Settings.graphql.url
   });
 
 } else {
 
-  networkInterface = createNetworkInterface ({
-    uri: Settings.graphql.endpoint
+  networkInterface = createBatchingNetworkInterface ({
+    uri: Settings.graphql.url,
+    batchInterval: Settings.graphql.batchInverval
   });
 
 }
 
-const Client = new ApolloClient ({
+const Apollo = new ApolloClient ({
   networkInterface,
-  dataIdFromObject: object => object['id']
+  dataIdFromObject: object => object._id
 });
 
 /* EXPORT */
 
-export default Client;
+export default Apollo;

@@ -21,8 +21,8 @@ import {renderToString} from 'react-dom/server';
 import {AppContainer} from 'react-hot-loader';
 import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import {Client, Schema} from 'api';
 import {configureStore} from '../redux/store';
+import {Apollo, Schema} from 'api';
 import Settings from 'modules/settings';
 import routes from 'ui/routes';
 import {Html} from 'ui/components';
@@ -77,8 +77,8 @@ app.get ( '*', ( req, res ) => {
       const page = (
         <Html manifest={manifest}>
           <AppContainer>
-            <ApolloProvider store={store} client={Client} key="provider">
               <RouterContext {...renderProps} />
+            <ApolloProvider store={store} client={Apollo} key="provider">
             </ApolloProvider>
           </AppContainer>
         </Html>

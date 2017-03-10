@@ -11,7 +11,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import * as createLogger from 'redux-logger';
 import {routerMiddleware} from 'react-router-redux';
-import Client from 'api/client';
+import Apollo from 'api/apollo';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 import reducers from './reducers';
@@ -23,7 +23,7 @@ function configureStore ( history, initialState? ) {
   const enhancers: Function[] = [],
         middlewares = [
           routerMiddleware ( history ),
-          Client.middleware ()
+          Apollo.middleware ()
         ];
 
   if ( Environment.isDevelopment && Environment.isClient ) {
