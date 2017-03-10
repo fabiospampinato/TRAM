@@ -9,6 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {renderToString} from 'react-dom/server';
 import * as Helmet from 'react-helmet';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
@@ -18,19 +19,22 @@ import 'ui/template';
 
 class HTML extends React.Component<any, undefined> {
 
-  private absoluteFile ( file ) {
-    return Environment.isDevelopment ? `${Settings.hotServer.url}${file}` : `${Settings.server.url}${file}`; //FIXME: We should actually check if we are in a HOT environment, may can still do `start:server` (non :hot) manually
-  }
+  private resolveFile ( file, hot = true ) {
 
-  private resolveFile ( file ) {
-    return this.props.manifest[file];
+    const baseurl  = hot && Settings.hotServer.enabled ? Settings.hotServer.url : Settings.server.url,
+          manifest = this.props.manifests.find ( manifest => file in manifest ),
+          filepath = manifest ? manifest[file] : '';
+
+    return `${baseurl}${filepath}`;
+
   }
 
   render () {
 
     const head = Helmet.rewind (),
-          styles = [],
-          scripts = [this.resolveFile ( 'client.vendor.js' ), this.absoluteFile ( '/public/js/client.js' )];
+          styles = Environment.isDevelopment ? [] : [this.resolveFile ( 'client.css' )],
+          scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )],
+          content = renderToString ( this.props.children );
 
     return (
       <html {...head.htmlAttributes.toComponent ()}>
