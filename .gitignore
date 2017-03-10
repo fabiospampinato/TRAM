@@ -41,3 +41,4 @@ coverage
 typings
 .awcache
 rethinkdb_data
+.nyc_output
