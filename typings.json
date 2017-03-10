@@ -30,5 +30,6 @@
     "chai": "registry:npm/chai#3.5.0+20160723033700",
     "chalk": "registry:npm/chalk#1.1.1+20160812215109",
     "express": "registry:npm/express#4.14.0+20160925001530"
+    "webpack": "registry:npm/webpack#1.12.9+20160418172948"
   }
 }

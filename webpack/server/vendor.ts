@@ -2,22 +2,20 @@
 /* ================================================================================
  * TRAM - Webpack - Server - Vendor
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
 /* IMPORT */
 
-const path = require ( 'path' ),
-      webpack = require ( 'webpack' ),
-      BundleAnalyzerPlugin = require ( 'webpack-bundle-analyzer' ).BundleAnalyzerPlugin;
+import * as _ from 'lodash';
+import * as path from 'path';
+import * as webpack from 'webpack';
+// import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 
 /* ALIAS */
 
-let alias = {},
-    lodashMethods = ['assign', 'clonedeep', 'countby', 'flatten', 'forown', 'has', 'identity', 'isequal', 'isnull', 'isnumber', 'isundefined', 'mapvalues', 'merge', 'pick'];
-
-lodashMethods.forEach ( method => alias[`lodash.${method}`] = `lodash/${method}` );
+const alias = _.fromPairs ( Object.keys ( _ ).map ( key => [`lodash.${key}`, `lodash/${key}`] ) );
 
 /* CONFIG */
 
@@ -47,11 +45,11 @@ const config = {
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,
     //   openAnalyzer: false,
-    //   statsFilename: '../../meta/stats.json'
+    //   statsFilename: '../dist/meta/stats.json'
     // })
   ]
 };
 
 /* EXPORT */
 
-module.exports = config;
+export default config;

@@ -14,11 +14,11 @@ import * as webpack from 'webpack';
 import * as devMiddleware from 'webpack-dev-middleware';
 import * as hotMiddleware from 'webpack-hot-middleware';
 import Settings from 'modules/settings';
+import config from '../../webpack/client/development';
 
 /* APP */
 
 const app = express (),
-      config = require ( '../../webpack/client/development' ),
       compiler = webpack ( config );
 
 app.use ( devMiddleware ( compiler, {
