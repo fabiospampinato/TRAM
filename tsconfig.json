@@ -20,15 +20,16 @@
     "strictNullChecks": true,
     "target": "es5"
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "dist"
   ],
   "awesomeTypescriptLoaderOptions": {
-    "doTypeCheck": false,
-    "forkChecker": true,
-    "forkCheckerSilent": true,
     "useBabel": false,
-    "useCache": true
+    "useCache": true,
+    "transpileOnly": true
   }
 }

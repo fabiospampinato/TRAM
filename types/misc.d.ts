@@ -1,4 +1,10 @@
 
+/******************************
+ * Put your custom types here *
+ ******************************/
+
+//TODO: Improve it
+
 // Redux DevTools Chrome extension
 interface Window {
   devToolsExtension?: () => any;

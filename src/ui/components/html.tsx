@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Components - Html
+ * TRAM - UI - Components - HTML
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -16,7 +16,7 @@ import 'ui/template';
 
 /* HTML */
 
-class Html extends React.Component<any, undefined> {
+class HTML extends React.Component<any, undefined> {
 
   private absoluteFile ( file ) {
     return Environment.isDevelopment ? `${Settings.hotServer.url}${file}` : `${Settings.server.url}${file}`; //FIXME: We should actually check if we are in a HOT environment, may can still do `start:server` (non :hot) manually
@@ -33,15 +33,15 @@ class Html extends React.Component<any, undefined> {
           scripts = [this.resolveFile ( 'client.vendor.js' ), this.absoluteFile ( '/public/js/client.js' )];
 
     return (
-      <html>
+      <html {...head.htmlAttributes.toComponent ()}>
         <head>
           {head.base.toComponent ()}
           {head.title.toComponent ()}
           {head.meta.toComponent ()}
           {head.link.toComponent ()}
           {head.script.toComponent ()}
+          {head.noscript.toComponent ()}
           {styles.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
-          <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body>
           <main id="app-root" dangerouslySetInnerHTML={{ __html: content }}></main>
@@ -56,4 +56,4 @@ class Html extends React.Component<any, undefined> {
 
 /* EXPORT */
 
-export {Html};
+export {HTML};

@@ -17,7 +17,7 @@ import routes from './routes';
 
 /* RENDERER */
 
-const renderer = function ( store, client, history ) {
+function renderer ( store, client, history ) {
 
   const root = document.getElementById ( 'app-root' );
 
@@ -34,7 +34,7 @@ const renderer = function ( store, client, history ) {
     root
   );
 
-};
+}
 
 /* EXPORT */
 

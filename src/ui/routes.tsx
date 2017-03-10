@@ -15,7 +15,7 @@ import {Counter, Login, Home, Signup, Todo} from './pages';
 
 /* ROUTES */
 
-const Routes = (
+const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
     <Route path="counter" component={Counter} />
@@ -27,4 +27,4 @@ const Routes = (
 
 /* EXPORT */
 
-export default Routes;
+export default routes;

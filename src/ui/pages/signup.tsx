@@ -21,6 +21,7 @@ class Signup extends React.Component<any, any> {
   }
 
   render () {
+
     return (
       <div>
         <h3>Sign Up</h3>
@@ -34,10 +35,11 @@ class Signup extends React.Component<any, any> {
           <label>Repeat password:</label>
           <input ref="password_repeat" name="password_repeat" type="password" />
           <Link to="/login" title="Log in">Already have an account?</Link>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
+
   }
 
 }

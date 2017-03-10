@@ -14,19 +14,18 @@ import * as compression from 'compression';
 import * as express from 'express';
 import {graphqlConnect, graphiqlExpress} from 'graphql-server-express';
 import * as path from 'path';
-import * as favicon from 'serve-favicon';
 import * as React from 'react';
-import {ApolloProvider} from 'react-apollo';
 import {renderToString} from 'react-dom/server';
+import {ApolloProvider} from 'react-apollo';
 import {AppContainer} from 'react-hot-loader';
 import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
-import {configureStore} from '../redux/store';
 import {Apollo, Schema} from 'api';
 import Settings from 'modules/settings';
 import routes from 'ui/routes';
-import {Html} from 'ui/components';
 const manifest = require ( '../../dist/meta/manifest.json' );
+import {HTML} from 'ui/components';
+import {configureStore} from '../redux/store';
 
 /* APP */
 
@@ -34,7 +33,6 @@ const app = express ();
 
 app.use ( compression () );
 
-app.use ( favicon ( path.join ( __dirname, 'assets/favicon.ico' ) ) );
 
 app.use ( express.static ( path.join ( __dirname, 'assets' ) ) );
 
@@ -62,33 +60,33 @@ app.get ( '*', ( req, res ) => {
         store = configureStore ( memoryHistory ),
         history = syncHistoryWithStore ( memoryHistory, store );
 
-  match ( { history, routes, location }, ( err, redirectLocation, renderProps ) => {
+  match ( { history, routes, location }, ( err, redirect, props ) => {
 
     if ( err ) {
 
       res.status ( 500 ).send ( err.message );
 
-    } else if ( redirectLocation ) {
+    } else if ( redirect ) {
 
-      res.redirect ( 302, redirectLocation.pathname + redirectLocation.search );
+      res.redirect ( 302, redirect.pathname + redirect.search );
 
-    } else if ( renderProps ) {
+    } else if ( props ) {
 
-      const page = (
-        <Html manifest={manifest}>
+      const html = (
+        <HTML manifests={[manifestClient, manifestClientVendor]}>
           <AppContainer>
-              <RouterContext {...renderProps} />
             <ApolloProvider store={store} client={Apollo} key="provider">
+              <RouterContext {...props} />
             </ApolloProvider>
           </AppContainer>
-        </Html>
+        </HTML>
       );
 
-      res.status ( 200 ).send ( `<!doctype html>${renderToString ( page )}` );
+      res.status ( 200 ).send ( `<!doctype html>${renderToString ( html )}` );
 
     } else {
 
-      res.status ( 404 ).send ( 'Not Found?' );
+      res.status ( 404 ).send ( 'Not Found!' );
 
     }
 

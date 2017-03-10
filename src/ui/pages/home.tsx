@@ -12,15 +12,11 @@ import * as React from 'react';
 
 /* HOME */
 
-class Home extends React.Component<any, any> {
-  render () {
-    return (
-      <div className="home">
-        <img src="/images/logo.png" className="logo" />
-      </div>
-    );
-  }
-}
+const Home = () => (
+  <div className="home">
+    <img src="/images/logo.png" className="logo" />
+  </div>
+);
 
 /* EXPORT */
 

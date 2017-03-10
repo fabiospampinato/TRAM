@@ -26,11 +26,10 @@ app.use ( devMiddleware ( compiler, {
   stats: {
     colors: true
   },
-  noInfo: true,
   hot: true,
-  inline: true,
   lazy: false,
-  historyApiFallback: true,
+  noInfo: true,
+  overlay: true,
   quiet: true
 }));
 
@@ -38,7 +37,12 @@ app.use ( hotMiddleware ( compiler ) );
 
 /* LISTEN */
 
-app.listen ( Settings.hotServer.port, Settings.hotServer.host, err => {
+const {port, host, url} = Settings.hotServer;
+
+app.listen ( port, host, err => {
+
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
-  console.info ( Chalk.black.bgGreen ( `[HOT] Listening at ${Settings.hotServer.url}` ) );
+
+  console.info ( Chalk.black.bgGreen ( `[HOT] Listening at ${url}` ) );
+
 });

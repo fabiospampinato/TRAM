@@ -15,19 +15,15 @@ import {Header} from './header';
 
 /* APP */
 
-class App extends React.Component<any, any> {
-  render () {
-    return (
-      <div className="app">
-        <Helmet {...Settings.helmet.head} />
-        <Header />
-        <div className="content">
-          {this.props.children}
-        </div>
-      </div>
-    );
-  }
-}
+const App = ({ children }) => (
+  <div className="app">
+    <Helmet {...Settings.helmet.head} />
+    <Header />
+    <div className="content">
+      {children}
+    </div>
+  </div>
+);
 
 /* EXPORT */
 
