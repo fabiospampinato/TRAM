@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "token": "auth_token_name"
+  },
+  "graphiql": {
+    "enabled": false
+  },
+  "hotServer": {
+    "enabled": false
+  },
+  "helmet": {
+    "head": {
+      "defaultTitle": "TRAM",
+      "titleTemplate": "%s | TRAM",
+      "meta": [
+        { "charset": "utf-8" },
+        { "http-equiv": "x-ua-compatible", "content": "ie=edge" },
+        { "name": "viewport", "content": "width=device-width, initial-scale=1" },
+        { "name": "description", "content": "Boilerplate for building reactive isomorphic applications. Built around TypeScript, React, Apollo, MongoDB." }
+      ],
+      "link": [
+        { "rel": "shortcut icon", "href": "/favicon.ico" }
+      ]
+    }
+  }
+}

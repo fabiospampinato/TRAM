@@ -13,6 +13,7 @@ import * as createLogger from 'redux-logger';
 import {routerMiddleware} from 'react-router-redux';
 import Client from 'api/client';
 import Environment from 'modules/environment';
+import Settings from 'modules/settings';
 import reducers from './reducers';
 
 /* CONFIGURE */
@@ -36,7 +37,7 @@ function configureStore ( history, initialState? ) {
   const storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
         store = storeCreator ( reducers, initialState );
 
-  if ( Environment.isDevelopment && module.hot ) {
+  if ( Settings.hotServer.enabled && module.hot ) {
 
     module.hot.accept ( './reducers', () => store.replaceReducer ( require ( './reducers' ) ) );
 

@@ -6,55 +6,33 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+//TODO: Publish as a module, maybe
+
+/* IMPORT */
+
+import * as _ from 'lodash';
+import Environment from './environment';
+
 /* SETTINGS */
 
-const Settings = {
-  auth: {
-    token: 'auto_token_name',
-    secret: 'd35d1690-7f39-4676-830d-7dc8720b1475'
-  },
-  rethinkdb: {
-    host: 'localhost',
-    port: 28015,
-    db: 'TRAM',
-    http: {
-      protocol: 'http',
-      host: 'localhost',
-      port: 8887,
-      url: 'http://localhost:8887'
-    }
-  },
-  graphql: {
-    endpoint: '/api/graphql',
-    interface: '/api/graphiql',
-    batchInverval: 10
-  },
-  server: {
-    protocol: 'http',
-    host: 'localhost',
-    port: 8889,
-    url: 'http://localhost:8889'
-  },
-  hotServer: {
-    protocol: 'http',
-    host: 'localhost',
-    port: 8890,
-    url: 'http://localhost:8890'
-  },
-  helmet: {
-    head: {
-      defaultTitle: 'TRAM',
-      titleTemplate: '%s | TRAM',
-      meta: [
-        { charset: 'utf-8' },
-        { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Boilerplate for building reactive isomorphic applications. Built around Apollo, React, Redux, RethinkDB and TypeScript.' },
-      ]
-    }
-  }
-};
+function getSettings ( name ) {
+
+  const file = require ( `../../settings/${name}` );
+
+  if ( !file ) throw new Error ( 'Settings not found' );
+
+  if ( !file.extend ) return file;
+
+  const extend = _.castArray ( file.extend ),
+        anchestors = extend.map ( getSettings ),
+        merged = _.merge ( {}, ...anchestors, file );
+
+  delete merged['extend'];
+
+  return merged;
+
+}
 
 /* EXPORT */
 
-export default Settings;
+export default getSettings ( Environment.current );

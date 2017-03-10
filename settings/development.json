@@ -1,0 +1,35 @@
+{
+  "extend": "base",
+  "auth": {
+    "secret": "d35d1690-7f39-4676-830d-7dc8720b1475"
+  },
+  "mongodb": {
+    "protocol": "mongodb",
+    "host": "localhost",
+    "port": 27017,
+    "options": {},
+    "database": "TRAM",
+    "url": "mongodb://localhost:27017/TRAM"
+  },
+  "graphql": {
+    "batchInverval": 10,
+    "url": "/api/graphql"
+  },
+  "graphiql": {
+    "enabled": true,
+    "url": "/api/graphiql"
+  },
+  "server": {
+    "protocol": "http",
+    "host": "localhost",
+    "port": 8080,
+    "url": "http://localhost:8080"
+  },
+  "hotServer": {
+    "enabled": true,
+    "protocol": "http",
+    "host": "localhost",
+    "port": 8081,
+    "url": "http://localhost:8081"
+  }
+}

@@ -23,7 +23,6 @@ import {RouterContext, createMemoryHistory, match} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import {Client, Schema} from 'api';
 import {configureStore} from '../redux/store';
-import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 import routes from 'ui/routes';
 import {Html} from 'ui/components';
@@ -41,14 +40,17 @@ app.use ( express.static ( path.join ( __dirname, 'assets' ) ) );
 
 app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ) );
 
-app.use ( Settings.graphql.endpoint, bodyParser.json (), graphqlConnect ({
-  schema: Schema
 }));
 
-if ( Environment.isDevelopment ) {
+app.use ( Settings.graphql.url, bodyParser.json (), ( req, res, next ) => graphqlConnect ({
+  schema: Schema,
+  context: req
+})( req, res, next ));
 
-  app.use ( Settings.graphql.interface, graphiqlExpress ({
-    endpointURL: Settings.graphql.endpoint,
+if ( Settings.graphiql.enabled ) {
+
+  app.use ( Settings.graphiql.url, graphiqlExpress ({
+    endpointURL: Settings.graphql.url
   }));
 
 }
@@ -96,12 +98,18 @@ app.get ( '*', ( req, res ) => {
 
 /* LISTEN */
 
-app.listen ( Settings.server.port, Settings.server.host, err => {
+const {protocol, host, port, url} = Settings.server;
+
+app.listen ( port, host, err => {
+
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
-  if ( Environment.isDevelopment ) {
-    let {protocol, host, port} = Settings.server;
-    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${protocol}://${host}:${port}${Settings.graphql.interface}` ) );
+
+  if ( Settings.graphiql.enabled ) {
+
+    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${protocol}://${host}:${port}${Settings.graphiql.url}` ) );
+
   }
-  console.info ( Chalk.black.bgGreen ( `[RETHINKDB] Dashboard available at ${Settings.rethinkdb.http.url}` ) );
-  console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${Settings.server.url}` ) );
+
+  console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${url}` ) );
+
 });
