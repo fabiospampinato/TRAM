@@ -2,7 +2,7 @@
 /* ================================================================================
  * TRAM - UI - Pages - Counter
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
@@ -10,20 +10,21 @@
 
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
-import {graphql} from 'react-apollo';
-import {get} from 'api/counter/queries';
-import {increment, decrement} from 'api/counter/mutations';
+import graphqls from 'modules/graphqls';
+import {get, increment, decrement} from 'api/counter';
 
 /* COUNTER */
 
-@graphql ( get.query, get )
-@graphql ( increment.mutation, increment )
-@graphql ( decrement.mutation, decrement )
+@graphqls ( get, increment, decrement )
 class Counter extends React.Component<any, any> {
+
   render () {
+
     const {increment, decrement, data: {loading, error, counter}} = this.props;
+
     if ( loading ) return <div>Loading...</div>;
     if ( error ) return <div>Error!</div>;
+
     return (
       <div className="counter">
         <Helmet title="Counter" />
@@ -37,7 +38,9 @@ class Counter extends React.Component<any, any> {
         <button onClick={decrement} disabled={!counter.value}>DECREMENT</button>
       </div>
     );
+
   }
+
 }
 
 /* EXPORT */

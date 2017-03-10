@@ -2,46 +2,25 @@
 /* ================================================================================
  * TRAM - API - Counter - Mutations
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
 /* IMPORT */
 
-import gql from 'graphql-tag';
+import Builder from 'mongease-graphql-builder';
+import './mongease';
 
 /* MUTATIONS */
 
 const increment = {
-  mutation: gql`
-    mutation Counter ( $id: Int ) {
-      incrementCounter ( id: $id ) {
-        id
-        value
-      }
-    }
-  `,
-  props: ({ownProps, mutate}) => ({
-    increment: () => mutate ({ variables: {
-      id: ownProps.route.counterId
-    }})
-  })
+  gql: Builder.mutation ( 'counterIncrement' ),
+  name: 'increment'
 };
 
 const decrement = {
-  mutation: gql`
-    mutation Counter ( $id: Int ) {
-      decrementCounter ( id: $id ) {
-        id
-        value
-      }
-    }
-  `,
-  props: ({ownProps, mutate}) => ({
-    decrement: () => mutate ({ variables: {
-      id: ownProps.route.counterId
-    }})
-  })
+  gql: Builder.mutation ( 'counterDecrement' ),
+  name: 'decrement'
 };
 
 /* EXPORT */

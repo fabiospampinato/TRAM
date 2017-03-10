@@ -18,7 +18,7 @@ import {Counter, Login, Home, Signup, Todo} from './pages';
 const Routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
-    <Route path="counter" component={Counter} counterId={1} />
+    <Route path="counter" component={Counter} />
     <Route path="login" component={Login} />
     <Route path="signup" component={Signup} />
     <Route path="todo" component={Todo} />

@@ -2,30 +2,19 @@
 /* ================================================================================
  * TRAM - API - Counter - Queries
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
 /* IMPORT */
 
-import gql from 'graphql-tag';
+import Builder from 'mongease-graphql-builder';
+import './mongease';
 
 /* QUERIES */
 
 const get = {
-  query: gql`
-    query Counter ( $id: Int ) {
-      counter: getCounter ( id: $id ) {
-        id
-        value
-      }
-    }
-  `,
-  options: ownProps => ({
-    variables: {
-      id: ownProps.route.counterId
-    }
-  })
+  gql: Builder.query ( 'counterGet' )
 };
 
 /* EXPORT */
