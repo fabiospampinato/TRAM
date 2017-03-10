@@ -1,4 +1,8 @@
 
+/**************************
+ * Put your template here *
+ **************************/
+
 html,
 body {
   margin: 0;
@@ -11,6 +15,9 @@ a {
   &:hover {
     text-decoration: underline;
   }
+  &.active {
+    color: #006fff;
+  }
 }
 
 form {
@@ -19,7 +26,7 @@ form {
   flex-direction: column;
   max-width: 400px;
   margin: 0 auto;
-  & > * {
+  > * {
     margin-bottom: 5px;
   }
   label {
