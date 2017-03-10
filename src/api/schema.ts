@@ -2,22 +2,18 @@
 /* ================================================================================
  * TRAM - API - Schema
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
 /* IMPORT */
 
-import {makeExecutableSchema} from 'graphql-tools';
-import DatabaseU from 'utilities/database';
-import Components from './components';
+import MongeaseGraphQL from 'mongease-graphql';
+import './components';
 
 /* SCHEMA */
 
-const Schema = makeExecutableSchema ({
-  typeDefs: DatabaseU.makeSchema ( Components ),
-  resolvers: DatabaseU.makeResolvers ( Components )
-});
+const Schema = MongeaseGraphQL.getSchema ();
 
 /* EXPORT */
 

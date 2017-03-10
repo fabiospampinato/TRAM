@@ -1,7 +1,5 @@
 {
   "globalDependencies": {
-    "base16": "registry:dt/base16#1.0.0+20160902130643",
-    "bluebird": "registry:dt/bluebird#3.0.0+20160928162057",
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "compression": "registry:dt/compression#0.0.0+20160501162003",
     "history": "registry:dt/history#1.8.0+20160316155526",
@@ -30,6 +28,8 @@
     "chai": "registry:npm/chai#3.5.0+20160723033700",
     "chalk": "registry:npm/chalk#1.1.1+20160812215109",
     "express": "registry:npm/express#4.14.0+20160925001530"
+    "mongodb": "registry:npm/mongodb#2.1.0+20170211100415",
+    "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
     "webpack": "registry:npm/webpack#1.12.9+20160418172948"
   }
 }

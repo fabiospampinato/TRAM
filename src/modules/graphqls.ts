@@ -1,23 +1,25 @@
 
 /* ================================================================================
- * TRAM - API - ORM
+ * TRAM - Modules - GraphQLs
  * ================================================================================
- * Copyright (c) 2016-2017 Fabio Spampinato
+ * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+//TODO: Publish as a module, maybe
+
 /* IMPORT */
 
-import * as thinky from 'thinky';
-import Settings from 'modules/settings';
+import {graphql} from 'react-apollo';
 
-/* ORM */
+/* GRAPHQLS */
 
-const ORM = thinky ( Settings.rethinkdb ),
-      type = ORM.type,
-      Errors = ORM.Errors;
+function graphqls ( ...ops ) {
+  return function ( target ) {
+    return ops.reverse ().reduce ( ( target, op ) => graphql ( op.gql, op )( target ), target );
+  }
+}
 
 /* EXPORT */
 
-export default ORM;
-export {type, Errors};
+export default graphqls;

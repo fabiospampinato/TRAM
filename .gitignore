@@ -40,5 +40,5 @@ dist
 coverage
 typings
 .awcache
-rethinkdb_data
+.mongodb
 .nyc_output

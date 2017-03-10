@@ -5,6 +5,9 @@
   "license": "MIT",
   "main": "dist/server.js",
   "scripts": {
+    "db:init": "mkdirp .mongodb",
+    "db:reset": "rimraf .mongodb",
+    "db:start": "mongod --port 27017 --bind_ip 127.0.0.1 --dbpath .mongodb",
     "build:client:vendor": "webpack --config webpack/client/vendor.ts",
     "build:client": "webpack --config webpack/client/index.ts",
     "build:server:vendor": "webpack --config webpack/server/vendor.ts",
@@ -12,7 +15,7 @@
     "build:vendor": "npm-run-all -p build:client:vendor build:server:vendor",
     "build:all": "npm-run-all build:vendor -p build:client build:server",
     "build": "npm-run-all -p build:client build:server",
-    "start:db": "rethinkdb --http-port 8887",
+    "start:db": "npm-run-all db:init db:start",
     "start:client:hot": "node dist/server.hot.js",
     "start:server:hot:nodemon": "nodemon dist/server.js --watch dist/server.js",
     "start:server:hot": "npm-run-all -p start:server:hot:nodemon start:server:hot:webpack",
@@ -47,6 +50,14 @@
     "lodash": "^4.16.6",
     "npm-run": "^4.1.0",
     "npm-run-all": "^3.1.1",
+    "mkdirp": "^0.5.1",
+    "mongease": "^1.0.2",
+    "mongease-graphql": "^1.0.2",
+    "mongease-graphql-builder": "^1.0.1",
+    "mongodb": "^2.2.24",
+    "mongoose": "^4.8.5",
+    "mongoose-timestamp": "^0.6.0",
+    "mongoose-to-graphql": "^1.0.2",
     "react": "^15.3.2",
     "react-apollo": "^0.5.16",
     "react-dom": "^15.3.2",
@@ -55,9 +66,6 @@
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
-    "rethinkdb": "^2.3.3",
-    "thinky": "^2.3.7",
-    "validator": "^6.1.0"
     "ts-node": "^2.1.0"
   },
   "devDependencies": {
