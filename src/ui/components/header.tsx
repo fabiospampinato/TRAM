@@ -7,28 +7,25 @@
  * ================================================================================ */
 
 /* IMPORT */
+
 import * as React from 'react';
-import {Link} from 'react-router';
+import {NavLink, NavIndexLink} from './navigation';
 
 /* HEADER */
 
-class Header extends React.Component<any, any> {
-  render () {
-    return (
-      <div className="header">
-        <Link to="/">Home</Link>
-        <span>•</span>
-        <Link to="/counter">Counter</Link>
-        <span>•</span>
-        <Link to="/todo">Todo</Link>
-        <div className="spacer"></div>
-        <Link to="/signup">Sign Up</Link>
-        <span>•</span>
-        <Link to="/login">Log In</Link>
-      </div>
-    );
-  }
-}
+const Header = () => (
+  <div className="header">
+    <NavIndexLink to="/">Home</NavIndexLink>
+    <span>•</span>
+    <NavLink to="/counter">Counter</NavLink>
+    <span>•</span>
+    <NavLink to="/todo">Todo</NavLink>
+    <div className="spacer"></div>
+    <NavLink to="/signup">Sign Up</NavLink>
+    <span>•</span>
+    <NavLink to="/login">Log In</NavLink>
+  </div>
+);
 
 /* EXPORT */
 
