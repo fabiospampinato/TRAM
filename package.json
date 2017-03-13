@@ -26,6 +26,7 @@
     "clean:dist": "rimraf dist",
     "clean:coverage": "rimraf coverage",
     "clean": "npm-run-all -p clean:dist clean:coverage",
+    "reset": "npm-run-all -p clean db:reset",
     "test": "ava",
     "test:watch": "ava --watch",
     "coverage": "nyc --reporter=html ava",
