@@ -28,9 +28,11 @@
     "clean:coverage": "rimraf coverage",
     "clean": "npm-run-all -p clean:dist clean:coverage",
     "reset": "npm-run-all -p clean db:reset",
-    "test": "ava",
-    "test:watch": "ava --watch",
-    "coverage": "nyc --reporter=html ava",
+    "test:build": "webpack --config webpack/test.ts",
+    "test:build:watch": "webpack --config webpack/test.ts --watch",
+    "test": "npm run test:build && ava",
+    "test:watch": "npm run test:build:watch & ava --watch",
+    "coverage": "npm run test:build && nyc --reporter=html ava",
     "report": "nyc report",
     "report:html": "open coverage/index.html",
     "lint": "tslint \"src/**/**.ts*\" --force"
@@ -50,7 +52,7 @@
     "start:db": "Starts the database",
     "start:client:hot": "Starts the client in Hot Module Replacement mode",
     "start:server:hot:nodemon": "Starts the server using Nodemon",
-    "start:server:hot:webpack": "Starts the server and watches files for changes",
+    "start:server:hot:webpack": "Starts the server in watch mode",
     "start:server:hot": "Starts the server in watch-&-restart mode",
     "start:server": "Starts the server",
     "start:hot": "Starts both client and server in HOT mode",
@@ -59,17 +61,17 @@
     "clean:coverage": "Removes the 'coverage' folder",
     "clean": "Removes all the generaged folders",
     "reset": "Cleans the folders and resets the database",
-    "test": "//TODO",
-    "test:watch": "//TODO",
+    "test:build": "Builds the tests",
+    "test:build:watch": "Builds the tests in watch mode",
+    "test": "Builds the tests and runs them",
+    "test:watch": "Builds the tests and runs them, both in watch mode",
     "coverage": "Generates coverage report",
     "report": "Shows coverage report",
     "report:html": "Shows HTML coverage report",
     "lint": "Lints TypeScript files"
   },
   "ava": {
-    "files": [
-      "src/**/?(*.)?(app-)+(test|spec)?(s).ts?(x)"
-    ]
+    "files": ["dist/tests/**"]
   },
   "dependencies": {
     "@types/lodash": "^4.14.54",
@@ -121,6 +123,7 @@
     "css-loader": "^0.26.0",
     "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "file-loader": "^0.10.0",
+    "glob": "^7.1.1",
     "isomorphic-style-loader": "^1.1.0",
     "json-strip-loader": "^1.0.0",
     "node-sass": "^4.5.0",
