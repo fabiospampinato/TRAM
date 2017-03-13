@@ -29,9 +29,11 @@ import Mongoose from 'api/mongoose';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
 import routes from 'ui/routes';
-const manifest = require ( '../../dist/meta/manifest.json' );
 import {HTML} from 'ui/components';
 import {configureStore} from '../redux/store';
+
+const manifestClient = require ( '../../dist/meta/manifest.client.json' ); //FIXME: Ugly
+const manifestClientVendor = require ( '../../dist/meta/manifest.client.vendor.json' ); //FIXME: Ugly
 
 /* APP */
 
