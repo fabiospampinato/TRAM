@@ -16,7 +16,7 @@ import './mongease';
 const getMe = {
   gql: Builder.query ( 'userGetMe' ),
   options: {
-    forceFetch: true
+    fetchPolicy: 'cache-and-network'
   }
 };
 
