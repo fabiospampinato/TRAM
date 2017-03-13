@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Login
+ * TRAM - API - User - Queries
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -8,23 +8,18 @@
 
 /* IMPORT */
 
-import * as React from 'react';
+import Builder from 'mongease-graphql-builder';
+import './mongease';
 
-/* LOGIN */
+/* QUERIES */
 
-const Login = () => (
-  <div>
-    <h3>Log In</h3>
-    <form className="login" method="post">
-      <label>Username:</label>
-      <input name="username" />
-      <label>Password:</label>
-      <input name="password" type="password" />
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-);
+const getMe = {
+  gql: Builder.query ( 'userGetMe' ),
+  options: {
+    forceFetch: true
+  }
+};
 
 /* EXPORT */
 
-export {Login};
+export {getMe};

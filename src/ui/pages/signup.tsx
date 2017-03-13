@@ -9,37 +9,44 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {Link} from 'react-router';
+import graphqls from 'modules/graphqls';
+import {signup} from 'api/user';
 
 /* SIGNUP */
 
+@graphqls ( signup )
 class Signup extends React.Component<any, any> {
+
+  refs: { username, password };
+
+  getUser () {
+    return {
+      username: this.refs.username.value,
+      password: this.refs.password.value
+    }
+  }
 
   submit ( event ) {
     event.preventDefault ();
-    console.log('submitting...');
+    const user = this.getUser ();
+    this.props.signup ( user )
+              .then ( () => this.props.router.push ( '/login' ) )
+              .catch ( console.log.bind ( console ) );
   }
 
   render () {
-
     return (
       <div>
         <h3>Sign Up</h3>
         <form className="signup" onSubmit={this.submit.bind ( this )}>
           <label>Username:</label>
           <input ref="username" name="username" />
-          <label>Email:</label>
-          <input ref="email" name="email" type="email" />
           <label>Password:</label>
           <input ref="password" name="password" type="password" />
-          <label>Repeat password:</label>
-          <input ref="password_repeat" name="password_repeat" type="password" />
-          <Link to="/login" title="Log in">Already have an account?</Link>
           <button type="submit">Submit</button>
         </form>
       </div>
     );
-
   }
 
 }

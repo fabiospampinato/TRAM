@@ -41,6 +41,10 @@ form {
   }
 }
 
+.spacer {
+  flex-grow: 1;
+}
+
 .app {
   text-align: center;
   .content {
@@ -54,12 +58,11 @@ form {
   border: 1px solid #e6e6e6;
   margin-bottom: 10px;
   padding: 1rem 1.5rem;
-  a {
+  * {
     margin: 0 10px;
-    white-space: nowrap;
-  }
-  .spacer {
-    flex-grow: 1;
+    + span {
+      margin: 0;
+    }
   }
 }
 

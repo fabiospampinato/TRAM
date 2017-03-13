@@ -5,6 +5,7 @@
     "jquery": "registry:dt/jquery#1.10.0+20170123093700",
     "lodash": "registry:dt/lodash#4.14.0+20161004174455",
     "node": "registry:dt/node#7.0.0+20170204020307",
+    "passport": "registry:dt/passport#0.3.0+20170207191958",
     "react": "registry:dt/react#0.14.0+20161008064207",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "react-helmet": "registry:dt/react-helmet#0.0.0+20160816111147",
@@ -28,6 +29,7 @@
     "express": "registry:npm/express#4.14.0+20160925001530",
     "mongodb": "registry:npm/mongodb#2.1.0+20170211100415",
     "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
+    "passport": "registry:npm/passport#0.3.0+20161028163825",
     "react-hot-loader": "registry:dt/react-hot-loader#3.0.0+20170123203653",
     "webpack": "registry:npm/webpack#1.12.9+20160418172948"
   }

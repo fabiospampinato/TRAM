@@ -1,6 +1,6 @@
 {
   "extend": "base",
-  "auth": {
+  "session": {
     "secret": "d35d1690-7f39-4676-830d-7dc8720b1475"
   },
   "mongodb": {

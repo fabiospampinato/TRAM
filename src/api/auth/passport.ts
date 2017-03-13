@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Login
+ * TRAM - API - Auth - Passport
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -8,23 +8,16 @@
 
 /* IMPORT */
 
-import * as React from 'react';
+import * as passport from 'passport';
+import {model as User} from 'api/user';
 
-/* LOGIN */
+/* PASSPORT */
 
-const Login = () => (
-  <div>
-    <h3>Log In</h3>
-    <form className="login" method="post">
-      <label>Username:</label>
-      <input name="username" />
-      <label>Password:</label>
-      <input name="password" type="password" />
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-);
+passport.use ( User.createStrategy () );
+
+passport.serializeUser ( User.serializeUser () );
+passport.deserializeUser ( User.deserializeUser () );
 
 /* EXPORT */
 
-export {Login};
+export default passport;

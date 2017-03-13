@@ -1,6 +1,28 @@
 {
-  "auth": {
-    "token": "auth_token_name"
+  "apollo": {
+    "uri": "/api/graphql",
+    "batchInterval": 10,
+    "opts": {
+      "credentials": "same-origin"
+    }
+  },
+  "passport": {
+    "local": {
+      "saltlen": 64,
+      "iterations": 1024,
+      "digestAlgorithm": "sha512",
+      "lastLoginField": "lastLoginAt"
+    }
+  },
+  "session": {
+    "name": "TRAM.session",
+    "resave": false,
+    "saveUninitialized": false,
+    "store": {
+      "ttl": 86400,
+      "touchAfter": 10
+    }
+  },
   },
   "graphiql": {
     "enabled": false

@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - API - Components
+ * TRAM - API - User
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -8,8 +8,6 @@
 
 /* EXPORT */
 
-import './counter';
-import './todo';
-import './user';
-
-//TODO: Export an array of components, maybe
+export * from './mongease';
+export * from './queries';
+export * from './mutations';
