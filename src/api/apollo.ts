@@ -8,31 +8,13 @@
 
 /* IMPORT */
 
-import ApolloClient, {createNetworkInterface, createBatchingNetworkInterface} from 'apollo-client';
-import Environment from 'modules/environment';
+import ApolloClient, {createBatchingNetworkInterface} from 'apollo-client';
 import Settings from 'modules/settings';
 
 /* APOLLO */
 
-let networkInterface;
-
-if ( Environment.isDevelopment ) {
-
-  networkInterface = createNetworkInterface ({
-    uri: Settings.graphql.url
-  });
-
-} else {
-
-  networkInterface = createBatchingNetworkInterface ({
-    uri: Settings.graphql.url,
-    batchInterval: Settings.graphql.batchInverval
-  });
-
-}
-
 const Apollo = new ApolloClient ({
-  networkInterface,
+  networkInterface: createBatchingNetworkInterface ( Settings.apollo ),
   dataIdFromObject: object => object._id
 });
 

@@ -11,13 +11,8 @@
     "database": "TRAM",
     "url": "mongodb://localhost:27017/TRAM"
   },
-  "graphql": {
-    "batchInverval": 10,
-    "url": "/api/graphql"
-  },
   "graphiql": {
-    "enabled": true,
-    "url": "/api/graphiql"
+    "enabled": true
   },
   "server": {
     "protocol": "http",

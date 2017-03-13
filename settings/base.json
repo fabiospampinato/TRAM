@@ -23,9 +23,12 @@
       "touchAfter": 10
     }
   },
+  "graphql": {
+    "url": "/api/graphql"
   },
   "graphiql": {
-    "enabled": false
+    "enabled": false,
+    "url": "/api/graphiql"
   },
   "hotServer": {
     "enabled": false
