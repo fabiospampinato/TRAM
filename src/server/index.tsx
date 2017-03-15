@@ -16,6 +16,7 @@ import * as Chalk from 'chalk';
 import * as compression from 'compression';
 import createHistory from 'history/createMemoryHistory';
 import * as express from 'express';
+import * as morgan from 'morgan';
 import * as session from 'express-session';
 import * as ConnectMongo from 'connect-mongo';
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
@@ -64,6 +65,12 @@ app.use ( session ( _.extend ( {}, Settings.session, {
 app.use ( passport.initialize () );
 
 app.use ( passport.session () );
+
+if ( Settings.morgan.enabled ) {
+
+  app.use ( morgan ( 'dev' ) );
+
+}
 
 app.use ( Settings.graphql.url, graphqlExpress ( req => ({
   schema: Schema,

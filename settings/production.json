@@ -2,6 +2,9 @@
   "graphiql": {
     "enabled": false
   },
+  "morgan": {
+    "enabled": false
+  },
   "hotServer": {
     "enabled": false
   }
