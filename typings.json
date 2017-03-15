@@ -5,14 +5,10 @@
     "jquery": "registry:dt/jquery#1.10.0+20170123093700",
     "lodash": "registry:dt/lodash#4.14.0+20161004174455",
     "node": "registry:dt/node#7.0.0+20170204020307",
-    "passport": "registry:dt/passport#0.3.0+20170207191958",
     "react": "registry:dt/react#0.14.0+20161008064207",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "react-helmet": "registry:dt/react-helmet#0.0.0+20160816111147",
     "react-redux": "registry:dt/react-redux#4.4.0+20160908183346",
-    "react-router": "registry:dt/react-router#2.0.0+20160928130202",
-    "react-router-redux": "registry:dt/react-router-redux#4.0.0+20160930121107",
-    "react-router/history": "registry:dt/react-router/history#2.0.0+20160830150755",
     "redux": "registry:dt/redux#3.5.2+20160703092728",
     "redux-devtools": "registry:dt/redux-devtools#3.0.0+20161003133120",
     "redux-devtools-dock-monitor": "registry:dt/redux-devtools-dock-monitor#1.1.1+20160902130643",
@@ -33,5 +29,7 @@
     "passport": "registry:npm/passport#0.3.0+20161028163825",
     "react-hot-loader": "registry:dt/react-hot-loader#3.0.0+20170123203653",
     "webpack": "registry:npm/webpack#1.12.9+20160418172948"
+    "react-router": "registry:dt/react-router#3.0.0+20170311000202",
+    "react-router-redux": "registry:npm/react-router-redux#4.0.0+20160602212457",
   }
 }

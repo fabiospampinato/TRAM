@@ -10,15 +10,18 @@
 
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
-import Apollo from 'api/apollo';
 
-/* REDUCERS */
+/* CONFIGURE */
 
-const reducers = combineReducers ({
-  routing: routerReducer,
-  apollo: Apollo.reducer ()
-});
+function configureReducers ( Apollo ) {
+
+  return combineReducers ({
+    router: routerReducer,
+    apollo: Apollo.reducer ()
+  });
+
+}
 
 /* EXPORT */
 
-export default reducers;
+export {configureReducers};

@@ -1,1 +1,8 @@
-{}
+{
+  "graphiql": {
+    "enabled": false
+  },
+  "hotServer": {
+    "enabled": false
+  }
+}

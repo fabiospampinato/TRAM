@@ -1,8 +1,5 @@
 {
   "extend": "base",
-  "session": {
-    "secret": "d35d1690-7f39-4676-830d-7dc8720b1475"
-  },
   "mongodb": {
     "protocol": "mongodb",
     "host": "localhost",
@@ -12,7 +9,11 @@
     "url": "mongodb://localhost:27017/TRAM"
   },
   "graphiql": {
+    "url": "/api/graphiql"
     "enabled": true
+  },
+  "session": {
+    "secret": "d35d1690-7f39-4676-830d-7dc8720b1475"
   },
   "server": {
     "protocol": "http",

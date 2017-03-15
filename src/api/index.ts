@@ -8,7 +8,7 @@
 
 /* EXPORT */
 
-export {default as Apollo} from './apollo';
+export * from './apollo';
 // export {default as Components} from './components'; //TODO
 export {default as Mongease} from './mongease';
 export {default as Mongoose} from './mongoose';

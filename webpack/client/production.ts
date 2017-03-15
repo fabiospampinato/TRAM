@@ -25,7 +25,7 @@ const config = {
       './src/vendor',
       'react',
       'react-dom',
-      'react-router',
+      'react-router-dom',
       'react-helmet',
       'react-redux',
       'react-router-redux',

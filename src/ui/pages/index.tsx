@@ -11,5 +11,6 @@
 export {Counter} from './counter';
 export {Home} from './home';
 export {Login} from './login';
+export {NotFound} from './not_found';
 export {Todo} from './todo';
 export {Signup} from './signup';

@@ -11,16 +11,16 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import * as createLogger from 'redux-logger';
 import {routerMiddleware} from 'react-router-redux';
-import Apollo from 'api/apollo';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
-import reducers from './reducers';
+import {configureReducers} from './reducers';
 
 /* CONFIGURE */
 
-function configureStore ( history, initialState? ) {
+function configureStore ( history, Apollo, state? ) {
 
-  const enhancers: Function[] = [],
+  const reducers = configureReducers ( Apollo ),
+        enhancers: Function[] = [],
         middlewares = [
           routerMiddleware ( history ),
           Apollo.middleware ()
@@ -30,18 +30,12 @@ function configureStore ( history, initialState? ) {
 
     middlewares.push ( createLogger () );
 
-    if ( window.devToolsExtension ) enhancers.push ( window.devToolsExtension () );
+    if ( window.__REDUX_DEVTOOLS_EXTENSION__ ) enhancers.push ( window.__REDUX_DEVTOOLS_EXTENSION__ () );
 
   }
 
   const storeCreator = compose ( applyMiddleware ( ...middlewares ), ...enhancers )( createStore ),
-        store = storeCreator ( reducers, initialState );
-
-  if ( Settings.hotServer.enabled && module.hot ) {
-
-    module.hot.accept ( './reducers', () => store.replaceReducer ( require ( './reducers' ) ) );
-
-  }
+        store = storeCreator ( reducers, state );
 
   return store;
 

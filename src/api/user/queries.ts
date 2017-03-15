@@ -14,10 +14,7 @@ import './mongease';
 /* QUERIES */
 
 const getMe = {
-  gql: Builder.query ( 'userGetMe' ),
-  options: {
-    fetchPolicy: 'cache-and-network'
-  }
+  gql: Builder.query ( 'userGetMe' )
 };
 
 /* EXPORT */

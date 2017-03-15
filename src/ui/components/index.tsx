@@ -11,4 +11,3 @@
 export {App} from './app';
 export {Header} from './header';
 export {HTML} from './html';
-export {NavLink, NavIndexLink} from './navigation';

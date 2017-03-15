@@ -108,7 +108,7 @@ const config = {
         CLIENT: JSON.stringify ( true )
       }
     }),
-    new webpack.optimize.OccurrenceOrderPlugin (),
+    new webpack.optimize.OccurrenceOrderPlugin ( true ),
     new webpack.HotModuleReplacementPlugin (),
     new webpack.NoEmitOnErrorsPlugin (),
     // new BundleAnalyzerPlugin ({

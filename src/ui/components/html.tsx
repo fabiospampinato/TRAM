@@ -9,7 +9,6 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {renderToString} from 'react-dom/server';
 import * as Helmet from 'react-helmet';
 import Environment from 'modules/environment';
 import Settings from 'modules/settings';
@@ -31,10 +30,10 @@ class HTML extends React.Component<any, undefined> {
 
   render () {
 
-    const head = Helmet.rewind (),
+    const {content, state} = this.props,
+          head = Helmet.rewind (),
           styles = Environment.isDevelopment ? [] : [this.resolveFile ( 'client.css' )],
-          scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )],
-          content = renderToString ( this.props.children );
+          scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )];
 
     return (
       <html {...head.htmlAttributes.toComponent ()}>
@@ -49,6 +48,7 @@ class HTML extends React.Component<any, undefined> {
         </head>
         <body>
           <main id="app-root" dangerouslySetInnerHTML={{ __html: content }}></main>
+          <script dangerouslySetInnerHTML={{ __html: `window.__REDUX_STATE__ = ${JSON.stringify ( state )}`}} />
           {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}
         </body>
       </html>

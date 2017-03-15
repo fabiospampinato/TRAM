@@ -9,27 +9,22 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {NavLink} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {getMe} from 'api/user';
-import {NavLink, NavIndexLink} from './navigation';
 
 /* HEADER */
 
-const HeaderUser = graphqls ( getMe )( ({ data }) => {
-  const { loading, error, user } = data;
-  if ( loading ) return null;
-  if ( error ) return <div>Error!</div>;
-  if ( !user ) return <HeaderUserUnlogged />;
-  return <HeaderUserLogged user={user} />;
-});
+const HeaderLink = props => <NavLink activeClassName="active" {...props} />;
 
-const HeaderUserUnlogged = () => (
-  <div>
-    <NavLink to="/signup">Sign Up</NavLink>
-    <span>•</span>
-    <NavLink to="/login">Log In</NavLink>
-  </div>
-);
+class LogoutLink extends React.Component<any, any> {
+  reset () {
+    this.props.client.resetStore ();
+  }
+  render () {
+    return <HeaderLink to="/logout" onClick={this.reset.bind ( this )}>Log Out</HeaderLink>
+  }
+}
 
 const HeaderUserLogged = ({ user }) => (
   <div>
@@ -39,22 +34,29 @@ const HeaderUserLogged = ({ user }) => (
   </div>
 );
 
-class LogoutLink extends React.Component<any, any> {
-  reset () {
-    this.props.client.resetStore ();
-  }
-  render () {
-    return <NavLink to="/logout" onClick={this.reset.bind ( this )}>Log Out</NavLink>
-  }
-}
+const HeaderUserUnlogged = () => (
+  <div>
+    <HeaderLink to="/signup">Sign Up</HeaderLink>
+    <span>•</span>
+    <HeaderLink to="/login">Log In</HeaderLink>
+  </div>
+);
+
+const HeaderUser = graphqls ( getMe )( ({ data }) => {
+  const { loading, error, user } = data;
+  if ( loading ) return null;
+  if ( error ) return <div>Error!</div>;
+  if ( !user ) return <HeaderUserUnlogged />;
+  return <HeaderUserLogged user={user} />;
+});
 
 const Header = () => (
   <div className="header">
-    <NavIndexLink to="/">Home</NavIndexLink>
+    <HeaderLink exact to="/">Home</HeaderLink>
     <span>•</span>
-    <NavLink to="/counter">Counter</NavLink>
+    <HeaderLink to="/counter">Counter</HeaderLink>
     <span>•</span>
-    <NavLink to="/todo">Todo</NavLink>
+    <HeaderLink to="/todo">Todo</HeaderLink>
     <div className="spacer"></div>
     <HeaderUser />
   </div>
@@ -62,4 +64,4 @@ const Header = () => (
 
 /* EXPORT */
 
-export {LogoutLink, HeaderUser, HeaderUserUnlogged, HeaderUserLogged, Header};
+export {HeaderLink, LogoutLink, HeaderUser, HeaderUserUnlogged, HeaderUserLogged, Header};

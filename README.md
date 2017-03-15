@@ -28,9 +28,9 @@ TRAM
 │ │ ├── counter           # Counter component
 │ │ ├── todo              # Todo component
 │ │ ├── user              # User component
-│ │ ├── apollo.ts         # ApolloClient instance
+│ │ ├── apollo.ts         # Exports configureApollo
 │ │ ├── components.ts     # Imports all the components
-│ │ ├── index.ts          # Exports Apollo, Components, Mongoose, Mongease and Schema
+│ │ ├── index.ts          # Exports configureApollo, Components, Mongoose, Mongease and Schema
 │ │ ├── mongease.ts       # Mongease instance
 │ │ ├── mongoose.ts       # Mongoose instance
 │ │ └── schema.ts         # Executable GraphQL schema
@@ -46,9 +46,7 @@ TRAM
 │ └─┬ ui                  # UI-related files
 │   ├── components        # React components
 │   ├── pages             # App pages
-│   ├── template          # Extra front-end code/styles to load
-│   ├── renderer.tsx      # Mounts the app into the DOM
-│   └── routes.tsx        # App routes
+│   └── template          # Extra front-end code/styles to load
 ├── types                 # Custom declarations
 ├── typings               # Typings declarations
 ├─┬ webpack               # Webpack configurations

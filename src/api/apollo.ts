@@ -8,16 +8,29 @@
 
 /* IMPORT */
 
+import * as _ from 'lodash';
 import ApolloClient, {createBatchingNetworkInterface} from 'apollo-client';
+import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 
-/* APOLLO */
+/* CONFIGURE */
 
-const Apollo = new ApolloClient ({
-  networkInterface: createBatchingNetworkInterface ( Settings.apollo ),
-  dataIdFromObject: object => object._id
-});
+function configureApollo ( req? ) {
+
+  const networkInterfaceOptions = _.merge ( {}, Settings.apollo.network, {
+    uri: Environment.isClient ? Settings.apollo.network.uri : `${Settings.server.url}${Settings.apollo.network.uri}`,
+    opts: {
+      headers: req ? req.headers : {}
+    }
+  });
+
+  return new ApolloClient ({
+    networkInterface: createBatchingNetworkInterface ( networkInterfaceOptions ),
+    dataIdFromObject: object => object._id
+  });
+
+}
 
 /* EXPORT */
 
-export default Apollo;
+export {configureApollo};

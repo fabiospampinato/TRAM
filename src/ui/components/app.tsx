@@ -10,17 +10,26 @@
 
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
+import {Switch, Route} from 'react-router-dom';
 import Settings from 'modules/settings';
+import {Counter, Login, Home, NotFound, Signup, Todo} from '../pages';
 import {Header} from './header';
 
 /* APP */
 
-const App = ({ children }) => (
+const App = () => (
   <div className="app">
     <Helmet {...Settings.helmet.head} />
     <Header />
-    <div className="content">
-      {children}
+    <div className="app-content">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/counter" component={Counter} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/todo" component={Todo} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   </div>
 );

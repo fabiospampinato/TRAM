@@ -31,7 +31,6 @@ import 'react-dom/server';
 import 'react-helmet';
 import 'react-hot-loader';
 import 'react-proxy';
-import 'react-router';
 import 'react-router-redux';
 import 'redbox-react';
 import 'redux-logger';

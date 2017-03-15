@@ -8,28 +8,28 @@
 
 /* IMPORT */
 
+import 'isomorphic-fetch';
 import * as _ from 'lodash';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as Chalk from 'chalk';
 import * as compression from 'compression';
+import createHistory from 'history/createMemoryHistory';
 import * as express from 'express';
 import * as session from 'express-session';
 import * as ConnectMongo from 'connect-mongo';
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
 import * as path from 'path';
 import * as React from 'react';
+import {ApolloProvider, renderToStringWithData} from 'react-apollo';
 import {renderToString} from 'react-dom/server';
-import {ApolloProvider} from 'react-apollo';
 import {AppContainer} from 'react-hot-loader';
-import {RouterContext, createMemoryHistory, match} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-import {Apollo, Schema} from 'api';
+import {StaticRouter} from 'react-router-dom';
+import {configureApollo, Schema} from 'api';
 import Mongoose from 'api/mongoose';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
-import routes from 'ui/routes';
-import {HTML} from 'ui/components';
+import {App, HTML} from 'ui/components';
 import {configureStore} from '../redux/store';
 
 const manifestClient = require ( '../../dist/meta/manifest.client.json' ); //FIXME: Ugly
@@ -67,7 +67,7 @@ app.use ( passport.session () );
 
 app.use ( Settings.graphql.url, graphqlExpress ( req => ({
   schema: Schema,
-  context: { user: req.user }
+  context: req
 })));
 
 if ( Settings.graphiql.enabled ) {
@@ -88,44 +88,32 @@ app.get ( '/logout', ( req, res ) => {
   res.redirect ( '/' );
 });
 
-app.get ( '*', ( req, res ) => {
+app.get ( '*', async ( req, res ) => {
 
-  const location = req.url,
-        memoryHistory = createMemoryHistory ( req.originalUrl ),
-        store = configureStore ( memoryHistory ),
-        history = syncHistoryWithStore ( memoryHistory, store );
+  //TODO: Implement 500 errors
+  //TODO: Implement 404 status code
 
-  match ( { history, routes, location }, ( err, redirect, props ) => {
+  const history = createHistory (),
+        Apollo = configureApollo ( req ),
+        store = configureStore ( history, Apollo ),
+        context = {};
 
-    if ( err ) {
+  const content = await renderToStringWithData (
+    <AppContainer>
+      <ApolloProvider store={store} client={Apollo}>
+        <StaticRouter location={req.url} context={context}>
+          <App />
+        </StaticRouter>
+      </ApolloProvider>
+    </AppContainer>
+  );
 
-      res.status ( 500 ).send ( err.message );
+  if ( context.url ) return res.redirect ( 301, context.url );
 
-    } else if ( redirect ) {
+  const state = { apollo: Apollo.getInitialState () },
+        html = <HTML manifests={[manifestClient, manifestClientVendor]} content={content} state={state} />;
 
-      res.redirect ( 302, redirect.pathname + redirect.search );
-
-    } else if ( props ) {
-
-      const html = (
-        <HTML manifests={[manifestClient, manifestClientVendor]}>
-          <AppContainer>
-            <ApolloProvider store={store} client={Apollo} key="provider">
-              <RouterContext {...props} />
-            </ApolloProvider>
-          </AppContainer>
-        </HTML>
-      );
-
-      res.status ( 200 ).send ( `<!doctype html>${renderToString ( html )}` );
-
-    } else {
-
-      res.status ( 404 ).send ( 'Not Found!' );
-
-    }
-
-  });
+  res.status ( 200 ).send ( `<!doctype html>${renderToString ( html )}` );
 
 });
 

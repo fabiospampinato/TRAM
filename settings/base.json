@@ -1,10 +1,20 @@
 {
   "apollo": {
-    "uri": "/api/graphql",
-    "batchInterval": 10,
-    "opts": {
-      "credentials": "same-origin"
+    "client": {
+      "queryDeduplication": true,
+      "ssrForceFetchDelay": 100,
+      "ssrMode": true
+    },
+    "network": {
+      "batchInterval": 10,
+      "uri": "/api/graphql",
+      "opts": {
+        "credentials": "same-origin"
+      }
     }
+  },
+  "graphql": {
+    "url": "/api/graphql"
   },
   "passport": {
     "local": {
@@ -20,18 +30,8 @@
     "saveUninitialized": false,
     "store": {
       "ttl": 86400,
-      "touchAfter": 10
+      "touchAfter": 1800
     }
-  },
-  "graphql": {
-    "url": "/api/graphql"
-  },
-  "graphiql": {
-    "enabled": false,
-    "url": "/api/graphiql"
-  },
-  "hotServer": {
-    "enabled": false
   },
   "helmet": {
     "head": {

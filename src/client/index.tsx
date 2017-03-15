@@ -8,27 +8,53 @@
 
 /* IMPORT */
 
-import {browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-import * as Redux from 'redux';
-import Apollo from 'api/apollo';
+import * as React from 'react';
+import {ApolloProvider} from 'react-apollo';
+import {render as renderToDOM} from 'react-dom';
+import {AppContainer} from 'react-hot-loader';
+import {BrowserRouter} from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory'
 import Settings from 'modules/settings';
-import renderer from 'ui/renderer';
-import {configureStore} from '../redux/store';
 
 /* RENDER */
 
-const store: Redux.Store<any> = configureStore ( browserHistory ),
-      history = syncHistoryWithStore ( browserHistory, store );
+function render () {
 
-renderer ( store, Apollo, history );
+  const root = document.getElementById ( 'app-root' );
+
+  if ( !root ) throw new Error ( 'Missing app root' );
+
+  const {configureApollo} = require ( 'api/apollo' ),
+        Settings = require ( 'modules/settings' ).default,
+        {App} = require ( 'ui/components' ),
+        {configureStore} = require ( '../redux/store' );
+
+  const history = createHistory (),
+        Apollo = configureApollo (),
+        store = configureStore ( history, Apollo, window.__REDUX_STATE__ );
+
+  renderToDOM (
+    <AppContainer>
+      <ApolloProvider store={store} client={Apollo}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ApolloProvider>
+    </AppContainer>,
+    root
+  );
+
+}
+
+render ();
 
 /* HOT */
 
 if ( Settings.hotServer.enabled && module.hot ) {
 
-  module.hot.accept ( 'ui/renderer', function () {
-    require ( 'ui/renderer').default ( store, Apollo, history );
-  });
+  module.hot.accept ( 'api/apollo', render );
+  module.hot.accept ( 'modules/settings', render );
+  module.hot.accept ( 'ui/components', render );
+  module.hot.accept ( '../redux/store', render );
 
 }

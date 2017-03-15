@@ -5,18 +5,23 @@
 
 //TODO: Improve it
 
-// Redux DevTools Chrome extension
+/* Redux DevTools Chrome extension */
+
 interface Window {
   devToolsExtension?: () => any;
+  __REDUX_DEVTOOLS_EXTENSION__?: () => any;
+  __REDUX_STATE__: any;
 }
 
-// Hot Module Replacement
+/* Hot Module Replacement */
+
 interface NodeModule {
   hot: {
     accept ( module: string, callback: Function );
   }
 }
 
-// Webpack middlewares
+/* Webpack middlewares */
+
 declare module 'webpack-dev-middleware';
 declare module 'webpack-hot-middleware';
