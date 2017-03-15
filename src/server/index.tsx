@@ -16,6 +16,7 @@ import * as Chalk from 'chalk';
 import * as compression from 'compression';
 import createHistory from 'history/createMemoryHistory';
 import * as express from 'express';
+import * as favicon from 'serve-favicon';
 import * as morgan from 'morgan';
 import * as session from 'express-session';
 import * as ConnectMongo from 'connect-mongo';
@@ -30,6 +31,7 @@ import {configureApollo, Schema} from 'api';
 import Mongoose from 'api/mongoose';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
+import sendMessage from 'modules/send_message';
 import {App, HTML} from 'ui/components';
 import {configureStore} from '../redux/store';
 
@@ -42,6 +44,8 @@ const app = express ();
 
 app.use ( compression () );
 
+app.use ( favicon ( path.join ( __dirname, 'assets/favicon.ico' ) ) );
+
 app.use ( bodyParser.json () );
 
 app.use ( bodyParser.urlencoded ({
@@ -50,9 +54,9 @@ app.use ( bodyParser.urlencoded ({
 
 app.use ( cookieParser () );
 
-app.use ( express.static ( path.join ( __dirname, 'assets' ) ) );
+app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendMessage ( 404, 'Resource not found' ) );
 
-app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ) );
+app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendMessage ( 404, 'Resource not found' ) );
 
 const MongoStore = ConnectMongo ( session );
 

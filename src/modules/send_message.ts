@@ -1,23 +1,17 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Home
+ * TRAM - Modules - Send message
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* IMPORT */
+/* SEND MESSAGE */
 
-import * as React from 'react';
-
-/* HOME */
-
-const Home = () => (
-  <div className="home">
-    <img src="/assets/images/logo.png" className="logo" />
-  </div>
-);
+function sendMessage ( code = 500, message = 'Error!' ) { //TODO: Publish it
+  return ( req, res ) => res.status ( code ).send ( message );
+}
 
 /* EXPORT */
 
-export {Home};
+export default sendMessage;
