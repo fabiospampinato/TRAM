@@ -8,6 +8,7 @@
 
 /* IMPORT */
 
+import 'apollo-local-query';
 import 'chalk';
 import 'history';
 import 'react';
