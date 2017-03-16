@@ -10,7 +10,6 @@
 
 import * as _ from 'lodash';
 import ApolloClient, {createBatchingNetworkInterface} from 'apollo-client';
-import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 
 /* CONFIGURE */
@@ -18,7 +17,7 @@ import Settings from 'modules/settings';
 function configureApollo ( req? ) {
 
   const networkInterfaceOptions = _.merge ( {}, Settings.apollo.network, {
-    uri: Environment.isClient ? Settings.apollo.network.uri : `${Settings.server.url}${Settings.apollo.network.uri}`,
+    uri: CLIENT ? Settings.apollo.network.uri : `${Settings.server.url}${Settings.apollo.network.uri}`,
     opts: {
       headers: req ? req.headers : {}
     }

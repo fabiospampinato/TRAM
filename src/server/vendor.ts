@@ -8,6 +8,8 @@
 
 /* IMPORT */
 
+import 'chalk';
+import 'history';
 import 'react';
 import 'react-dom';
 import 'react-dom/server';

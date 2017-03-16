@@ -14,6 +14,12 @@ import * as webpack from 'webpack';
 // import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import {CheckerPlugin} from 'awesome-typescript-loader';
 
+/* ENVIRONEMNT */
+
+const ENVIRONMENT = process.env.NODE_ENV || 'development',
+      DEVELOPMENT = ENVIRONMENT === 'development',
+      PRODUCTION = !DEVELOPMENT;
+
 /* EXTERNALS */
 
 const externals = {};
@@ -67,6 +73,14 @@ const config = {
       name: path.resolve ( 'dist/server.vendor.js' ),
       manifest: require ( '../../dist/meta/server.vendor.json' ),
       sourceType: 'commonjs2'
+    }),
+    new webpack.DefinePlugin ({
+      'ENVIRONMENT': JSON.stringify ( ENVIRONMENT ),
+      'DEVELOPMENT': JSON.stringify ( DEVELOPMENT ),
+      'PRODUCTION': JSON.stringify ( PRODUCTION ),
+      'CLIENT': JSON.stringify ( false ),
+      'SERVER': JSON.stringify ( true ),
+      'process.env.NODE_ENV': JSON.stringify ( ENVIRONMENT )
     }),
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,

@@ -10,7 +10,6 @@
 
 import * as React from 'react';
 import * as Helmet from 'react-helmet';
-import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 import 'ui/template';
 
@@ -32,7 +31,7 @@ class HTML extends React.Component<any, undefined> {
 
     const {content, state} = this.props,
           head = Helmet.rewind (),
-          styles = Environment.isDevelopment ? [] : [this.resolveFile ( 'client.css' )],
+          styles = DEVELOPMENT ? [] : [this.resolveFile ( 'client.css' )],
           scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )];
 
     return (

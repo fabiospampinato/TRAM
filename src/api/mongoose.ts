@@ -8,20 +8,17 @@
 
 /* IMPORT */
 
-import * as Chalk from 'chalk';
 import * as Mongoose from 'mongoose';
-import * as timestamp from 'mongoose-timestamp';
-import {findAnyoneOrCreatePlugin, findOneOrCreatePlugin} from 'api/plugins';
 import Settings from 'modules/settings';
-import Environment from 'modules/environment';
 
 /* MONGOOSE */
 
 Mongoose.Promise = global.Promise;
 
-if ( Environment.isServer ) {
+if ( SERVER ) {
 
-  const {url, options} = Settings.mongodb;
+  const Chalk = require ( 'chalk' ),
+        {url, options} = Settings.mongodb;
 
   Mongoose.connect ( url , options, err => {
 
@@ -35,7 +32,10 @@ if ( Environment.isServer ) {
 
 /* PLUGINS */
 
-if ( Environment.isServer ) {
+if ( SERVER ) {
+
+  const timestamp = require ( 'mongoose-timestamp' ),
+        {findAnyoneOrCreatePlugin, findOneOrCreatePlugin} = require ( 'api/plugins' );
 
   Mongoose.plugin ( timestamp );
   Mongoose.plugin ( findAnyoneOrCreatePlugin );

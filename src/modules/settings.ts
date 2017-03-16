@@ -11,7 +11,6 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
-import Environment from './environment';
 
 /* SETTINGS */
 
@@ -35,4 +34,4 @@ function getSettings ( name ) {
 
 /* EXPORT */
 
-export default getSettings ( Environment.current );
+export default getSettings ( process.env.NODE_ENV || 'development' );

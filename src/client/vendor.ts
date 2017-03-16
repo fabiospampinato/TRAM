@@ -10,19 +10,18 @@
 
 import 'ansi-html';
 import 'apollo-client';
-import 'chalk';
-import 'error-stack-parser';
 import 'graphql';
 import 'graphql-tag';
 import 'graphql-tools'
+import 'history';
 import 'html-entities';
 import 'lodash';
-import 'mongoose';
-import 'mongoose-to-graphql';
-import 'mongoose-timestamp';
 import 'mongease';
 import 'mongease-graphql';
 import 'mongease-graphql-builder';
+import 'mongoose';
+import 'mongoose-to-graphql';
+import 'pify';
 import 'querystring-es3';
 import 'react';
 import 'react-apollo';
@@ -31,6 +30,7 @@ import 'react-dom/server';
 import 'react-helmet';
 import 'react-hot-loader';
 import 'react-proxy';
+import 'react-router-dom';
 import 'react-router-redux';
 import 'redbox-react';
 import 'redux-logger';

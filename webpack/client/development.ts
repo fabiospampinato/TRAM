@@ -102,11 +102,13 @@ const config = {
       sourceType: 'var'
     }),
     new webpack.DefinePlugin ({
+      'ENVIRONMENT': JSON.stringify ( 'development' ),
+      'DEVELOPMENT': JSON.stringify ( true ),
+      'PRODUCTION': JSON.stringify ( false ),
+      'CLIENT': JSON.stringify ( true ),
+      'SERVER': JSON.stringify ( false ),
       'typeof window': JSON.stringify ( 'object' ),
-      'process.env': {
-        NODE_ENV: JSON.stringify ( 'development' ),
-        CLIENT: JSON.stringify ( true )
-      }
+      'process.env.NODE_ENV': JSON.stringify ( 'development' )
     }),
     new webpack.optimize.OccurrenceOrderPlugin ( true ),
     new webpack.HotModuleReplacementPlugin (),

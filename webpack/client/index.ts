@@ -6,13 +6,10 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* IMPORT */
-
-import Environment from '../../src/modules/environment';
-
 /* CONFIG */
 
-const config = require ( `./${Environment.current}` );
+const ENVIRONMENT = process.env.NODE_ENV || 'development',
+      config = require ( `./${ENVIRONMENT}` );
 
 /* EXPORT */
 

@@ -10,14 +10,13 @@
 
 import * as pify from 'pify';
 import Mongease from 'api/mongease';
-import Environment from 'modules/environment';
 import Settings from 'modules/settings';
 
 /* MONGEASE */
 
 let plugins: any[] = [];
 
-if ( Environment.isServer ) {
+if ( SERVER ) {
 
   const passportLocalMongoose = require ( 'passport-local-mongoose' );
 

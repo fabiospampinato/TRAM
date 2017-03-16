@@ -109,11 +109,13 @@ const config = {
       allChunks: true
     }),
     new webpack.DefinePlugin ({
+      'ENVIRONMENT': JSON.stringify ( 'production' ),
+      'DEVELOPMENT': JSON.stringify ( false ),
+      'PRODUCTION': JSON.stringify ( true ),
+      'CLIENT': JSON.stringify ( true ),
+      'SERVER': JSON.stringify ( false ),
       'typeof window': JSON.stringify ( 'object' ),
-      'process.env': {
-        NODE_ENV: JSON.stringify ( 'production' ),
-        CLIENT: JSON.stringify ( true )
-      }
+      'process.env.NODE_ENV': JSON.stringify ( 'production' )
     }),
     // new BundleAnalyzerPlugin ({
     //   generateStatsFile: true,

@@ -9,10 +9,7 @@
 /* IMPORT */
 
 import {createStore, applyMiddleware, compose} from 'redux';
-import * as createLogger from 'redux-logger';
 import {routerMiddleware} from 'react-router-redux';
-import Environment from 'modules/environment';
-import Settings from 'modules/settings';
 import {configureReducers} from './reducers';
 
 /* CONFIGURE */
@@ -26,7 +23,9 @@ function configureStore ( history, Apollo, state? ) {
           Apollo.middleware ()
         ];
 
-  if ( Environment.isDevelopment && Environment.isClient ) {
+  if ( CLIENT && DEVELOPMENT ) {
+
+    const createLogger = require ( 'redux-logger' );
 
     middlewares.push ( createLogger () );
 

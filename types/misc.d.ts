@@ -25,3 +25,11 @@ interface NodeModule {
 
 declare module 'webpack-dev-middleware';
 declare module 'webpack-hot-middleware';
+
+/* ENVIRONMENT */
+
+declare const ENVIRONMENT: string;
+declare const DEVELOPMENT: boolean;
+declare const PRODUCTION: boolean;
+declare const CLIENT: boolean;
+declare const SERVER: boolean;
