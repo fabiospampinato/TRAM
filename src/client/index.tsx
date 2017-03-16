@@ -11,7 +11,6 @@
 import * as React from 'react';
 import {ApolloProvider} from 'react-apollo';
 import {render as renderToDOM} from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
 import {BrowserRouter} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory'
 import Settings from 'modules/settings';
@@ -24,8 +23,9 @@ function render () {
 
   if ( !root ) throw new Error ( 'Missing app root' );
 
+  require ( 'modules/settings' );
+
   const {configureApollo} = require ( 'api/apollo' ),
-        Settings = require ( 'modules/settings' ).default,
         {App} = require ( 'ui/components' ),
         {configureStore} = require ( '../redux/store' );
 
@@ -33,16 +33,27 @@ function render () {
         Apollo = configureApollo (),
         store = configureStore ( history, Apollo, window.__REDUX_STATE__ );
 
-  renderToDOM (
-    <AppContainer>
-      <ApolloProvider store={store} client={Apollo}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ApolloProvider>
-    </AppContainer>,
-    root
+  let app = (
+    <ApolloProvider store={store} client={Apollo}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProvider>
   );
+
+  if ( DEVELOPMENT ) {
+
+    const {AppContainer} = require ( 'react-hot-loader' );
+
+    app = (
+      <AppContainer>
+        {app}
+      </AppContainer>
+    );
+
+  }
+
+  renderToDOM ( app, root );
 
 }
 

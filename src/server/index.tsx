@@ -25,7 +25,6 @@ import * as path from 'path';
 import * as React from 'react';
 import {ApolloProvider, renderToStringWithData} from 'react-apollo';
 import {renderToString} from 'react-dom/server';
-import {AppContainer} from 'react-hot-loader';
 import {StaticRouter} from 'react-router-dom';
 import {configureApollo, Schema} from 'api';
 import Mongoose from 'api/mongoose';
@@ -109,15 +108,27 @@ app.get ( '*', async ( req, res ) => {
         store = configureStore ( history, Apollo ),
         context = {};
 
-  const content = await renderToStringWithData (
-    <AppContainer>
-      <ApolloProvider store={store} client={Apollo}>
-        <StaticRouter location={req.url} context={context}>
-          <App />
-        </StaticRouter>
-      </ApolloProvider>
-    </AppContainer>
+  let app = (
+    <ApolloProvider store={store} client={Apollo}>
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    </ApolloProvider>
   );
+
+  if ( DEVELOPMENT ) {
+
+    const {AppContainer} = require ( 'react-hot-loader' );
+
+    app = (
+      <AppContainer>
+        {app}
+      </AppContainer>
+    );
+
+  }
+
+  const content = await renderToStringWithData ( app );
 
   if ( context.url ) return res.redirect ( 301, context.url );
 
