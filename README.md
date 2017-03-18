@@ -50,8 +50,9 @@ TRAM
 ├── types                 # Custom declarations
 ├── typings               # Typings declarations
 ├─┬ webpack               # Webpack configurations
-│ ├── client              # Client-related configurations
-│ ├── server              # Server-related configurations
+│ ├── base                # Base configurations
+│ ├── client              # Client configurations
+│ ├── server              # Server configurations
 │ └── test.js             # Tests configuration
 ├── .babelrc              # Babel configuration (may be enabled in Awesome Typescript Loader)
 ├── .gitignore            # Tells git which files to ignore

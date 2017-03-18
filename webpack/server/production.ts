@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - Webpack - Client - Production
+ * TRAM - Webpack - Server - Production
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -10,11 +10,7 @@
 
 const config = {
   entry: {
-    client: ['./src/client/index.tsx']
-  },
-  output: {
-    publicPath: '/public/',
-    filename: '[name].[chunkhash].js'
+    server: ['./src/server/index.tsx']
   }
 };
 

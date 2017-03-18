@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - Webpack - Client - Development
+ * TRAM - Webpack - Base - Developmnet
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -9,29 +9,36 @@
 /* IMPORT */
 
 import * as webpack from 'webpack';
-import Settings from '../../src/modules/settings';
 
 /* CONFIG */
 
 const config = {
-  entry: {
-    client: [
-      'react-hot-loader/patch',
-      `webpack-hot-middleware/client?path=${Settings.hotServer.url}/__webpack_hmr`,
-      './src/client/index.tsx'
-    ]
-  },
+  devtool: 'inline-source-map',
   output: {
-    publicPath: `${Settings.hotServer.url}/public/`
+    pathinfo: true
   },
   module: {
     rules: [{
+      enforce: 'pre',
+      test: /\.jsx?$/,
+      use: 'source-map-loader'
+    }, {
+      enforce: 'pre',
       test: /\.tsx?$/,
-      use: ['react-hot-loader/webpack', 'awesome-typescript-loader']
+      use: 'source-map-loader'
+    }, {
+      test: /\.scss$/,
+      use: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
+    }, {
+      test: /\.css$/,
+      use: ['isomorphic-style-loader', 'css-loader']
     }]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin ()
+    new webpack.LoaderOptionsPlugin ({
+      debug: true,
+      minimize: false
+    })
   ]
 };
 

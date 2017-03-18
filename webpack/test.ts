@@ -11,7 +11,8 @@
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
-import {CheckerPlugin} from 'awesome-typescript-loader';
+import * as merge from 'webpack-merge';
+import * as baseConfig from './base';
 
 /* EXTERNALS */
 
@@ -33,50 +34,20 @@ files.forEach ( file => entry[file.replace ( 'src/', '' )] = `./${file}` );
 const config = {
   entry,
   externals,
-  resolve: {
-    extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
-    modules: [
-      path.resolve ( 'src' ),
-      'node_modules'
-    ]
-  },
   output: {
     path: path.resolve ( 'dist/tests' ),
-    filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
   module: {
-    loaders: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader'
-    }, {
+    rules: [{
       test: /\.json$/,
-      loader: 'json-strip-loader'
-    }, {
-      test: /\.scss$/,
-      loaders: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
-    }, {
-      test: /\.css$/,
-      loaders: ['isomorphic-style-loader', 'css-loader']
-    }, {
-      test: /\.(jpe?g|png|gif)$/i,
-      loader: 'url?limit=1000&name=images/[hash].[ext]'
+      include: path.resolve ( 'settings' ),
+      use: 'json-strip-loader'
     }]
   },
-  plugins: [
-    new CheckerPlugin ()
-  ],
-  target: 'node',
-  node: {
-    console: false,
-    global: false,
-    process: false,
-    Buffer: false,
-    __filename: false,
-    __dirname: false
-  }
+  target: 'node'
 };
 
 /* EXPORT */
 
-export default config;
+export default merge ( baseConfig, config );

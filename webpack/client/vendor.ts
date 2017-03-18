@@ -6,17 +6,15 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+process.env.CLIENT = true; //FIXME: A bit too hacky
+
 /* IMPORT */
 
-import * as _ from 'lodash';
 import * as path from 'path';
 import * as webpack from 'webpack';
-// import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import * as merge from 'webpack-merge';
 import * as ManifestPlugin from 'webpack-manifest-plugin';
-
-/* ALIAS */
-
-const alias = _.fromPairs ( Object.keys ( _ ).map ( key => [`lodash.${key}`, `lodash/${key}`] ) );
+import baseConfig from '../base';
 
 /* CONFIG */
 
@@ -24,18 +22,10 @@ const config = {
   entry: {
     'client.vendor': ['./src/client/vendor.ts']
   },
-  resolve: {
-    alias,
-    modules: [
-      path.resolve ( 'src' ),
-      'node_modules'
-    ]
-  },
   output: {
     path: path.resolve ( 'dist/public' ),
     filename: 'client.vendor.[chunkhash].js',
-    library: 'vendor',
-    libraryTarget: 'var'
+    library: 'vendor'
   },
   plugins: [
     new webpack.DllPlugin ({
@@ -46,18 +36,10 @@ const config = {
     new ManifestPlugin ({
       fileName: '../meta/manifest.client.vendor.json',
       publicPath: '/public/'
-    }),
-    new webpack.DefinePlugin ({
-      'typeof window': JSON.stringify ( 'object' )
-    }),
-    // new BundleAnalyzerPlugin ({
-    //   generateStatsFile: true,
-    //   openAnalyzer: false,
-    //   statsFilename: '../dist/meta/stats.json'
-    // })
+    })
   ]
 };
 
 /* EXPORT */
 
-export default config;
+export default merge ( baseConfig, config );

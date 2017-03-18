@@ -11,14 +11,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as webpack from 'webpack';
-// import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
-import {CheckerPlugin} from 'awesome-typescript-loader';
+import * as merge from 'webpack-merge';
+import baseConfig from '../base';
 
-/* ENVIRONEMNT */
+/* ENVIRONMENT */
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development',
-      DEVELOPMENT = ENVIRONMENT === 'development',
-      PRODUCTION = !DEVELOPMENT;
+const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 /* EXTERNALS */
 
@@ -30,63 +28,28 @@ fs.readdirSync ( 'node_modules' )
 
 /* CONFIG */
 
+const envConfig = require ( `./${ENVIRONMENT}` ).default;
+
 const config = {
-  entry: {
-    server: ['./src/server/index.tsx'],
-    'server.hot': ['./src/server/hot.ts']
-  },
   externals,
-  resolve: {
-    extensions: ['.json', '.js', '.jsx', '.ts', '.tsx'],
-    modules: [
-      path.resolve ( 'src' ),
-      'node_modules'
-    ]
-  },
   output: {
     path: path.resolve ( 'dist' ),
-    filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
   module: {
-    loaders: [{
-      test: /\.tsx?$/,
-      loader: 'awesome-typescript-loader'
-    }, {
+    rules: [{
       test: /\.json$/,
-      loader: 'json-strip-loader'
-    }, {
-      test: /\.scss$/,
-      loaders: ['isomorphic-style-loader', 'css-loader', 'sass-loader']
-    }, {
-      test: /\.css$/,
-      loaders: ['isomorphic-style-loader', 'css-loader']
-    }, {
-      test: /\.(jpe?g|png|gif)$/i,
-      loader: 'url?limit=1000&name=images/[hash].[ext]'
+      include: path.resolve ( 'settings' ),
+      use: 'json-strip-loader'
     }]
   },
   plugins: [
-    new CheckerPlugin (),
     new webpack.DllReferencePlugin ({
       context: __dirname,
       name: path.resolve ( 'dist/server.vendor.js' ),
       manifest: require ( '../../dist/meta/server.vendor.json' ),
       sourceType: 'commonjs2'
-    }),
-    new webpack.DefinePlugin ({
-      'ENVIRONMENT': JSON.stringify ( ENVIRONMENT ),
-      'DEVELOPMENT': JSON.stringify ( DEVELOPMENT ),
-      'PRODUCTION': JSON.stringify ( PRODUCTION ),
-      'CLIENT': JSON.stringify ( false ),
-      'SERVER': JSON.stringify ( true ),
-      'process.env.NODE_ENV': JSON.stringify ( ENVIRONMENT )
-    }),
-    // new BundleAnalyzerPlugin ({
-    //   generateStatsFile: true,
-    //   openAnalyzer: false,
-    //   statsFilename: '../dist/meta/stats.json'
-    // })
+    })
   ],
   target: 'node',
   node: {
@@ -101,4 +64,4 @@ const config = {
 
 /* EXPORT */
 
-export default config;
+export default merge ( baseConfig, config, envConfig );
