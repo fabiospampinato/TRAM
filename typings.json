@@ -24,6 +24,7 @@
     "chalk": "registry:npm/chalk#1.1.1+20160812215109",
     "express": "registry:npm/express#4.14.0+20160925001530",
     "glob": "registry:npm/glob#6.0.0+20160723033700",
+    "lodash": "registry:dt/lodash#4.14.0+20170310062003",
     "mongodb": "registry:npm/mongodb#2.1.0+20170211100415",
     "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
     "passport": "registry:npm/passport#0.3.0+20161028163825",
