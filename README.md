@@ -35,13 +35,15 @@ TRAM
 │ │ ├── mongoose.ts       # Mongoose instance
 │ │ └── schema.ts         # Executable GraphQL schema
 │ ├─┬ client              # Client-related files
-│ │ ├── index.tsx         # Client entry point
+│ │ ├── index.ts          # Client entry point
+│ │ ├── render.tsx        # Client's render function
 │ │ └── vendor.ts         # Client's vendor entry point
 │ ├── modules             # Where to place modules
 │ ├── redux               # Redux-related files
 │ ├─┬ server              # Server-related files
 │ │ ├── hot.ts            # Hot Module Replacement server entry point
-│ │ ├── index.tsx         # Server entry point
+│ │ ├── index.ts          # Server entry point
+│ │ ├── render.tsx        # Server's render function
 │ │ └── vendor.ts         # Server's vendor entry point
 │ └─┬ ui                  # UI-related files
 │   ├── components        # React components

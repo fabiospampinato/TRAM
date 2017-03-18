@@ -10,7 +10,7 @@
 
 const config = {
   entry: {
-    server: ['./src/server/index.tsx']
+    server: ['./src/server/index.ts']
   }
 };
 

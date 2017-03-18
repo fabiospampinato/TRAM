@@ -18,7 +18,7 @@ const config = {
     client: [
       'react-hot-loader/patch',
       `webpack-hot-middleware/client?path=${Settings.hotServer.url}/__webpack_hmr`,
-      './src/client/index.tsx'
+      './src/client/index.ts'
     ]
   },
   output: {
@@ -31,7 +31,8 @@ const config = {
     }]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin ()
+    new webpack.HotModuleReplacementPlugin (),
+    new webpack.NamedModulesPlugin ()
   ]
 };
 

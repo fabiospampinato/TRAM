@@ -14,28 +14,18 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as Chalk from 'chalk';
 import * as compression from 'compression';
-import createHistory from 'history/createMemoryHistory';
 import * as express from 'express';
 import * as favicon from 'serve-favicon';
 import * as morgan from 'morgan';
 import * as session from 'express-session';
 import * as ConnectMongo from 'connect-mongo';
-import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
 import * as path from 'path';
-import * as React from 'react';
-import {ApolloProvider, renderToStringWithData} from 'react-apollo';
-import {renderToString} from 'react-dom/server';
-import {StaticRouter} from 'react-router-dom';
-import {configureApollo, Schema} from 'api';
-import Mongoose from 'api/mongoose';
+import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
+import {Mongoose, Schema} from 'api';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
 import sendMessage from 'modules/send_message';
-import {App, HTML} from 'ui/components';
-import {configureStore} from '../redux/store';
-
-const manifestClient = require ( '../../dist/meta/manifest.client.json' ); //FIXME: Ugly
-const manifestClientVendor = require ( '../../dist/meta/manifest.client.vendor.json' ); //FIXME: Ugly
+import render from './render';
 
 /* APP */
 
@@ -45,6 +35,10 @@ app.use ( compression () );
 
 app.use ( favicon ( path.join ( __dirname, 'assets/favicon.ico' ) ) );
 
+app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendMessage ( 404, 'Resource not found' ) );
+
+app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendMessage ( 404, 'Resource not found' ) );
+
 app.use ( bodyParser.json () );
 
 app.use ( bodyParser.urlencoded ({
@@ -52,10 +46,6 @@ app.use ( bodyParser.urlencoded ({
 }));
 
 app.use ( cookieParser () );
-
-app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendMessage ( 404, 'Resource not found' ) );
-
-app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendMessage ( 404, 'Resource not found' ) );
 
 const MongoStore = ConnectMongo ( session );
 
@@ -100,44 +90,33 @@ app.get ( '/logout', ( req, res ) => {
 
 app.get ( '*', async ( req, res ) => {
 
-  //TODO: Implement 500 errors
-  //TODO: Implement 404 status code
+  let context = {},
+      html;
 
-  const history = createHistory (),
-        Apollo = configureApollo ( req ),
-        store = configureStore ( history, Apollo ),
-        context = {};
+  try {
 
-  let app = (
-    <ApolloProvider store={store} client={Apollo}>
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
-    </ApolloProvider>
-  );
+    html = await render ( req, context );
 
-  if ( DEVELOPMENT ) {
+  } catch ( error ) {
 
-    const {AppContainer} = require ( 'react-hot-loader' );
+    try {
 
-    app = (
-      <AppContainer>
-        {app}
-      </AppContainer>
-    );
+      req.url = '/error';
+      context.error = error;
+
+      html = await render ( req, context );
+
+    } catch ( error ) {
+
+      return res.status ( 500 ).send ( DEVELOPMENT ? error.stack : 'Internal Server Error' );
+
+    }
 
   }
 
-  const content = await renderToStringWithData ( app );
-
   if ( context.url ) return res.redirect ( context.status || 301, context.url );
 
-  const state = { apollo: Apollo.getInitialState () },
-        html = <HTML manifests={[manifestClient, manifestClientVendor]} content={content} state={state} />;
-
-  res.status ( context.status || 200 ).send ( `<!doctype html>${renderToString ( html )}` );
-
-});
+  res.status ( context.status || 200 ).send ( html );
 
 });
 

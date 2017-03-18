@@ -1,20 +1,24 @@
 
 /* ================================================================================
- * TRAM - Webpack - Server - Development
+ * TRAM - Client
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* CONFIG */
+/* IMPORT */
 
-const config = {
-  entry: {
-    server: ['./src/server/index.ts'],
-    'server.hot': ['./src/server/hot.ts']
-  }
-};
+import Settings from 'modules/settings';
+import render from './render';
 
-/* EXPORT */
+/* APP */
 
-export default config;
+render ();
+
+/* HOT */
+
+if ( Settings.hotServer.enabled && module.hot ) {
+
+  module.hot.accept ( './render', () => require ( './render' ).default () );
+
+}

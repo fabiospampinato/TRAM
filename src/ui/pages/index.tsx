@@ -9,6 +9,7 @@
 /* EXPORT */
 
 export {Counter} from './counter';
+export {Error} from './error';
 export {Home} from './home';
 export {Login} from './login';
 export {NotFound} from './not_found';

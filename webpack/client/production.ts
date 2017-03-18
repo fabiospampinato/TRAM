@@ -10,7 +10,7 @@
 
 const config = {
   entry: {
-    client: ['./src/client/index.tsx']
+    client: ['./src/client/index.ts']
   },
   output: {
     publicPath: '/public/',
