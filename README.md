@@ -46,7 +46,8 @@ TRAM
 │ └─┬ ui                  # UI-related files
 │   ├── components        # React components
 │   ├── pages             # App pages
-│   └── template          # Extra front-end code/styles to load
+│   ├── template          # Extra front-end code/styles to load
+│   └── styles.ts         # Exports all the loaded styles
 ├── types                 # Custom declarations
 ├── typings               # Typings declarations
 ├─┬ webpack               # Webpack configurations

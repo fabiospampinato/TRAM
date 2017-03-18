@@ -31,8 +31,27 @@ class HTML extends React.Component<any, undefined> {
 
     const {content, state} = this.props,
           head = Helmet.rewind (),
-          styles = DEVELOPMENT ? [] : [this.resolveFile ( 'client.css' )],
+          stylesheet = null,
+          stylesheets = DEVELOPMENT ? [] : [this.resolveFile ( 'client.css' )],
           scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )];
+
+    if ( DEVELOPMENT ) {
+
+      const styles = require ( 'ui/styles' ).default;
+
+      if ( CLIENT ) {
+
+        styles.forEach ( style => style._insertCss () );
+
+      } else {
+
+        const css = styles.map ( style => style._getCss () ).join ( '' );
+
+        stylesheet = <style>{css}</style>;
+
+      }
+
+    }
 
     return (
       <html {...head.htmlAttributes.toComponent ()}>
@@ -43,7 +62,8 @@ class HTML extends React.Component<any, undefined> {
           {head.link.toComponent ()}
           {head.script.toComponent ()}
           {head.noscript.toComponent ()}
-          {styles.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
+          {stylesheet}
+          {stylesheets.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
         </head>
         <body>
           <main id="app-root" dangerouslySetInnerHTML={{ __html: content }}></main>
