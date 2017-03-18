@@ -1,0 +1,11 @@
+{
+  "uid": "TRAM",
+  "append": true,
+  "debug": false,
+  "logFile": "forever.log",
+  "errFile": ".forever/error.log",
+  "outFile": ".forever/output.log",
+  "path": ".forever",
+  "script": "dist/server.js",
+  "watch": false
+}

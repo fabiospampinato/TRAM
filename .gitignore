@@ -40,5 +40,6 @@ dist
 coverage
 typings
 .awcache
+.forever
 .mongodb
 .nyc_output

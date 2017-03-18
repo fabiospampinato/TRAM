@@ -58,6 +58,7 @@ TRAM
 ├── .babelrc              # Babel configuration (may be enabled in Awesome Typescript Loader)
 ├── .gitignore            # Tells git which files to ignore
 ├── .todo                 # List of things to do
+├── forever.json          # Forever configuration
 ├── LICENSE               # Contains the license
 ├── package.json          # NPM package.json
 ├── README.md             # This file
@@ -85,12 +86,21 @@ $ typings install
 
 ## Start
 
+Development mode:
+
 ```bash
-npm run build:vendor # Required only before the first start
+npm run start:db # Only needed if connecting to a local MongoDB
+npm run build:vendor # Only needed before the first start, or if vendor dependencies change
 npm run start
 ```
 
-//TODO: Production build
+Production mode:
+
+```bash
+npm run start:db:prod # Only needed if connecting to a local MongoDB
+npm run build:all:prod # Only needed before the first start
+npm run start:server:prod
+```
 
 ## Related
 
