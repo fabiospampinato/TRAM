@@ -130,12 +130,14 @@ app.get ( '*', async ( req, res ) => {
 
   const content = await renderToStringWithData ( app );
 
-  if ( context.url ) return res.redirect ( 301, context.url );
+  if ( context.url ) return res.redirect ( context.status || 301, context.url );
 
   const state = { apollo: Apollo.getInitialState () },
         html = <HTML manifests={[manifestClient, manifestClientVendor]} content={content} state={state} />;
 
-  res.status ( 200 ).send ( `<!doctype html>${renderToString ( html )}` );
+  res.status ( context.status || 200 ).send ( `<!doctype html>${renderToString ( html )}` );
+
+});
 
 });
 

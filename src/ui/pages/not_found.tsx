@@ -9,13 +9,14 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {Status} from 'ui/components';
 
 /* NOT FOUND */
 
-//TODO: Print the not found url
-
-const NotFound = () => (
-  <div>Error 404 - Page not found!</div>
+const NotFound = ({ location }) => (
+  <Status code={404}>
+    <div>Error 404 - <em>{location.pathname}</em> not found</div>
+  </Status>
 );
 
 /* EXPORT */
