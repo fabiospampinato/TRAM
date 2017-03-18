@@ -65,16 +65,20 @@ if ( Settings.morgan.enabled ) {
 
 }
 
-app.use ( Settings.graphql.url, graphqlExpress ( req => ({
-  schema: Schema,
-  context: req
-})));
+if ( Settings.graphql.local ) {
 
-if ( Settings.graphiql.enabled ) {
+  app.use ( Settings.graphql.url, graphqlExpress ( req => ({
+    schema: Schema,
+    context: req
+  })));
 
-  app.use ( Settings.graphiql.url, graphiqlExpress ({
-    endpointURL: Settings.graphql.url
-  }));
+  if ( Settings.graphiql.enabled ) {
+
+    app.use ( Settings.graphiql.url, graphiqlExpress ({
+      endpointURL: Settings.graphql.url
+    }));
+
+  }
 
 }
 

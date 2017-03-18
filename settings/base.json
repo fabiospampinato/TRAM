@@ -7,13 +7,13 @@
     },
     "network": {
       "batchInterval": 10,
-      "uri": "/api/graphql",
       "opts": {
         "credentials": "same-origin"
       }
     }
   },
   "graphql": {
+    "local": true,
     "url": "/api/graphql"
   },
   "passport": {

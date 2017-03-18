@@ -18,11 +18,11 @@ function configureApollo ( req? ) {
 
   let networkInterface;
 
-  if ( CLIENT ) {
+  if ( CLIENT || !Settings.graphql.local ) {
 
     const {createBatchingNetworkInterface} = require ( 'apollo-client' ),
           options = _.merge ( {}, Settings.apollo.network, {
-            uri: CLIENT ? Settings.apollo.network.uri : `${Settings.server.url}${Settings.apollo.network.uri}`,
+            uri: Settings.graphql.url,
             opts: {
               headers: req ? req.headers : {}
             }
