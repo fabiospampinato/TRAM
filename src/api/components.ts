@@ -6,10 +6,12 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+/* IMPORT */
+
+import * as Counter from './counter';
+import * as Todo from './todo';
+import * as User from './user';
+
 /* EXPORT */
 
-import './counter';
-import './todo';
-import './user';
-
-//TODO: Export an array of components, maybe
+export {Counter, Todo, User};
