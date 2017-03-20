@@ -12,6 +12,7 @@ import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 import {getByUsername} from 'api/user';
 import graphqls from 'modules/graphqls'
+import {DataWaiter} from 'ui/components';
 
 /* PROFILE */
 
@@ -19,13 +20,13 @@ const Profile = ({ match }) => {
   return <ProfileActual username={match.params.username} />;
 };
 
-const ProfileActual = graphqls ( getByUsername )( ({ data }) => {
-  const { loading, error, user } = data;
-  if ( loading ) return null;
-  if ( error ) return <div>Error!</div>;
-  if ( !user ) return <Redirect to="/" />;
-  return <div>This is <em>{user.username}</em>'s profile!</div>;
-});
+const ProfileActual = graphqls ( getByUsername )(
+  ({ data }) => (
+    <DataWaiter data={data}>
+      { data.user ? <div>This is <em>{data.user.username}</em>'s profile!</div> : <Redirect to="/" /> }
+    </DataWaiter>
+  )
+);
 
 /* EXPORT */
 

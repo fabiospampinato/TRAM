@@ -1,17 +1,19 @@
 
 /* ================================================================================
- * TRAM - UI - Components
+ * TRAM - UI - Components - Error
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+/* IMPORT */
+
+import * as React from 'react';
+
+/* ERROR */
+
+const Error = () => <div>Error!</div>;
+
 /* EXPORT */
 
-export {App} from './app';
-export {DataWaiter} from './data_waiter';
-export {Error} from './error';
-export {Header} from './header';
-export {Loading} from './loading';
-export {HTML} from './html';
-export {Status} from './status';
+export {Error};

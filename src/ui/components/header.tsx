@@ -12,6 +12,7 @@ import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {getMe} from 'api/user';
+import {DataWaiter} from 'ui/components';
 
 /* HEADER */
 
@@ -42,13 +43,13 @@ const HeaderUserUnlogged = () => (
   </div>
 );
 
-const HeaderUser = graphqls ( getMe )( ({ data }) => {
-  const { loading, error, user } = data;
-  if ( loading ) return null;
-  if ( error ) return <div>Error!</div>;
-  if ( !user ) return <HeaderUserUnlogged />;
-  return <HeaderUserLogged user={user} />;
-});
+const HeaderUser = graphqls ( getMe )(
+  ({ data }) => (
+    <DataWaiter data={data} loading={null}>
+      { data.user ? <HeaderUserLogged user={data.user} /> : <HeaderUserUnlogged /> }
+    </DataWaiter>
+  )
+);
 
 const Header = () => (
   <div className="header">

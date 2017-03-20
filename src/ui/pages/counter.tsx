@@ -12,36 +12,33 @@ import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import graphqls from 'modules/graphqls';
 import {get, increment, decrement} from 'api/counter';
+import {DataWaiter} from 'ui/components';
 
 /* COUNTER */
 
-@graphqls ( get, increment, decrement )
-class Counter extends React.Component<any, any> {
+const Counter = graphqls ( get )(
+  ({ data }) => (
+    <DataWaiter data={data}>
+      <CounterActual counter={data.counter} />
+    </DataWaiter>
+  )
+);
 
-  render () {
-
-    const {increment, decrement, data: {loading, error, counter}} = this.props;
-
-    if ( loading ) return <div>Loading...</div>;
-    if ( error ) return <div>Error!</div>;
-
-    return (
-      <div className="counter">
-        <Helmet title="Counter" />
-        <h3>Counter</h3>
-        <div className="value-wrp">
-          <div className="value">
-            {counter.value}
-          </div>
+const CounterActual = graphqls ( increment, decrement )(
+  ({ counter, increment, decrement }) => (
+    <div className="counter">
+      <Helmet title="Counter" />
+      <h3>Counter</h3>
+      <div className="value-wrp">
+        <div className="value">
+          {counter.value}
         </div>
-        <button onClick={increment}>INCREMENT</button>
-        <button onClick={decrement} disabled={!counter.value}>DECREMENT</button>
       </div>
-    );
-
-  }
-
-}
+      <button onClick={increment}>INCREMENT</button>
+      <button onClick={decrement} disabled={!counter.value}>DECREMENT</button>
+    </div>
+  )
+);
 
 /* EXPORT */
 
