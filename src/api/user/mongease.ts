@@ -40,20 +40,20 @@ const {schema, model} = Mongease.make ( 'User', {
   },
   resolvers: {
     Query: {
-      async userGetMe ( obj, args, {user} ) {
-        return user;
+      async userGetMe ( root, args, {req} ) {
+        return req.user;
       }
     },
     Mutation: {
       userSignup: {
         args: { username: 'String', password: 'String' },
-        resolve ( obj, user ) {
-          return model.signup ( user );
+        resolve ( root, user, {req} ) {
+          return model.signup ( user, req );
         }
       },
       userLogin: {
         args: { username: 'String', password: 'String' },
-        resolve ( obj, user, req ) {
+        resolve ( root, user, {req} ) {
           return model.login ( user, req );
         }
       }

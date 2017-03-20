@@ -35,9 +35,9 @@ function configureApollo ( req? ) {
     const graphql = require ( 'graphql' ),
           {createLocalInterface} = require ( 'apollo-local-query' ),
           Schema = require ( './schema' ).default,
-          options = {};
-
-    if ( req ) options.context = req;
+          options = {
+            context: {req}
+          };
 
     networkInterface = createLocalInterface ( graphql, Schema, options );
 

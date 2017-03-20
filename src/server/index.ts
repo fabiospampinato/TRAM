@@ -69,7 +69,7 @@ if ( Settings.graphql.local ) {
 
   app.use ( Settings.graphql.url, graphqlExpress ( req => ({
     schema: Schema,
-    context: req
+    context: {req}
   })));
 
   if ( Settings.graphiql.enabled ) {

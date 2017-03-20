@@ -82,19 +82,19 @@ const {schema, model} = Mongease.make ( 'Todo', {
       },
       todoAdd: {
         args: { text: 'String' },
-        async resolve ( obj, {text} ) {
+        async resolve ( root, {text} ) {
           return ( await model.get () ).add ( text );
         }
       },
       todoToggleCheck: {
         args: { id: 'Int' },
-        async resolve ( obj, {id} ) {
+        async resolve ( root, {id} ) {
           return ( await model.get () ).toggleCheck ( id );
-        },
+        }
       },
       todoSetVisibility: {
         args: { visibility: 'String' },
-        async resolve ( obj, {visibility} ) {
+        async resolve ( root, {visibility} ) {
           return ( await model.get () ).setVisibility ( visibility );
         }
       }
