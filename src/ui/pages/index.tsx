@@ -13,5 +13,6 @@ export {Error} from './error';
 export {Home} from './home';
 export {Login} from './login';
 export {NotFound} from './not_found';
+export {Profile} from './profile';
 export {Todo} from './todo';
 export {Signup} from './signup';

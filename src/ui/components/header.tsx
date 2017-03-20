@@ -28,7 +28,7 @@ class LogoutLink extends React.Component<any, any> {
 
 const HeaderUserLogged = ({ user }) => (
   <div>
-    <em>{user.username}</em>
+    <HeaderLink to={`/@${user.username}`}><em>{user.username}</em></HeaderLink>
     <span>•</span>
     <LogoutLink />
   </div>

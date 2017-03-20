@@ -17,6 +17,10 @@ const getMe = {
   gql: Builder.query ( 'userGetMe' )
 };
 
+const getByUsername = {
+  gql: Builder.query ( 'userGetByUsername' )
+}
+
 /* EXPORT */
 
-export {getMe};
+export {getMe, getByUsername};

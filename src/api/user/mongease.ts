@@ -45,6 +45,12 @@ const {schema, model} = Mongease.make ( 'User', {
     Query: {
       async userGetMe ( root, args, {req} ) {
         return req.user;
+      },
+      userGetByUsername: {
+        args: { username: 'String' },
+        resolve ( root, {username} ) {
+          return model.findByUsername ( username );
+        }
       }
     },
     Mutation: {
