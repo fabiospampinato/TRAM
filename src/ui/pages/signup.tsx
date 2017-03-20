@@ -9,11 +9,13 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {withRouter} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {signup} from 'api/user';
 
 /* SIGNUP */
 
+@withRouter
 @graphqls ( signup )
 class Signup extends React.Component<any, any> {
 
@@ -30,7 +32,7 @@ class Signup extends React.Component<any, any> {
     event.preventDefault ();
     const user = this.getUser ();
     this.props.signup ( user )
-              .then ( () => this.props.router.push ( '/login' ) )
+              .then ( ({ data: { user } }) => this.props.history.push ( `/@${user.username}` ) )
               .catch ( console.log.bind ( console ) );
   }
 

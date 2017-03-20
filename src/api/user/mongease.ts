@@ -30,9 +30,12 @@ const {schema, model} = Mongease.make ( 'User', {
   },
   plugins,
   statics: {
-    signup ({ username, password }) {
-      const user = new model ({ username });
-      return pify ( model.register ).bind ( model )( user, password );
+    async signup ( user, req ) {
+      const account = await pify ( model.register ).bind ( model )( user, user.password );
+      if ( req ) {
+        await pify ( req.login ).bind ( req )( account );
+      }
+      return account;
     },
     login ( { username, password }, req ) {
       //FIXME: Doesn't work
