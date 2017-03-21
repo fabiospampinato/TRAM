@@ -9,21 +9,50 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {withRouter} from 'react-router-dom';
+import {login} from 'api/user';
+import graphqls from 'modules/graphqls';
+import {Autobind} from 'ui/components/autobind';
 
 /* LOGIN */
 
-const Login = () => (
-  <div>
-    <h3>Log In</h3>
-    <form className="login" method="post">
-      <label>Username:</label>
-      <input name="username" />
-      <label>Password:</label>
-      <input name="password" type="password" />
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-);
+@withRouter
+@graphqls ( login )
+class Login extends Autobind<any, any> {
+
+  refs: { username, password };
+
+  getUser () {
+    return {
+      username: this.refs.username.value,
+      password: this.refs.password.value
+    }
+  }
+
+  submit ( event ) {
+    event.preventDefault ();
+    const user = this.getUser ();
+    this.props.login ( user )
+              .then ( ({ data: { user } }) => this.props.history.push ( `/@${user.username}` ) )
+              .catch ( console.log.bind ( console ) );
+  }
+
+  render () {
+    return (
+      <div>
+        <h3>Log In</h3>
+        <form className="login" onSubmit={this.submit}>
+          <label>Username:</label>
+          <input ref="username" name="username" />
+          <label>Password:</label>
+          <input ref="password" name="password" type="password" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
+
+}
 
 /* EXPORT */
 

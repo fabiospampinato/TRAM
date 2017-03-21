@@ -8,6 +8,7 @@
 
 /* IMPORT */
 
+import * as _ from 'lodash';
 import * as pify from 'pify';
 import Mongease from 'api/mongease';
 import Settings from 'modules/settings';
@@ -37,8 +38,17 @@ const {schema, model} = Mongease.make ( 'User', {
       }
       return account;
     },
-    login ( { username, password }, req ) {
-      //FIXME: Doesn't work
+    async login ( user, req ) {
+      const passport = require ( 'api/auth/passport' ).default,
+            newReq = _.merge ( {}, { query: user }, req );
+      return await new Promise ( ( resolve, reject ) => {
+        passport.authenticate ( 'local', async ( err, user, info ) => {
+          if ( err ) return reject ( err );
+          if ( !user ) return reject ( info.message );
+          await pify ( req.login ).bind ( req )( user );
+          return resolve ( user );
+        })( newReq );
+      });
     }
   },
   resolvers: {

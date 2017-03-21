@@ -82,11 +82,6 @@ if ( Settings.graphql.local ) {
 
 }
 
-app.post ( '/login', passport.authenticate ( 'local', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-}));
-
 app.get ( '/logout', ( req, res ) => {
   req.logout ();
   res.redirect ( '/' );
