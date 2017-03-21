@@ -14,11 +14,11 @@ import {Status} from 'ui/components';
 
 /* ERROR */
 
-const Error = ({ staticContext: { error, code } }) => (
+const Error = ({ staticContext }) => (
   <div>
-    <Status code={code || 500} />
+    <Status code={staticContext && staticContext.code ? staticContext.code : 500} />
     <Helmet title="Error" />
-    {DEVELOPMENT && error ? <pre>{error.stack}</pre> : <div>Internal Server Error</div>}
+    {DEVELOPMENT && staticContext && staticContext.error ? <pre>{staticContext.error.stack}</pre> : <div>Internal Server Error</div>}
   </div>
 );
 
