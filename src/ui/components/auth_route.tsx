@@ -9,10 +9,10 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {getMeFresh} from 'api/user';
 import graphqls from 'modules/graphqls';
-import {DataWaiter} from 'ui/components';
+import {DataWaiter, StickyRedirect} from 'ui/components';
 
 /* AUTH ROUTE */
 
@@ -21,7 +21,7 @@ const AuthRoute = graphqls ( getMeFresh )(
     <DataWaiter data={data} loading={null}>
       <Route {...rest} render={ props => data.user
         ? React.createElement ( component, props )
-        : <Redirect to="/login" />
+        : <StickyRedirect target to="/login" />
       } />
     </DataWaiter>
   )

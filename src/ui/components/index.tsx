@@ -23,3 +23,4 @@ export {Settings} from './settings';
 export {Signup} from './signup';
 export {Status} from './status';
 export {Todo} from './todo';
+export * from './sticky_redirect';

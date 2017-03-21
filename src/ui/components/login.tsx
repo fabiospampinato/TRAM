@@ -12,6 +12,7 @@ import * as React from 'react';
 import {withRouter} from 'react-router-dom';
 import {login} from 'api/user';
 import graphqls from 'modules/graphqls';
+import {StickyRedirect} from 'ui/components';
 import {Autobind} from 'ui/components/autobind';
 
 /* LOGIN */
@@ -21,6 +22,8 @@ import {Autobind} from 'ui/components/autobind';
 class Login extends Autobind<any, any> {
 
   refs: { username, password };
+
+  state = { user: null };
 
   getUser () {
     return {
@@ -33,11 +36,14 @@ class Login extends Autobind<any, any> {
     event.preventDefault ();
     const user = this.getUser ();
     this.props.login ( user )
-              .then ( ({ data: { user } }) => this.props.history.push ( `/@${user.username}` ) )
+              .then ( ({ data: { user } }) => this.setState ({ user }) )
               .catch ( console.log.bind ( console ) );
   }
 
   render () {
+
+    if ( this.state.user ) return <StickyRedirect to={`/@${this.state.user.username}`} />;
+
     return (
       <div>
         <h3>Log In</h3>
@@ -50,6 +56,7 @@ class Login extends Autobind<any, any> {
         </form>
       </div>
     );
+
   }
 
 }
