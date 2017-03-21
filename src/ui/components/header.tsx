@@ -12,27 +12,17 @@ import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {getMe} from 'api/user';
-import {Autobind} from './autobind';
 import {DataWaiter} from './data_waiter';
 
 /* HEADER */
 
 const HeaderLink = props => <NavLink activeClassName="active" {...props} />;
 
-class LogoutLink extends Autobind<any, any> {
-  reset () {
-    this.props.client.resetStore ();
-  }
-  render () {
-    return <HeaderLink to="/logout" onClick={this.reset}>Log Out</HeaderLink>
-  }
-}
-
 const HeaderUserLogged = ({ user }) => (
   <div>
     <HeaderLink to={`/@${user.username}`}><em>{user.username}</em></HeaderLink>
     <span>•</span>
-    <LogoutLink />
+    <HeaderLink to="/logout">Log Out</HeaderLink>
   </div>
 );
 
@@ -66,4 +56,4 @@ const Header = () => (
 
 /* EXPORT */
 
-export {HeaderLink, LogoutLink, HeaderUser, HeaderUserUnlogged, HeaderUserLogged, Header};
+export {HeaderLink, HeaderUser, HeaderUserUnlogged, HeaderUserLogged, Header};

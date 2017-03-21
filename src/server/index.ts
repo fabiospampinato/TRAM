@@ -82,11 +82,6 @@ if ( Settings.graphql.local ) {
 
 }
 
-app.get ( '/logout', ( req, res ) => {
-  req.logout ();
-  res.redirect ( '/' );
-});
-
 app.get ( '*', async ( req, res ) => {
 
   let context = {},

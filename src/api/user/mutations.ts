@@ -31,6 +31,11 @@ const login = {
   })
 };
 
+const logout = {
+  gql: Builder.mutation ( 'userLogout' ),
+  name: 'logout',
+}
+
 /* EXPORT */
 
-export {signup, login};
+export {signup, login, logout};

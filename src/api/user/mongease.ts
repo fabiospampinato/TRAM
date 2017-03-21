@@ -49,6 +49,9 @@ const {schema, model} = Mongease.make ( 'User', {
           return resolve ( user );
         })( newReq );
       });
+    },
+    logout ( req ) {
+      req.logout ();
     }
   },
   resolvers: {
@@ -75,6 +78,9 @@ const {schema, model} = Mongease.make ( 'User', {
         resolve ( root, user, {req} ) {
           return model.login ( user, req );
         }
+      },
+      userLogout ( root, args, {req} ) {
+        return model.logout ( req );
       }
     }
   }

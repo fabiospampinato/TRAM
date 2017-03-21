@@ -12,6 +12,7 @@ export {Counter} from './counter';
 export {Error} from './error';
 export {Home} from './home';
 export {Login} from './login';
+export {Logout} from './logout';
 export {NotFound} from './not_found';
 export {Profile} from './profile';
 export {Todo} from './todo';
