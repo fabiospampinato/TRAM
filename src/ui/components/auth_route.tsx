@@ -10,14 +10,14 @@
 
 import * as React from 'react';
 import {Redirect, Route} from 'react-router-dom';
-import {getMe} from 'api/user';
+import {getMeFresh} from 'api/user';
 import graphqls from 'modules/graphqls';
 import {DataWaiter} from 'ui/components';
 
 /* AUTH ROUTE */
 
-const AuthRoute = graphqls ( getMe )(
-  ({ data, component, ...rest }) => (
+const AuthRoute = graphqls ( getMeFresh )(
+  ({ location, component, data, ...rest }) => (
     <DataWaiter data={data} loading={null}>
       <Route {...rest} render={ props => data.user
         ? React.createElement ( component, props )

@@ -17,10 +17,17 @@ const getMe = {
   gql: Builder.query ( 'userGetMe' )
 };
 
+const getMeFresh = {
+  gql: Builder.query ( 'userGetMe' ),
+  options: {
+    fetchPolicy: 'network-only'
+  }
+}
+
 const getByUsername = {
   gql: Builder.query ( 'userGetByUsername' )
 }
 
 /* EXPORT */
 
-export {getMe, getByUsername};
+export {getMe, getMeFresh, getByUsername};
