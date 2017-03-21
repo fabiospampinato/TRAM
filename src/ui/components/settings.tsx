@@ -1,20 +1,19 @@
 
 /* ================================================================================
- * TRAM - UI - Routes
+ * TRAM - UI - Components - Settings
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+/* IMPORT */
+
+import * as React from 'react';
+
+/* SETTINGS */
+
+const Settings = ({ user }) => <p>Hello <em>{user.username}</em>, these are your settings.</p>;
+
 /* EXPORT */
 
-export {Counter} from './counter';
-export {Error} from './error';
-export {Home} from './home';
-export {Login} from './login';
-export {Logout} from './logout';
-export {NotFound} from './not_found';
-export {Profile} from './profile';
-export {Settings} from './settings';
-export {Signup} from './signup';
-export {Todo} from './todo';
+export {Settings};

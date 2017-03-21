@@ -12,7 +12,8 @@ import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import {Switch, Route} from 'react-router-dom';
 import Settings from 'modules/settings';
-import {Counter, Error, Home, Login, Logout, NotFound, Profile, Signup, Todo} from 'ui/routes';
+import {AuthRoute} from 'ui/components';
+import {Counter, Error, Home, Login, Logout, NotFound, Profile, Settings as SettingsRoute, Signup, Todo} from 'ui/routes';
 import {Header} from './header';
 
 /* APP */
@@ -28,7 +29,8 @@ const App = () => (
         <Route path="/counter" component={Counter} />
         <Route path="/error" component={Error} />
         <Route path="/login" component={Login} />
-        <Route path='/logout' component={Logout} />
+        <Route path="/logout" component={Logout} />
+        <AuthRoute path="/settings" component={SettingsRoute} />
         <Route path="/signup" component={Signup} />
         <Route path="/todo" component={Todo} />
         <Route component={NotFound} />

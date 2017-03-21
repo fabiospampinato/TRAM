@@ -9,10 +9,18 @@
 /* IMPORT */
 
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 
 /* PROFILE */
 
-const Profile = ({ user }) => <div>This is <em>{user.username}</em>'s profile!</div>;
+const Profile = ({ user }) => (
+  <div>
+    <p>This is <em>{user.username}</em>'s profile!</p>
+    <button>
+      <Link to="/settings">SETTINGS</Link>
+    </button>
+  </div>
+);
 
 /* EXPORT */
 
