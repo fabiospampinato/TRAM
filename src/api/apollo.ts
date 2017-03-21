@@ -43,10 +43,10 @@ function configureApollo ( req? ) {
 
   }
 
-  return new ApolloClient ({
+  return new ApolloClient ( _.merge ( {}, Settings.apollo.client, {
     networkInterface,
     dataIdFromObject: object => object._id
-  });
+  }));
 
 }
 

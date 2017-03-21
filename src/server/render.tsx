@@ -44,7 +44,7 @@ async function render ( req, context ) {
 
   }
 
-  const content = await renderToStringWithData ( app );
+  const content = Settings.apollo.client.ssrMode ? await renderToStringWithData ( app ) : renderToString ( app );
 
   if ( context.url ) return;
 
