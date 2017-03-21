@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Not Found
+ * TRAM - UI - Components - Login
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -9,16 +9,22 @@
 /* IMPORT */
 
 import * as React from 'react';
-import {Status} from 'ui/components';
 
-/* NOT FOUND */
+/* LOGIN */
 
-const NotFound = ({ location }) => (
-  <Status code={404}>
-    <div>Error 404 - <em>{location.pathname}</em> not found</div>
-  </Status>
+const Login = () => (
+  <div>
+    <h3>Log In</h3>
+    <form className="login" method="post">
+      <label>Username:</label>
+      <input name="username" />
+      <label>Password:</label>
+      <input name="password" type="password" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 );
 
 /* EXPORT */
 
-export {NotFound};
+export {Login};

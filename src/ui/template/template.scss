@@ -62,7 +62,7 @@ pre {
   border: 1px solid #e6e6e6;
   margin-bottom: 10px;
   padding: 1rem 1.5rem;
-  * {
+  *:not(:only-child) {
     margin: 0 10px;
     + span {
       margin: 0;
@@ -95,8 +95,11 @@ pre {
   .list {
     margin: 10px auto;
   }
-  .item.done {
-    text-decoration: line-through;
+  .item {
+    cursor: pointer;
+    &.done {
+      text-decoration: line-through;
+    }
   }
   .visibilities span {
     margin: 0 5px;

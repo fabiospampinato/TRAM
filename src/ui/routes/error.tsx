@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Components - Data Waiter
+ * TRAM - UI - Routes - Error
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -8,18 +8,20 @@
 
 /* IMPORT */
 
-import ReactRender from 'modules/react_render';
-import {Loading} from './loading';
-import {Error} from './error';
+import * as React from 'react';
+import * as Helmet from 'react-helmet';
+import {Status} from 'ui/components';
 
-/* DATA WAITER */
+/* ERROR */
 
-const DataWaiter = ({ data, children, loading = Loading, error = Error }) => {
-  if ( data.loading ) return ReactRender ( loading );
-  if ( data.error ) return ReactRender ( error );
-  return children || null;
-};
+const Error = ({ staticContext: { error, code } }) => (
+  <div>
+    <Status code={code || 500} />
+    <Helmet title="Error" />
+    {DEVELOPMENT && error ? <pre>{error.stack}</pre> : <div>Internal Server Error</div>}
+  </div>
+);
 
 /* EXPORT */
 
-export {DataWaiter};
+export {Error};

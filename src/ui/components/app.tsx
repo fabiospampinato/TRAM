@@ -12,7 +12,7 @@ import * as React from 'react';
 import * as Helmet from 'react-helmet';
 import {Switch, Route} from 'react-router-dom';
 import Settings from 'modules/settings';
-import {Counter, Error, Login, Home, NotFound, Profile, Signup, Todo} from 'ui/pages';
+import {Counter, Error, Login, Home, NotFound, Profile, Signup, Todo} from 'ui/routes';
 import {Header} from './header';
 
 /* APP */
@@ -24,9 +24,9 @@ const App = () => (
     <div className="app-content">
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/error" component={Error} />
         <Route path="/@:username" component={Profile} />
         <Route path="/counter" component={Counter} />
+        <Route path="/error" component={Error} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/todo" component={Todo} />

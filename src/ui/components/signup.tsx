@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Signup
+ * TRAM - UI - Components - Signup
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -12,12 +12,13 @@ import * as React from 'react';
 import {withRouter} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {signup} from 'api/user';
+import {Autobind} from 'ui/components/autobind';
 
 /* SIGNUP */
 
 @withRouter
 @graphqls ( signup )
-class Signup extends React.Component<any, any> {
+class Signup extends Autobind<any, any> {
 
   refs: { username, password };
 

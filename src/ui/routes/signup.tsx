@@ -1,18 +1,26 @@
 
 /* ================================================================================
- * TRAM - UI - Components - Status
+ * TRAM - UI - Routes - Signup
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* STATUS */
+/* IMPORT */
 
-const Status = ({ code, children }, { router }) => {
-  if ( router ) router.staticContext.status = code;
-  return children || null;
-};
+import * as React from 'react';
+import * as Helmet from 'react-helmet';
+import {Signup as SignupComponent} from 'ui/components';
+
+/* Signup */
+
+const Signup = () => (
+  <div>
+    <Helmet title="Sign Up" />
+    <SignupComponent />
+  </div>
+);
 
 /* EXPORT */
 
-export {Status};
+export {Signup};

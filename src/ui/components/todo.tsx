@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Todo
+ * TRAM - UI - Components - Todo
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -10,14 +10,14 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {model, clear, add, toggleCheck, setVisibility} from 'api/todo';
 import graphqls from 'modules/graphqls';
-import {model, get, clear, add, toggleCheck, setVisibility} from 'api/todo';
+import {Autobind} from './autobind';
 
-/* COUNTER */
+/* TODO */
 
-@graphqls ( get, clear, add, toggleCheck, setVisibility )
-class Todo extends React.Component<any, any> {
+@graphqls ( clear, add, toggleCheck, setVisibility )
+class Todo extends Autobind<any, any> {
 
   refs: { input };
 
@@ -41,22 +41,17 @@ class Todo extends React.Component<any, any> {
 
   render () {
 
-    const {clear, toggleCheck, setVisibility, data: {loading, error, todo}} = this.props;
-
-    if ( loading ) return <div>Loading...</div>;
-    if ( error ) return <div>Error!</div>;
-
-    const {visibilities, filter} = model,
+    const {todo, clear, toggleCheck, setVisibility} = this.props,
+          {visibilities, filter} = model,
           {list, visibility} = todo,
           filtered = filter ( list, visibility );
 
     return (
       <div className="todo">
-        <Helmet title="Todo" />
         <h3>Todo ({list.length})</h3>
-        <button onClick={clear.bind ( this )}>CLEAR</button>
-        <input ref="input" placeholder="New todo..." onKeyDown={this.keydown.bind ( this )} />
-        <button onClick={this.add.bind ( this )}>ADD</button>
+        <button onClick={clear}>CLEAR</button>
+        <input ref="input" placeholder="New todo..." onKeyDown={this.keydown} />
+        <button onClick={this.add}>ADD</button>
         <div className="list">
           {filtered.map ( todo => {
             const className = todo.done ? 'item done' : 'item';

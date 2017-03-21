@@ -12,18 +12,19 @@ import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 import graphqls from 'modules/graphqls';
 import {getMe} from 'api/user';
-import {DataWaiter} from 'ui/components';
+import {Autobind} from './autobind';
+import {DataWaiter} from './data_waiter';
 
 /* HEADER */
 
 const HeaderLink = props => <NavLink activeClassName="active" {...props} />;
 
-class LogoutLink extends React.Component<any, any> {
+class LogoutLink extends Autobind<any, any> {
   reset () {
     this.props.client.resetStore ();
   }
   render () {
-    return <HeaderLink to="/logout" onClick={this.reset.bind ( this )}>Log Out</HeaderLink>
+    return <HeaderLink to="/logout" onClick={this.reset}>Log Out</HeaderLink>
   }
 }
 

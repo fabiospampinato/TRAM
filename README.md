@@ -47,7 +47,7 @@ TRAM
 │ │ └── vendor.ts         # Server's vendor entry point
 │ └─┬ ui                  # UI-related files
 │   ├── components        # React components
-│   ├── pages             # App pages
+│   ├── routes            # App routes
 │   ├── template          # Extra front-end code/styles to load
 │   └── styles.ts         # Exports all the loaded styles
 ├── types                 # Custom declarations

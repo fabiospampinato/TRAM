@@ -1,24 +1,18 @@
 
 /* ================================================================================
- * TRAM - UI - Pages - Error
+ * TRAM - UI - Routes
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* IMPORT */
-
-import * as React from 'react';
-import {Status} from 'ui/components';
-
-/* ERROR */
-
-const Error = ({ staticContext: { error } }) => (
-  <Status code={500}>
-    {DEVELOPMENT && error ? <pre>{error.stack}</pre> : <div>Internal Server Error</div>}
-  </Status>
-);
-
 /* EXPORT */
 
-export {Error};
+export {Counter} from './counter';
+export {Error} from './error';
+export {Home} from './home';
+export {Login} from './login';
+export {NotFound} from './not_found';
+export {Profile} from './profile';
+export {Todo} from './todo';
+export {Signup} from './signup';
