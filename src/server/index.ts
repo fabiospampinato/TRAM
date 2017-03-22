@@ -18,13 +18,13 @@ import * as express from 'express';
 import * as favicon from 'serve-favicon';
 import * as morgan from 'morgan';
 import * as session from 'express-session';
+import sendStatus from 'express-send-status';
 import * as ConnectMongo from 'connect-mongo';
 import * as path from 'path';
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
 import {Mongoose, Schema} from 'api';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
-import sendMessage from 'modules/send_message';
 import render from './render';
 
 /* APP */
@@ -35,9 +35,9 @@ app.use ( compression () );
 
 app.use ( favicon ( path.join ( __dirname, 'assets/favicon.ico' ) ) );
 
-app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendMessage ( 404, 'Resource not found' ) );
+app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendStatus ( 404 ) );
 
-app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendMessage ( 404, 'Resource not found' ) );
+app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendStatus ( 404 ) );
 
 app.use ( bodyParser.json () );
 
