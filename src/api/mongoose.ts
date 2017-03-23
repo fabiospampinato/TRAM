@@ -35,11 +35,12 @@ if ( SERVER ) {
 if ( SERVER ) {
 
   const timestamp = require ( 'mongoose-timestamp' ),
-        {findAnyoneOrCreatePlugin, findOneOrCreatePlugin} = require ( 'api/plugins' );
+        findOneOrCreate = require ( 'mongoose-findoneorcreate' ).default,
+        findAnyoneOrCreate = require ( 'mongoose-findanyoneorcreate' ).default;
 
   Mongoose.plugin ( timestamp );
-  Mongoose.plugin ( findAnyoneOrCreatePlugin );
-  Mongoose.plugin ( findOneOrCreatePlugin );
+  Mongoose.plugin ( findOneOrCreate );
+  Mongoose.plugin ( findAnyoneOrCreate );
 
 }
 

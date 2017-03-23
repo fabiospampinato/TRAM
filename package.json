@@ -109,6 +109,8 @@
     "mongease-graphql-builder": "^1.0.1",
     "mongodb": "^2.2.24",
     "mongoose": "^4.9.0",
+    "mongoose-findanyoneorcreate": "^1.0.0",
+    "mongoose-findoneorcreate": "^1.0.0",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-to-graphql": "^1.0.2",
     "morgan": "^1.8.1",
