@@ -26,6 +26,16 @@ interface NodeModule {
 declare module 'webpack-dev-middleware';
 declare module 'webpack-hot-middleware';
 
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}
+
+declare module "*.json" {
+  const content: any;
+  export default content;
+}
+
 /* ENVIRONMENT */
 
 declare const ENVIRONMENT: string;
