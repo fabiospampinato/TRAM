@@ -9,9 +9,9 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import {Route} from 'react-router-dom';
 import {getMeFresh} from 'api/user';
-import graphqls from 'modules/graphqls';
 import {DataWaiter, StickyRedirect} from 'ui/components';
 
 /* AUTH ROUTE */

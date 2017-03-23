@@ -9,9 +9,9 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import * as Helmet from 'react-helmet';
 import {get} from 'api/todo';
-import graphqls from 'modules/graphqls';
 import {DataWaiter, Todo as TodoComponent} from 'ui/components';
 
 /* COUNTER */

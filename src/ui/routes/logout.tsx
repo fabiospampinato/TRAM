@@ -9,9 +9,9 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import {Redirect} from 'react-router-dom';
 import {logout} from 'api/user';
-import graphqls from 'modules/graphqls';
 
 /* LOGOUT */
 

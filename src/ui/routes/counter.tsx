@@ -9,8 +9,8 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import * as Helmet from 'react-helmet';
-import graphqls from 'modules/graphqls';
 import {get} from 'api/counter';
 import {DataWaiter, Counter as CounterComponent} from 'ui/components';
 

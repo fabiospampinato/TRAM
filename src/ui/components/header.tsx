@@ -9,8 +9,8 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import {NavLink} from 'react-router-dom';
-import graphqls from 'modules/graphqls';
 import {getMe} from 'api/user';
 import {DataWaiter} from './data_waiter';
 

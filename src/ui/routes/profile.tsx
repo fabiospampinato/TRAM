@@ -9,10 +9,10 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import * as Helmet from 'react-helmet';
 import {Redirect} from 'react-router-dom';
 import {getByUsername} from 'api/user';
-import graphqls from 'modules/graphqls';
 import {DataWaiter, Profile as ProfileComponent} from 'ui/components';
 
 /* PROFILE */

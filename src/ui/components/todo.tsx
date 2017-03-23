@@ -10,8 +10,8 @@
 
 import * as _ from 'lodash';
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import {model, clear, add, toggleCheck, setVisibility} from 'api/todo';
-import graphqls from 'modules/graphqls';
 import {Autobind} from './autobind';
 
 /* TODO */

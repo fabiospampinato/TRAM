@@ -9,8 +9,8 @@
 /* IMPORT */
 
 import * as React from 'react';
+import graphqls from 'react-apollo-graphqls';
 import {increment, decrement} from 'api/counter';
-import graphqls from 'modules/graphqls';
 
 /* COUNTER */
 
