@@ -19,7 +19,10 @@ const signup = {
     signup: user => mutate ({
       variables: user
     })
-  })
+  }),
+  options: {
+    refetchQueries: ['userGetMe']
+  }
 };
 
 const login = {
@@ -28,12 +31,18 @@ const login = {
     login: user => mutate ({
       variables: user
     })
-  })
+  }),
+  options: {
+    refetchQueries: ['userGetMe']
+  }
 };
 
 const logout = {
   gql: Builder.mutation ( 'userLogout' ),
   name: 'logout',
+  options: {
+    refetchQueries: ['userGetMe']
+  }
 }
 
 /* EXPORT */
