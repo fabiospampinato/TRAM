@@ -1,7 +1,6 @@
 {
   "apollo": {
     "client": {
-      "queryDeduplication": true,
       "ssrForceFetchDelay": 100,
       "ssrMode": true
     },

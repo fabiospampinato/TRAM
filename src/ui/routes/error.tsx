@@ -16,7 +16,7 @@ import {Status} from 'ui/components';
 
 const Error = ({ staticContext }) => (
   <div>
-    <Status code={staticContext && staticContext.code ? staticContext.code : 500} />
+    <Status code={staticContext && staticContext.status ? staticContext.status : 500} />
     <Helmet title="Error" />
     {DEVELOPMENT && staticContext && staticContext.error ? <pre>{staticContext.error.stack}</pre> : <div>Internal Server Error</div>}
   </div>

@@ -31,9 +31,10 @@ class HTML extends React.Component<any, undefined> {
 
     const {content, state} = this.props,
           head = Helmet.rewind (),
-          stylesheet = null,
           stylesheets = DEVELOPMENT ? [] : [this.resolveFile ( 'client.css' )],
           scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )];
+
+    let stylesheet: JSX.Element | null = null;
 
     if ( DEVELOPMENT ) {
 
@@ -61,7 +62,6 @@ class HTML extends React.Component<any, undefined> {
           {head.meta.toComponent ()}
           {head.link.toComponent ()}
           {head.script.toComponent ()}
-          {head.noscript.toComponent ()}
           {stylesheet}
           {stylesheets.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
         </head>

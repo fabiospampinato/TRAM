@@ -3,17 +3,14 @@
  * Put your custom types here *
  ******************************/
 
-//TODO: Improve it
-
-/* Redux DevTools Chrome extension */
+/* REDUX */
 
 interface Window {
-  devToolsExtension?: () => any;
   __REDUX_DEVTOOLS_EXTENSION__?: () => any;
   __REDUX_STATE__: any;
 }
 
-/* Hot Module Replacement */
+/* HOT */
 
 interface NodeModule {
   hot: {
@@ -21,7 +18,7 @@ interface NodeModule {
   }
 }
 
-/* Webpack middlewares */
+/* WEBPACK */
 
 declare module 'webpack-dev-middleware';
 declare module 'webpack-hot-middleware';

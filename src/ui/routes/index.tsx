@@ -8,13 +8,13 @@
 
 /* EXPORT */
 
-export {Counter} from './counter';
-export {Error} from './error';
-export {Home} from './home';
-export {Login} from './login';
-export {Logout} from './logout';
-export {NotFound} from './not_found';
-export {Profile} from './profile';
-export {Settings} from './settings';
-export {Signup} from './signup';
-export {Todo} from './todo';
+export * from './counter';
+export * from './error';
+export * from './home';
+export * from './login';
+export * from './logout';
+export * from './not_found';
+export * from './profile';
+export * from './settings';
+export * from './signup';
+export * from './todo';

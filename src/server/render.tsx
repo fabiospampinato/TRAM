@@ -14,11 +14,11 @@ import {ApolloProvider, renderToStringWithData} from 'react-apollo';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import {configureApollo} from 'api';
+import Settings from 'modules/settings';
 import {App, HTML} from 'ui/components';
 import {configureStore} from '../redux/store';
-
-const manifestClient = require ( '../../dist/meta/manifest.client.json' ), //TODO: Maybe import?
-      manifestClientVendor = require ( '../../dist/meta/manifest.client.vendor.json' ); //TODO: Maybe import?
+import * as manifestClient from '../../dist/meta/manifest.client.json';
+import * as manifestClientVendor from '../../dist/meta/manifest.client.vendor.json';
 
 /* RENDER */
 

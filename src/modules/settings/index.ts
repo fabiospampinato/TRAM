@@ -6,8 +6,6 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-//TODO: Publish as a module, maybe
-
 /* IMPORT */
 
 import * as _ from 'lodash';
@@ -16,7 +14,7 @@ import * as _ from 'lodash';
 
 function getSettings ( name ) {
 
-  const file = require ( `../../settings/${name}` );
+  const file = require ( `../../../settings/${name}` );
 
   if ( !file ) throw new Error ( 'Settings not found' );
 
@@ -26,7 +24,7 @@ function getSettings ( name ) {
         anchestors = extend.map ( getSettings ),
         merged = _.merge ( {}, ...anchestors, file );
 
-  delete merged['extend'];
+  delete merged.extend;
 
   return merged;
 
@@ -34,4 +32,5 @@ function getSettings ( name ) {
 
 /* EXPORT */
 
+export {getSettings};
 export default getSettings ( process.env.NODE_ENV || 'development' );

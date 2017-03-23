@@ -39,15 +39,15 @@ const {schema, model} = Mongease.make ( 'User', {
       return account;
     },
     async login ( user, req ) {
-      const passport = require ( 'api/auth/passport' ).default,
-            newReq = _.merge ( {}, { query: user }, req );
+      const passport = require ( 'api/auth/passport' ).default;
+      _.merge ( req, { query: user } ); //FIXME: We should have a cleaner, and safer, way of doing it
       return await new Promise ( ( resolve, reject ) => {
         passport.authenticate ( 'local', async ( err, user, info ) => {
           if ( err ) return reject ( err );
           if ( !user ) return reject ( info.message );
           await pify ( req.login ).bind ( req )( user );
           return resolve ( user );
-        })( newReq );
+        })( req );
       });
     },
     logout ( req ) {
@@ -56,7 +56,7 @@ const {schema, model} = Mongease.make ( 'User', {
   },
   resolvers: {
     Query: {
-      async userGetMe ( root, args, {req} ) {
+      userGetMe ( root, args, {req} ) {
         return req.user;
       },
       userGetByUsername: {
