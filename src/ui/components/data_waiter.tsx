@@ -8,15 +8,15 @@
 
 /* IMPORT */
 
-import ReactRender from 'modules/react_render';
+import renderComponent from 'react-render-component';
 import {Loading} from './loading';
 import {Error} from './error';
 
 /* DATA WAITER */
 
 const DataWaiter = ({ data, children, loading = Loading, error = Error }) => {
-  if ( data.loading ) return ReactRender ( loading );
-  if ( data.error ) return ReactRender ( error );
+  if ( data.loading ) return renderComponent ( loading );
+  if ( data.error ) return renderComponent ( error );
   return children || null;
 };
 
