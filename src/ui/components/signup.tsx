@@ -12,8 +12,8 @@ import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
 import {withRouter} from 'react-router-dom';
 import {signup} from 'api/user';
-import {StickyRedirect} from 'ui/components';
-import {Autobind} from 'ui/components/autobind';
+import {StickyRedirect, Autobind} from 'ui/components';
+import {Signup as SignupForm} from 'ui/components/forms';
 
 /* SIGNUP */
 
@@ -21,20 +21,10 @@ import {Autobind} from 'ui/components/autobind';
 @graphqls ( signup )
 class Signup extends Autobind<any, any> {
 
-  refs: { username, password };
-
   state = { user: null };
 
-  getUser () {
-    return {
-      username: this.refs.username.value,
-      password: this.refs.password.value
-    }
-  }
-
-  submit ( event ) {
+  submit ( event, user ) {
     event.preventDefault ();
-    const user = this.getUser ();
     this.props.signup ( user )
               .then ( ({ data: { user } }) => this.setState ({ user }) )
               .catch ( console.log.bind ( console ) );
@@ -47,13 +37,7 @@ class Signup extends Autobind<any, any> {
     return (
       <div>
         <h3>Sign Up</h3>
-        <form className="signup" onSubmit={this.submit}>
-          <label>Username:</label>
-          <input ref="username" name="username" />
-          <label>Password:</label>
-          <input ref="password" name="password" type="password" />
-          <button type="submit">Submit</button>
-        </form>
+        <SignupForm onSubmit={this.submit} />
       </div>
     );
 

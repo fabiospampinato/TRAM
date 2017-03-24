@@ -30,6 +30,7 @@ import 'react-dom/server';
 import 'react-helmet';
 import 'react-hot-loader';
 import 'react-proxy';
+import 'react-reformed';
 import 'react-router-dom';
 import 'react-router-redux';
 import 'redbox-react';

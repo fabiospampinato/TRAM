@@ -6,8 +6,13 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+/* IMPORT */
+
+import * as Forms from './forms';
+
 /* EXPORT */
 
+export {Forms};
 export * from './app';
 export * from './auth_route';
 export * from './autobind';
