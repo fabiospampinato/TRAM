@@ -9,14 +9,16 @@
 /* IMPORT */
 
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {Login as LoginComponent} from 'ui/components';
 
 /* LOGIN */
 
 const Login = () => (
   <div>
-    <Helmet title="Log In" />
+    <Helmet>
+      <title>Log In</title>
+    </Helmet>
     <LoginComponent />
   </div>
 );

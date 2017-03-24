@@ -10,7 +10,7 @@
 
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {Redirect} from 'react-router-dom';
 import {getByUsername} from 'api/user';
 import {DataWaiter, Profile as ProfileComponent} from 'ui/components';
@@ -22,7 +22,9 @@ const Profile = ({ match }) => <ProfileWRP username={match.params.username} />;
 const ProfileWRP = graphqls ( getByUsername )(
   ({ data, username }) => (
     <div>
-      <Helmet title={`${username}'s profile`} />
+      <Helmet>
+        <title>{`${username}'s profile`}</title>
+      </Helmet>
       <DataWaiter data={data}>
         { data.user ? <ProfileComponent user={data.user} /> : <Redirect to="/" /> }
       </DataWaiter>

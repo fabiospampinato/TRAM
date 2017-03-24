@@ -9,7 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {Status} from 'ui/components';
 
 /* ERROR */
@@ -17,7 +17,9 @@ import {Status} from 'ui/components';
 const Error = ({ staticContext }) => (
   <div>
     <Status code={staticContext && staticContext.status ? staticContext.status : 500} />
-    <Helmet title="Error" />
+    <Helmet>
+      <title>Error</title>
+    </Helmet>
     {DEVELOPMENT && staticContext && staticContext.error ? <pre>{staticContext.error.stack}</pre> : <div>Internal Server Error</div>}
   </div>
 );

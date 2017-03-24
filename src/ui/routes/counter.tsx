@@ -10,7 +10,7 @@
 
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {get} from 'api/counter';
 import {DataWaiter, Counter as CounterComponent} from 'ui/components';
 
@@ -19,7 +19,9 @@ import {DataWaiter, Counter as CounterComponent} from 'ui/components';
 const Counter = graphqls ( get )(
   ({ data }) => (
     <div>
-      <Helmet title="Counter" />
+      <Helmet>
+        <title>Counter</title>
+      </Helmet>
       <DataWaiter data={data}>
         <CounterComponent counter={data.counter} />
       </DataWaiter>

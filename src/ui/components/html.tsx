@@ -9,7 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import Settings from 'modules/settings';
 import 'ui/template';
 
@@ -30,7 +30,7 @@ class HTML extends React.Component<any, undefined> {
   render () {
 
     const {content, state} = this.props,
-          head = Helmet.rewind (),
+          helmet = Helmet.renderStatic (),
           stylesheets = DEVELOPMENT ? [] : [this.resolveFile ( 'client.css' )],
           scripts = [this.resolveFile ( 'client.vendor.js', false ), this.resolveFile ( 'client.js' )];
 
@@ -55,17 +55,19 @@ class HTML extends React.Component<any, undefined> {
     }
 
     return (
-      <html {...head.htmlAttributes.toComponent ()}>
+      <html {...helmet.htmlAttributes.toComponent ()}>
         <head>
-          {head.base.toComponent ()}
-          {head.title.toComponent ()}
-          {head.meta.toComponent ()}
-          {head.link.toComponent ()}
-          {head.script.toComponent ()}
+          {helmet.base.toComponent ()}
+          {helmet.title.toComponent ()}
+          {helmet.meta.toComponent ()}
+          {helmet.link.toComponent ()}
+          {helmet.style.toComponent ()}
+          {helmet.script.toComponent ()}
+          {helmet.noscript.toComponent ()}
           {stylesheet}
           {stylesheets.map ( ( src, i ) => <link rel="stylesheet" type="text/css" href={src} key={i} /> )}
         </head>
-        <body>
+        <body {...helmet.bodyAttributes.toComponent ()}>
           <main id="app-root" dangerouslySetInnerHTML={{ __html: content }}></main>
           <script dangerouslySetInnerHTML={{ __html: `window.__REDUX_STATE__ = ${JSON.stringify ( state )}`}} />
           {scripts.map ( ( src, i ) => <script src={src} key={i}></script> )}

@@ -9,7 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {Switch, Route} from 'react-router-dom';
 import Settings from 'modules/settings';
 import {AuthRoute} from 'ui/components';
@@ -20,7 +20,13 @@ import {Header} from './header';
 
 const App = () => (
   <div className="app">
-    <Helmet {...Settings.helmet.head} />
+    <Helmet {...Settings.helmet}>
+      <meta charSet="UTF-8" />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Boilerplate for building reactive isomorphic applications. Built around TypeScript, React, Apollo, MongoDB." />
+      <link rel="shortcut icon" href="/favicon.ico" />
+    </Helmet>
     <Header />
     <div className="app-content">
       <Switch>

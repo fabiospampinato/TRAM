@@ -9,7 +9,7 @@
 /* IMPORT */
 
 import * as React from 'react';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {Status} from 'ui/components';
 
 /* NOT FOUND */
@@ -17,7 +17,9 @@ import {Status} from 'ui/components';
 const NotFound = ({ location }) => (
   <div>
     <Status code={404} />
-    <Helmet title="Error 404" />
+    <Helmet>
+      <title>Error 404</title>
+    </Helmet>
     <div>Error 404 - <em>{location.pathname}</em> not found</div>
   </div>
 );

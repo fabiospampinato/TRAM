@@ -10,7 +10,7 @@
 
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
-import * as Helmet from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import {get} from 'api/todo';
 import {DataWaiter, Todo as TodoComponent} from 'ui/components';
 
@@ -19,7 +19,9 @@ import {DataWaiter, Todo as TodoComponent} from 'ui/components';
 const Todo = graphqls ( get )(
   ({ data }) => (
     <div>
-      <Helmet title="Todo" />
+      <Helmet>
+        <title>Todo</title>
+      </Helmet>
       <DataWaiter data={data}>
         <TodoComponent todo={data.todo} />
       </DataWaiter>
