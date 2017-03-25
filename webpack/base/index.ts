@@ -93,7 +93,7 @@ if ( ANALYZE ) {
   config.plugins.push ( new BundleAnalyzerPlugin ({
     generateStatsFile: true,
     openAnalyzer: false,
-    statsFilename: '../dist/meta/analyze.json'
+    statsFilename: path.resolve ( 'dist/meta/analyze.json' )
   }));
 
 } else {
