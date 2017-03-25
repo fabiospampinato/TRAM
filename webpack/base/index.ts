@@ -98,9 +98,10 @@ if ( ANALYZE ) {
 
 } else {
 
-  const summary = Chalk.yellow ( '[{entry.name}] Bundled into "{entry.asset}" ({entry.size.MB}MB) in {time.s}s' );
+  const normal = Chalk.yellow ( '[{entry.name}] Bundled into "{entry.asset}" ({entry.size.MB}MB) in {time.s}s. {stats.warnings.length} warnings.' ),
+        watching = '';
 
-  config.plugins.push ( new SummaryPlugin ( summary ) );
+  config.plugins.push ( new SummaryPlugin ({ normal, watching }) );
 
   config.stats = {
     assets: false,
@@ -109,7 +110,8 @@ if ( ANALYZE ) {
     modules: false,
     performance: false,
     timings: false,
-    version: false
+    version: false,
+    warnings: false
   };
 
 }
