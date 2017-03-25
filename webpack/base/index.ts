@@ -9,11 +9,13 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
+import * as Chalk from 'chalk';
 import * as path from 'path';
 import * as merge from 'webpack-merge';
 import * as webpack from 'webpack';
 import {CheckerPlugin} from 'awesome-typescript-loader';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+import SummaryPlugin from 'webpack-summary';
 
 /* ENVIRONMENT */
 
@@ -82,7 +84,8 @@ const config = {
       'typeof window': JSON.stringify ( CLIENT ? 'object' : null ),
       'process.env.NODE_ENV': JSON.stringify ( ENVIRONMENT )
     })
-  ]
+  ],
+  stats: {}
 };
 
 if ( ANALYZE ) {
@@ -92,6 +95,22 @@ if ( ANALYZE ) {
     openAnalyzer: false,
     statsFilename: '../dist/meta/analyze.json'
   }));
+
+} else {
+
+  const summary = Chalk.yellow ( '[{entry.name}] Bundled into "{entry.asset}" ({entry.size.MB}MB) in {time.s}s' );
+
+  config.plugins.push ( new SummaryPlugin ( summary ) );
+
+  config.stats = {
+    assets: false,
+    chunks: false,
+    hash: false,
+    modules: false,
+    performance: false,
+    timings: false,
+    version: false
+  };
 
 }
 

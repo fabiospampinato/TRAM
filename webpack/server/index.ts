@@ -64,4 +64,4 @@ const config = {
 
 /* EXPORT */
 
-export default merge ( baseConfig, config, envConfig );
+export default [merge ( baseConfig, config, envConfig )]; //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118

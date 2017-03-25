@@ -32,6 +32,7 @@
   "awesomeTypescriptLoaderOptions": {
     "useBabel": false,
     "useCache": true,
+    "silent": true,
     "transpileOnly": true
   }
 }
