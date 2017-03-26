@@ -15,7 +15,6 @@ import * as Forms from './forms';
 export {Forms};
 export * from './app';
 export * from './auth_route';
-export * from './autobind';
 export * from './counter';
 export * from './data_waiter';
 export * from './error';

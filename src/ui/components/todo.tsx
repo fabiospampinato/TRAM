@@ -12,16 +12,15 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
 import {model, clear, add, toggleCheck, setVisibility} from 'api/todo';
-import {Autobind} from './autobind';
 
 /* TODO */
 
 @graphqls ( clear, add, toggleCheck, setVisibility )
-class Todo extends Autobind<any, any> {
+class Todo extends React.Component<any, undefined> {
 
   refs: { input };
 
-  keydown ( event ) {
+  keydown = ( event ) => {
 
     if ( event.keyCode !== 13 ) return; // Enter key
 
@@ -33,7 +32,7 @@ class Todo extends Autobind<any, any> {
 
   }
 
-  add () {
+  add = () => {
 
     this.props.add ( this.refs.input.value );
 

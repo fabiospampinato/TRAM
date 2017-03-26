@@ -12,18 +12,18 @@ import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
 import {withRouter} from 'react-router-dom';
 import {signup} from 'api/user';
-import {StickyRedirect, Autobind} from 'ui/components';
+import {StickyRedirect} from 'ui/components';
 import {Signup as SignupForm} from 'ui/components/forms';
 
 /* SIGNUP */
 
 @withRouter
 @graphqls ( signup )
-class Signup extends Autobind<any, any> {
+class Signup extends React.Component<any, any> {
 
   state = { user: null };
 
-  submit ( event, user ) {
+  submit = ( event, user ) => {
     event.preventDefault ();
     this.props.signup ( user )
               .then ( ({ data: { user } }) => this.setState ({ user }) )
