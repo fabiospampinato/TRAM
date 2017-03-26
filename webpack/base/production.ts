@@ -45,6 +45,9 @@ const config = {
       debug: false,
       minimize: true
     }),
+    new webpack.DefinePlugin ({
+      'module.hot': JSON.stringify ( false )
+    }),
     new ExtractTextPlugin ({
       filename: '[name].[hash].css',
       disable: false,
