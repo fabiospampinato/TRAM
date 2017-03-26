@@ -25,7 +25,7 @@ function configureStore ( history, Apollo, state? ) {
 
   if ( CLIENT && DEVELOPMENT ) {
 
-    const createLogger = require ( 'redux-logger' );
+    const {createLogger} = require ( 'redux-logger' );
 
     middlewares.push ( createLogger () );
 
