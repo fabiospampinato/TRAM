@@ -8,11 +8,11 @@
 
 /* IMPORT */
 
+import createHistory from 'history/createBrowserHistory';
 import * as React from 'react';
 import {ApolloProvider} from 'react-apollo';
 import {render as renderToDOM} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
 import {configureApollo} from 'api/apollo';
 import {App} from 'ui/components';
 import {configureStore} from '../redux/store';

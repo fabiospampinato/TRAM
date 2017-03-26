@@ -11,10 +11,11 @@
 import * as React from 'react';
 import {Helmet} from 'react-helmet';
 import {Status} from 'ui/components';
+import {context} from 'server/types';
 
 /* ERROR */
 
-const Error = ({ staticContext }) => (
+const Error = ({ staticContext }: { staticContext?: context }) => (
   <div>
     <Status code={staticContext && staticContext.status ? staticContext.status : 500} />
     <Helmet>

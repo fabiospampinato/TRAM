@@ -17,7 +17,7 @@ import {DataWaiter, StickyRedirect} from 'ui/components';
 /* AUTH ROUTE */
 
 const AuthRoute = graphqls ( getMeFresh )(
-  ({ location, component, data, ...rest }) => (
+  ({ component, data, ...rest }) => (
     <DataWaiter data={data} loading={null}>
       <Route {...rest} render={ props => data.user
         ? React.createElement ( component, props )

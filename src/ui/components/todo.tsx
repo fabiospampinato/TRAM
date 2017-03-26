@@ -11,14 +11,14 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
+import reformed from 'react-reformed';
 import {model, clear, add, toggleCheck, setVisibility} from 'api/todo';
 
 /* TODO */
 
+@reformed ()
 @graphqls ( clear, add, toggleCheck, setVisibility )
 class Todo extends React.Component<any, undefined> {
-
-  refs: { input };
 
   keydown = ( event ) => {
 
@@ -28,19 +28,19 @@ class Todo extends React.Component<any, undefined> {
 
     this.add ();
 
-    this.refs.input.value = '';
+    this.props.setProperty ( 'todo', '' );
 
   }
 
   add = () => {
 
-    this.props.add ( this.refs.input.value );
+    this.props.add ( this.props.model.todo );
 
   }
 
   render () {
 
-    const {todo, clear, toggleCheck, setVisibility} = this.props,
+    const {todo, clear, toggleCheck, setVisibility, bindInput} = this.props,
           {visibilities, filter} = model,
           {list, visibility} = todo,
           filtered = filter ( list, visibility );
@@ -49,7 +49,7 @@ class Todo extends React.Component<any, undefined> {
       <div className="todo">
         <h3>Todo ({list.length})</h3>
         <button onClick={clear}>CLEAR</button>
-        <input ref="input" placeholder="New todo..." onKeyDown={this.keydown} />
+        <input placeholder="New todo..." {...bindInput ( 'todo' )} onKeyDown={this.keydown} />
         <button onClick={this.add}>ADD</button>
         <div className="list">
           {filtered.map ( todo => {

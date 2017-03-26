@@ -15,15 +15,15 @@ import 'ui/template';
 
 /* HTML */
 
-class HTML extends React.Component<any, undefined> {
+class HTML extends React.Component<{ manifests: Array<any>, content: string, state: object }, undefined> {
 
-  private resolveFile ( file, hot = true ) {
+  private resolveFile ( file: string, hot = true ): string {
 
-    const baseurl  = hot && Settings.hotServer.enabled ? Settings.hotServer.url : Settings.server.url,
+    const baseUrl  = hot && Settings.hotServer.enabled ? Settings.hotServer.url : Settings.server.url,
           manifest = this.props.manifests.find ( manifest => file in manifest ),
           filepath = manifest ? manifest[file] : '';
 
-    return `${baseurl}${filepath}`;
+    return `${baseUrl}${filepath}`;
 
   }
 

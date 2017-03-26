@@ -41,10 +41,10 @@ const {schema, model} = Mongease.make ( 'Todo', {
     }
   },
   methods: {
-    getTodo ( id ) {
+    getTodo ( id: number ) {
       return _.find ( this.list, {id} );
     },
-    makeTodo ( text ) {
+    makeTodo ( text: string ) {
       return {
         id: ( _.max ( _.map ( this.list, 'id' ) ) || 0 ) as number + 1,
         text,
@@ -55,17 +55,17 @@ const {schema, model} = Mongease.make ( 'Todo', {
       this.list = [];
       return this.save ();
     },
-    add ( text ) {
+    add ( text: string ) { //FIXME: An empty text can be added...
       const todo = this.makeTodo ( text );
       this.list.unshift ( todo );
       return this.save ();
     },
-    toggleCheck ( id ) {
+    toggleCheck ( id: number ) {
       const todo = this.getTodo ( id );
       todo.done = !todo.done;
       return this.save ();
     },
-    setVisibility ( visibility ) {
+    setVisibility ( visibility: string ) {
       this.visibility = visibility;
       return this.save ();
     }

@@ -17,9 +17,9 @@ import {DataWaiter, Profile as ProfileComponent} from 'ui/components';
 
 /* PROFILE */
 
-const Profile = ({ match }) => <ProfileWRP username={match.params.username} />;
+const ProfileWrapper = ({ match }) => <Profile username={match.params.username} />;
 
-const ProfileWRP = graphqls ( getByUsername )(
+const Profile = graphqls ( getByUsername )(
   ({ data, username }) => (
     <div>
       <Helmet>
@@ -34,4 +34,4 @@ const ProfileWRP = graphqls ( getByUsername )(
 
 /* EXPORT */
 
-export {Profile};
+export {ProfileWrapper as Profile};

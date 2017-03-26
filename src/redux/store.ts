@@ -8,13 +8,14 @@
 
 /* IMPORT */
 
+import ApolloClient from 'apollo-client';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
 import {configureReducers} from './reducers';
 
 /* CONFIGURE */
 
-function configureStore ( history, Apollo, state? ) {
+function configureStore ( history, Apollo: ApolloClient, state?: object ) {
 
   const reducers = configureReducers ( Apollo ),
         enhancers: Function[] = [],

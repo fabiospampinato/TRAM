@@ -8,7 +8,7 @@
 
 /* STATUS */
 
-const Status = ({ code, children }, { router }) => {
+const Status = ({ code, children }: { code: number, children: any }, { router }) => {
   if ( router ) router.staticContext.status = code;
   return children || null;
 };

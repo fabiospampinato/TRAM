@@ -9,12 +9,13 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
+import * as express from 'express';
 import ApolloClient from 'apollo-client';
 import Settings from 'modules/settings';
 
 /* CONFIGURE */
 
-function configureApollo ( req? ) {
+function configureApollo ( req?: express.Request ) {
 
   let networkInterface;
 

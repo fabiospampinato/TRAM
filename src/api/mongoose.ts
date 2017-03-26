@@ -20,7 +20,7 @@ if ( SERVER ) {
   const Chalk = require ( 'chalk' ),
         {url, options} = Settings.mongodb;
 
-  Mongoose.connect ( url , options, err => {
+  Mongoose.connect ( url, options, err => {
 
     if ( err ) return console.error ( Chalk.bgRed ( err ) );
 
@@ -32,15 +32,15 @@ if ( SERVER ) {
 
 /* PLUGINS */
 
-if ( SERVER ) {
+if ( SERVER ) { //FIXME: Maybe apply them also on the client?
 
-  const timestamp = require ( 'mongoose-timestamp' ),
-        findOneOrCreate = require ( 'mongoose-findoneorcreate' ).default,
-        findAnyoneOrCreate = require ( 'mongoose-findanyoneorcreate' ).default;
+  const findOneOrCreate = require ( 'mongoose-findoneorcreate' ).default,
+        findAnyoneOrCreate = require ( 'mongoose-findanyoneorcreate' ).default,
+        timestamp = require ( 'mongoose-timestamp' );
 
-  Mongoose.plugin ( timestamp );
   Mongoose.plugin ( findOneOrCreate );
   Mongoose.plugin ( findAnyoneOrCreate );
+  Mongoose.plugin ( timestamp );
 
 }
 

@@ -14,18 +14,19 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as Chalk from 'chalk';
 import * as compression from 'compression';
-import * as express from 'express';
-import * as favicon from 'serve-favicon';
-import * as morgan from 'morgan';
-import * as session from 'express-session';
-import sendStatus from 'express-send-status';
 import * as ConnectMongo from 'connect-mongo';
-import * as path from 'path';
+import * as express from 'express';
+import sendStatus from 'express-send-status';
+import * as session from 'express-session';
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express';
+import * as morgan from 'morgan';
+import * as favicon from 'serve-favicon';
+import * as path from 'path';
 import {Mongoose, Schema} from 'api';
 import passport from 'api/auth/passport';
 import Settings from 'modules/settings';
 import render from './render';
+import {context} from './types';
 
 /* APP */
 
@@ -42,7 +43,7 @@ app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendS
 app.use ( bodyParser.json () );
 
 app.use ( bodyParser.urlencoded ({
-  extended: false
+  extended: false //FIXME: What does it do? Is it necessary?
 }));
 
 app.use ( cookieParser () );
@@ -82,9 +83,9 @@ if ( Settings.graphql.local ) {
 
 }
 
-app.get ( '*', async ( req, res ) => {
+app.get ( '*', async ( req: express.Request, res: express.Response ) => {
 
-  let context = {},
+  let context: context = {},
       html;
 
   try {
@@ -102,7 +103,7 @@ app.get ( '*', async ( req, res ) => {
 
     } catch ( error ) {
 
-      return res.status ( 500 ).send ( DEVELOPMENT ? error.stack : 'Internal Server Error' );
+      return sendStatus ( 500, DEVELOPMENT && error.stack )( req, res );
 
     }
 
@@ -116,7 +117,7 @@ app.get ( '*', async ( req, res ) => {
 
 /* LISTEN */
 
-const {protocol, host, port, url} = Settings.server;
+const {host, port, url} = Settings.server;
 
 app.listen ( port, host, err => {
 
@@ -124,7 +125,7 @@ app.listen ( port, host, err => {
 
   if ( Settings.graphiql.enabled ) {
 
-    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${protocol}://${host}:${port}${Settings.graphiql.url}` ) );
+    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${url}${Settings.graphiql.url}` ) );
 
   }
 

@@ -1,28 +1,19 @@
 
 /* ================================================================================
- * TRAM - Redux - Reducers
+ * TRAM - Server - Types
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
-/* IMPORT */
+/* TYPES */
 
-import ApolloClient from 'apollo-client';
-import {combineReducers} from 'redux';
-import {routerReducer} from 'react-router-redux';
-
-/* CONFIGURE */
-
-function configureReducers ( Apollo: ApolloClient ) {
-
-  return combineReducers ({
-    router: routerReducer,
-    apollo: Apollo.reducer ()
-  });
-
-}
+type context = {
+  error?: Error,
+  url?: string,
+  status?: number
+};
 
 /* EXPORT */
 
-export {configureReducers};
+export {context};

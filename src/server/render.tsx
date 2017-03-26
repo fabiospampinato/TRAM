@@ -8,8 +8,9 @@
 
 /* IMPORT */
 
-import * as React from 'react';
+import * as express from 'express';
 import createHistory from 'history/createMemoryHistory';
+import * as React from 'react';
 import {ApolloProvider, renderToStringWithData} from 'react-apollo';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
@@ -19,10 +20,11 @@ import {App, HTML} from 'ui/components';
 import {configureStore} from '../redux/store';
 import * as manifestClient from '../../dist/meta/manifest.client.json';
 import * as manifestClientVendor from '../../dist/meta/manifest.client.vendor.json';
+import {context} from './types';
 
 /* RENDER */
 
-async function render ( req, context ) {
+async function render ( req: express.Request, context: context ): Promise<string> {
 
   const history = createHistory (),
         Apollo = configureApollo ( req ),
@@ -46,7 +48,7 @@ async function render ( req, context ) {
 
   const content = Settings.apollo.client.ssrMode ? await renderToStringWithData ( app ) : renderToString ( app );
 
-  if ( context.url ) return;
+  if ( context.url ) return '';
 
   const state = { apollo: Apollo.getInitialState () },
         html = <HTML manifests={[manifestClient, manifestClientVendor]} content={content} state={state} />;

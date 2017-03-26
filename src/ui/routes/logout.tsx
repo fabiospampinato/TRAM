@@ -15,15 +15,12 @@ import {logout} from 'api/user';
 
 /* LOGOUT */
 
-@graphqls ( logout )
-class Logout extends React.Component<any, any> {
-  componentWillMount () {
-    this.props.logout ();
-  }
-  render () {
+const Logout = graphqls ( logout )(
+  ({ logout }) => {
+    logout ();
     return <Redirect to="/" />;
   }
-}
+);
 
 /* EXPORT */
 

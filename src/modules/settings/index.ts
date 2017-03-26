@@ -9,20 +9,21 @@
 /* IMPORT */
 
 import * as _ from 'lodash';
+import {settings} from './types';
 
 /* SETTINGS */
 
-function getSettings ( name ) {
+function getSettings ( name: string ): settings {
 
-  const file = require ( `../../../settings/${name}` );
+  const settings = require ( `../../../settings/${name}` );
 
-  if ( !file ) throw new Error ( 'Settings not found' );
+  if ( !settings ) throw new Error ( 'Settings not found' );
 
-  if ( !file.extend ) return file;
+  if ( !settings.extend ) return settings;
 
-  const extend = _.castArray ( file.extend ),
+  const extend = _.castArray ( settings.extend ),
         anchestors = extend.map ( getSettings ),
-        merged = _.merge ( {}, ...anchestors, file );
+        merged = _.merge ( {}, ...anchestors, settings ) as settings;
 
   delete merged.extend;
 

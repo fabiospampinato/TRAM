@@ -12,9 +12,8 @@ import * as React from 'react';
 import {Helmet} from 'react-helmet';
 import {Switch, Route} from 'react-router-dom';
 import Settings from 'modules/settings';
-import {AuthRoute} from 'ui/components';
+import {AuthRoute, Header} from 'ui/components';
 import {Counter, Error, Home, Login, Logout, NotFound, Profile, Settings as SettingsRoute, Signup, Todo} from 'ui/routes';
-import {Header} from './header';
 
 /* APP */
 
