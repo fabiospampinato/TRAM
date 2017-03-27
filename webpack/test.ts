@@ -26,10 +26,15 @@ fs.readdirSync ( 'node_modules' )
 
 /* ENTRY */
 
-const files = glob.sync ( 'src/**/?(*.)?(app-)+(test|spec)?(s).ts?(x)' ),
+const ONLY = process.env.ONLY,
+      onlyRegex = ONLY && new RegExp ( ONLY ),
+      files = glob.sync ( 'src/**/?(*.)?(app-)+(test|spec)?(s).ts?(x)' ),
       entry = {};
 
-files.forEach ( file => entry[file.replace ( 'src/', '' )] = `./${file}` );
+files.forEach ( file => {
+  if ( onlyRegex && !file.match ( onlyRegex ) ) return;
+  entry[file.replace ( 'src/', '' )] = `./${file}`;
+});
 
 /* CONFIG */
 
