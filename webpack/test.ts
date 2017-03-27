@@ -27,12 +27,15 @@ fs.readdirSync ( 'node_modules' )
 /* ENTRY */
 
 const ONLY = process.env.ONLY,
+      SKIP = process.env.SKIP,
       onlyRegex = ONLY && new RegExp ( ONLY ),
+      skipRegex = SKIP && new RegExp ( SKIP ),
       files = glob.sync ( 'src/**/?(*.)?(app-)+(test|spec)?(s).ts?(x)' ),
       entry = {};
 
 files.forEach ( file => {
   if ( onlyRegex && !file.match ( onlyRegex ) ) return;
+  if ( skipRegex && file.match ( skipRegex ) ) return;
   entry[file.replace ( 'src/', '' )] = `./${file}`;
 });
 
