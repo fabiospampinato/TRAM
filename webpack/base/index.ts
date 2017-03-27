@@ -100,8 +100,8 @@ if ( ANALYZE ) {
 
 } else {
 
-  const basic = Chalk.yellow ( '[{entry.name}] Bundled into "{entry.asset}" ({entry.size.MB}MB) in {time.s}s. {stats.warnings.length} warnings.' ),
-        testing = Chalk.yellow ( 'Compiled {entries.length} tests ({size.MB}MB) in {time.s}s. {stats.warnings.length} warnings.' ),
+  const basic = Chalk.yellow ( '[{entry.name}] Bundled into "{entry.asset}" ({entry.size.MB}MB) in {time.s}s. {stats.warnings.length} warning(s).' ),
+        testing = Chalk.yellow ( 'Compiled {entries.length} tests file(s) ({size.MB}MB) in {time.s}s. {stats.warnings.length} warning(s).' ),
         normal = TEST ? testing : basic,
         watching = '';
 
