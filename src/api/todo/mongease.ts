@@ -56,7 +56,8 @@ const {schema, model} = Mongease.make ( 'Todo', {
       this.list = [];
       return this.save ();
     },
-    add ( text: string ) { //FIXME: An empty text can be added...
+    add ( text: string ) {
+      if ( !text ) throw new Error ( 'The text cannot be empty' );
       const item = this.makeItem ( text );
       this.list.unshift ( item );
       return this.save ();

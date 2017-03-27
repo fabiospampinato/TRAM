@@ -103,6 +103,12 @@ describe ( 'Todo', it => {
 
   describe ( '#add', it => {
 
+    it ( 'Throws an error for empty texts', t => {
+
+      t.throws ( () => t.context.T.add ( '' ), /The text cannot be empty/ );
+
+    });
+
     it ( 'Adds an item at the beginning of the list', t => {
 
       const prevLength = t.context.T.list.length;
