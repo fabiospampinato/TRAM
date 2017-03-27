@@ -19,6 +19,12 @@ type settings = {
     client: options,
     network: options
   },
+  bodyParser: {
+    json: options,
+    raw: options,
+    text: options,
+    urlencoded: options
+  },
   graphql: {
     local: boolean,
     url: string

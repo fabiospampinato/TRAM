@@ -11,6 +11,14 @@
       }
     }
   },
+  "bodyParser": {
+    "json": {},
+    "raw": {},
+    "text": {},
+    "urlencoded": {
+      "extended": false
+    }
+  },
   "graphql": {
     "local": true,
     "url": "/api/graphql"

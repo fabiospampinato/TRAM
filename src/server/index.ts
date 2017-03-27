@@ -40,11 +40,9 @@ app.use ( '/assets', express.static ( path.join ( __dirname, 'assets' ) ), sendS
 
 app.use ( '/public', express.static ( path.join ( __dirname, 'public' ) ), sendStatus ( 404 ) );
 
-app.use ( bodyParser.json () );
+app.use ( bodyParser.json ( Settings.bodyParser.json ) );
 
-app.use ( bodyParser.urlencoded ({
-  extended: false //FIXME: What does it do? Is it necessary?
-}));
+app.use ( bodyParser.urlencoded ( Settings.bodyParser.urlencoded ) );
 
 app.use ( cookieParser () );
 
