@@ -27,7 +27,7 @@ const config = {
   module: {
     rules: [{
       test: /\.tsx?$/,
-      use: ['react-hot-loader/webpack', 'awesome-typescript-loader']
+      use: ['awesome-typescript-loader']
     }]
   },
   plugins: [
