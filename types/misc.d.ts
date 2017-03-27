@@ -6,8 +6,8 @@
 /* REDUX */
 
 interface Window {
-  __REDUX_DEVTOOLS_EXTENSION__?: () => any;
-  __REDUX_STATE__: any;
+  __REDUX_DEVTOOLS_EXTENSION__?: Function;
+  __REDUX_STATE__: object;
 }
 
 /* HOT */

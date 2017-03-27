@@ -24,7 +24,6 @@
     "mongodb": "registry:npm/mongodb#2.1.0+20170211100415",
     "mongoose": "registry:npm/mongoose#4.3.5+20160628072220",
     "passport": "registry:npm/passport#0.3.0+20161028163825",
-    "react-helmet": "registry:dt/react-helmet#0.0.0+20170123203653",
     "react-hot-loader": "registry:dt/react-hot-loader#3.0.0+20170123203653",
     "react-router-redux": "registry:npm/react-router-redux#4.0.0+20160602212457",
     "webpack": "registry:dt/webpack#2.2.0+20170310072209"

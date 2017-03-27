@@ -57,10 +57,10 @@ type settings = {
   },
   hotServer: {
     enabled: boolean,
-    protocol?: string,
-    host?: string,
-    port?: number,
-    url?: string
+    protocol: string,
+    host: string,
+    port: number,
+    url: string
   }
 };
 
