@@ -8,6 +8,7 @@
 
 /* IMPORT */
 
+import Settings from 'modules/settings';
 import render from './render';
 
 /* APP */
