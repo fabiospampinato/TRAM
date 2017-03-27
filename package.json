@@ -39,7 +39,7 @@
     "test:build": "webpack --config webpack/test.ts",
     "test:build:watch": "webpack --config webpack/test.ts --watch",
     "test": "npm run clean:tests && npm run test:build && ava",
-    "test:watch": "npm run clean:tests && npm run test:build:watch & ava --watch",
+    "test:watch": "npm run clean:tests && ( npm run test:build:watch & ava --watch )",
     "coverage": "npm run clean:tests && npm run test:build && nyc --reporter=html ava",
     "report": "nyc report",
     "report:html": "open coverage/index.html",
