@@ -44,6 +44,10 @@ app.listen ( port, host, err => {
 
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
 
-  console.info ( Chalk.black.bgGreen ( `[HOT] Listening at ${url}` ) );
+  if ( !TEST ) {
+
+    console.info ( Chalk.black.bgGreen ( `[HOT] Listening at ${url}` ) );
+
+  }
 
 });

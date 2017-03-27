@@ -24,7 +24,11 @@ if ( SERVER ) {
 
     if ( err ) return console.error ( Chalk.bgRed ( err ) );
 
-    console.info ( Chalk.black.bgGreen ( `[DB] Connected to ${url}` ) );
+    if ( !TEST ) {
+
+      console.info ( Chalk.black.bgGreen ( `[DB] Connected to ${url}` ) );
+
+    }
 
   });
 

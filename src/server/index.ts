@@ -123,12 +123,16 @@ app.listen ( port, host, err => {
 
   if ( err ) return console.error ( Chalk.bgRed ( err ) );
 
-  if ( Settings.graphiql.enabled ) {
+  if ( !TEST ) {
 
-    console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${url}${Settings.graphiql.url}` ) );
+    if ( Settings.graphiql.enabled ) {
+
+      console.info ( Chalk.black.bgGreen ( `[GRAPHIQL] Available at ${url}${Settings.graphiql.url}` ) );
+
+    }
+
+    console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${url}` ) );
 
   }
-
-  console.info ( Chalk.black.bgGreen ( `[APP] Listening at ${url}` ) );
 
 });

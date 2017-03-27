@@ -35,6 +35,7 @@ declare module "*.json" {
 
 /* ENVIRONMENT */
 
+declare const TEST: boolean;
 declare const ENVIRONMENT: string;
 declare const DEVELOPMENT: boolean;
 declare const PRODUCTION: boolean;

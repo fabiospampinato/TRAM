@@ -6,6 +6,8 @@
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
  * ================================================================================ */
 
+process.env.TEST = true; //FIXME: A bit too hacky
+
 /* IMPORT */
 
 import * as fs from 'fs';

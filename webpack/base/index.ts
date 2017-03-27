@@ -19,7 +19,8 @@ import SummaryPlugin from 'webpack-summary';
 
 /* ENVIRONMENT */
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development',
+const TEST = !!process.env.TEST,
+      ENVIRONMENT = process.env.NODE_ENV || 'development',
       DEVELOPMENT = ENVIRONMENT !== 'production',
       CLIENT = !!process.env.CLIENT,
       ANALYZE = !!process.env.ANALYZE;
@@ -76,6 +77,7 @@ const config = {
     new CheckerPlugin (),
     new webpack.NoEmitOnErrorsPlugin (),
     new webpack.DefinePlugin ({
+      TEST: JSON.stringify ( TEST ),
       ENVIRONMENT: JSON.stringify ( ENVIRONMENT ),
       DEVELOPMENT: JSON.stringify ( DEVELOPMENT ),
       PRODUCTION: JSON.stringify ( !DEVELOPMENT ),
