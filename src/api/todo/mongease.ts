@@ -30,6 +30,7 @@ const {schema, model} = Mongease.make ( 'Todo', {
       return this.findAnyoneOrCreate ();
     },
     filter ( list, visibility ) {
+      if ( !model.visibilities.includes ( visibility ) ) throw new Error ( 'Invalid visibility' );
       switch ( visibility ) {
         case 'ALL':
           return list;
@@ -44,7 +45,7 @@ const {schema, model} = Mongease.make ( 'Todo', {
     getTodo ( id: number ) {
       return _.find ( this.list, {id} );
     },
-    makeTodo ( text: string ) {
+    makeItem ( text: string ) {
       return {
         id: ( _.max ( _.map ( this.list, 'id' ) ) || 0 ) as number + 1,
         text,
@@ -56,8 +57,8 @@ const {schema, model} = Mongease.make ( 'Todo', {
       return this.save ();
     },
     add ( text: string ) { //FIXME: An empty text can be added...
-      const todo = this.makeTodo ( text );
-      this.list.unshift ( todo );
+      const item = this.makeItem ( text );
+      this.list.unshift ( item );
       return this.save ();
     },
     toggleCheck ( id: number ) {
@@ -66,6 +67,7 @@ const {schema, model} = Mongease.make ( 'Todo', {
       return this.save ();
     },
     setVisibility ( visibility: string ) {
+      if ( !model.visibilities.includes ( visibility ) ) throw new Error ( 'Invalid visibility' );
       this.visibility = visibility;
       return this.save ();
     }
