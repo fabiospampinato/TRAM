@@ -25,9 +25,7 @@ class Signup extends React.Component<any, any> {
 
   submit = ( event, user ) => {
     event.preventDefault ();
-    this.props.signup ( user )
-              .then ( ({ data: { user } }) => this.setState ({ user }) )
-              .catch ( console.log.bind ( console ) );
+    this.props.signup ( user ).then ( ({ data: { user } }) => this.setState ({ user }) );
   }
 
   render () {

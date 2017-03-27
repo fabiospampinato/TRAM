@@ -25,9 +25,7 @@ class Login extends React.Component<any, any> {
 
   submit = ( event, user ) => {
     event.preventDefault ();
-    this.props.login ( user )
-              .then ( ({ data: { user } }) => this.setState ({ user }) )
-              .catch ( console.log.bind ( console ) );
+    this.props.login ( user ).then ( ({ data: { user } }) => this.setState ({ user }) );
   }
 
   render () {
