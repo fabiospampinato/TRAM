@@ -14,7 +14,7 @@ import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
 import * as merge from 'webpack-merge';
-import * as baseConfig from './base';
+import baseConfig from './base';
 
 /* EXTERNALS */
 

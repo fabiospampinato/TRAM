@@ -14,6 +14,7 @@ type options = {
 
 type settings = {
   extend?: string | string[],
+  environment: string,
   apollo: {
     client: options,
     network: options

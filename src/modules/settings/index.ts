@@ -17,8 +17,6 @@ function getSettings ( name: string ): settings {
 
   const settings = require ( `../../../settings/${name}` );
 
-  if ( !settings ) throw new Error ( 'Settings not found' );
-
   if ( !settings.extend ) return settings;
 
   const extend = _.castArray ( settings.extend ),
