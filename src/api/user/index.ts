@@ -9,5 +9,6 @@
 /* EXPORT */
 
 export * from './mongease';
+export * from './fragments';
 export * from './queries';
 export * from './mutations';

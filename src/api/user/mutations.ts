@@ -8,13 +8,20 @@
 
 /* IMPORT */
 
-import Builder from 'mongease-graphql-builder';
-import './mongease';
+import gql from 'graphql-tag';
+import {User} from './fragments';
 
 /* MUTATIONS */
 
 const signup = {
-  gql: Builder.mutation ( 'userSignup' ),
+  gql: gql`
+    mutation userSignup ( $username: String, $password: String ) {
+      user: userSignup ( username: $username, password: $password ) {
+        ...User
+      }
+    }
+    ${User}
+  `,
   props: ({ mutate }) => ({
     signup: user => mutate ({
       variables: user
@@ -26,7 +33,14 @@ const signup = {
 };
 
 const login = {
-  gql: Builder.mutation ( 'userLogin' ),
+  gql: gql`
+    mutation userLogin ( $username: String, $password: String ) {
+      user: userLogin ( username: $username, password: $password ) {
+        ...User
+      }
+    }
+    ${User}
+  `,
   props: ({ mutate }) => ({
     login: user => mutate ({
       variables: user
@@ -38,12 +52,19 @@ const login = {
 };
 
 const logout = {
-  gql: Builder.mutation ( 'userLogout' ),
+  gql: gql`
+    mutation userLogout {
+      user: userLogout {
+        ...User
+      }
+    }
+    ${User}
+  `,
   name: 'logout',
   options: {
     refetchQueries: ['userGetMe']
   }
-}
+};
 
 /* EXPORT */
 

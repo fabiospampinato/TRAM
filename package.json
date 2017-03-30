@@ -108,7 +108,6 @@
     "mkdirp": "^0.5.1",
     "mongease": "^1.0.6",
     "mongease-graphql": "^1.0.4",
-    "mongease-graphql-builder": "^1.0.3",
     "mongodb": "^2.2.24",
     "mongoose": "^4.9.1",
     "mongoose-findanyoneorcreate": "^1.0.0",

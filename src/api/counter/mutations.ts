@@ -8,18 +8,32 @@
 
 /* IMPORT */
 
-import Builder from 'mongease-graphql-builder';
-import './mongease';
+import gql from 'graphql-tag';
+import {Counter} from './fragments';
 
 /* MUTATIONS */
 
 const increment = {
-  gql: Builder.mutation ( 'counterIncrement' ),
+  gql: gql`
+    mutation counterIncrement {
+      counter: counterIncrement {
+        ...Counter
+      }
+    }
+    ${Counter}
+  `,
   name: 'increment'
 };
 
 const decrement = {
-  gql: Builder.mutation ( 'counterDecrement' ),
+  gql: gql`
+    mutation counterDecrement {
+      counter: counterDecrement {
+        ...Counter
+      }
+    }
+    ${Counter}
+  `,
   name: 'decrement'
 };
 

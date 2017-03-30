@@ -8,25 +8,39 @@
 
 /* IMPORT */
 
-import Builder from 'mongease-graphql-builder';
-import './mongease';
+import gql from 'graphql-tag';
+import {User} from './fragments';
 
 /* QUERIES */
 
 const getMe = {
-  gql: Builder.query ( 'userGetMe' )
+  gql: gql`
+    query userGetMe {
+      user: userGetMe {
+        ...User
+      }
+    }
+    ${User}
+  `
 };
 
 const getMeFresh = {
-  gql: Builder.query ( 'userGetMe' ),
+  gql: getMe.gql,
   options: {
     fetchPolicy: 'network-only'
   }
-}
+};
 
 const getByUsername = {
-  gql: Builder.query ( 'userGetByUsername' )
-}
+  gql: gql`
+    query userGetByUsername ( $username: String ) {
+      user: userGetByUsername ( username: $username ) {
+        ...User
+      }
+    }
+    ${User}
+  `
+};
 
 /* EXPORT */
 

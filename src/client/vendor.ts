@@ -18,7 +18,6 @@ import 'html-entities';
 import 'lodash';
 import 'mongease';
 import 'mongease-graphql';
-import 'mongease-graphql-builder';
 import 'mongoose';
 import 'mongoose-to-graphql';
 import 'passport';

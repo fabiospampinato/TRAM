@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - API - Todo - Queries
+ * TRAM - API - Todo - Fragments
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -9,21 +9,22 @@
 /* IMPORT */
 
 import gql from 'graphql-tag';
-import {Todo} from './fragments';
+import './mongease';
 
-/* QUERIES */
+/* FRAGMENTS */
 
-const get = {
-  gql: gql`
-    query todoGet {
-      todo: todoGet {
-        ...Todo
-      }
-    },
-    ${Todo}
-  `
-};
+const Todo = gql`
+  fragment Todo on Todo {
+    _id
+    list {
+      id
+      text
+      done
+    }
+    visibility
+  }
+`;
 
 /* EXPORT */
 
-export {get};
+export {Todo};

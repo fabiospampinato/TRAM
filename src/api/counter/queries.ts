@@ -8,13 +8,20 @@
 
 /* IMPORT */
 
-import Builder from 'mongease-graphql-builder';
-import './mongease';
+import gql from 'graphql-tag';
+import {Counter} from './fragments';
 
 /* QUERIES */
 
 const get = {
-  gql: Builder.query ( 'counterGet' )
+  gql: gql`
+    query counterGet {
+      counter: counterGet {
+        ...Counter
+      }
+    }
+    ${Counter}
+  `
 };
 
 /* EXPORT */

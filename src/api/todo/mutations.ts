@@ -8,18 +8,32 @@
 
 /* IMPORT */
 
-import Builder from 'mongease-graphql-builder';
-import './mongease';
+import gql from 'graphql-tag';
+import {Todo} from './fragments';
 
 /* MUTATIONS */
 
 const clear = {
-  gql: Builder.mutation ( 'todoClear' ),
+  gql: gql`
+    mutation todoClear {
+      todo: todoClear {
+        ...Todo
+      }
+    }
+    ${Todo}
+  `,
   name: 'clear'
 };
 
 const add = {
-  gql: Builder.mutation ( 'todoAdd' ),
+  gql: gql`
+    mutation todoAdd ( $text: String ) {
+      todo: todoAdd ( text: $text ) {
+        ...Todo
+      }
+    }
+    ${Todo}
+  `,
   props: ({ mutate }) => ({
     add: text => mutate ({
       variables: {text}
@@ -28,7 +42,14 @@ const add = {
 };
 
 const toggleCheck = {
-  gql: Builder.mutation ( 'todoToggleCheck' ),
+  gql: gql`
+    mutation todoToggleCheck ( $id: Int ) {
+      todo: todoToggleCheck ( id: $id ) {
+        ...Todo
+      }
+    }
+    ${Todo}
+  `,
   props: ({ mutate }) => ({
     toggleCheck: id => mutate ({
       variables: {id}
@@ -37,7 +58,14 @@ const toggleCheck = {
 };
 
 const setVisibility = {
-  gql: Builder.mutation ( 'todoSetVisibility' ),
+  gql: gql`
+    mutation todoSetVisibility ( $visibility: String ) {
+      todo: todoSetVisibility ( visibility: $visibility ) {
+        ...Todo
+      }
+    }
+    ${Todo}
+  `,
   props: ({ mutate }) => ({
     setVisibility: visibility => mutate ({
       variables: {visibility}
