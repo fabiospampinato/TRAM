@@ -8,9 +8,9 @@
 
 /* IMPORT */
 
+import merge from 'conf-merge';
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as merge from 'webpack-merge';
 import baseConfig from '../base';
 
 /* CONFIG */
@@ -36,4 +36,4 @@ const config = {
 
 /* EXPORT */
 
-export default [merge ( baseConfig, config )]; //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118
+export default [merge ( {}, baseConfig, config )]; //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118

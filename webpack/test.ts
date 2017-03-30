@@ -10,10 +10,10 @@ process.env.TEST = true; //FIXME: A bit too hacky
 
 /* IMPORT */
 
+import merge from 'conf-merge';
 import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
-import * as merge from 'webpack-merge';
 import baseConfig from './base';
 
 /* EXTERNALS */
@@ -60,4 +60,4 @@ const config = {
 
 /* EXPORT */
 
-export default [merge ( baseConfig, config )]; //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118
+export default [merge ( {}, baseConfig, config )]; //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118

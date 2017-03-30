@@ -10,8 +10,8 @@
 
 import * as _ from 'lodash';
 import * as Chalk from 'chalk';
+import merge from 'conf-merge';
 import * as path from 'path';
-import * as merge from 'webpack-merge';
 import * as webpack from 'webpack';
 import {CheckerPlugin} from 'awesome-typescript-loader';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
@@ -122,4 +122,4 @@ if ( ANALYZE ) {
 
 /* EXPORT */
 
-export default merge ( config, envConfig );
+export default merge ( {}, config, envConfig );
