@@ -10,11 +10,16 @@
 
 import './mongoose';
 import Mongease from 'mongease';
-import MongeaseGraphQL from 'mongease-graphql';
 
-/* MONGEASE */
+/* PLUGINS */
 
-Mongease.plugin ( MongeaseGraphQL.make );
+if ( SERVER ) {
+
+  const MongeaseGraphQL = require ( 'mongease-graphql' ).default;
+
+  Mongease.plugin ( MongeaseGraphQL.make );
+
+}
 
 /* EXPORT */
 

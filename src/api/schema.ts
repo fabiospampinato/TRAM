@@ -8,12 +8,19 @@
 
 /* IMPORT */
 
-import MongeaseGraphQL from 'mongease-graphql';
 import './components';
 
 /* SCHEMA */
 
-const Schema = MongeaseGraphQL.getSchema ();
+let Schema;
+
+if ( SERVER ) {
+
+  const MongeaseGraphQL = require ( 'mongease-graphql' ).default;
+
+  Schema = MongeaseGraphQL.getSchema ();
+
+}
 
 /* EXPORT */
 

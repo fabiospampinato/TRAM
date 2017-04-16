@@ -8,45 +8,57 @@
 
 /* IMPORT */
 
+import merge from 'conf-merge';
 import Mongease from 'api/mongease';
 
 /* MONGEASE */
 
-const {schema, model} = Mongease.make ( 'Counter', {
+//TODO: Add validation support
+
+const config = {
   schema: {
     value: { type: Number, default: 0 }
-  },
-  statics: {
-    get () {
-      return this.findAnyoneOrCreate ();
-    }
-  },
-  methods: {
-    increment () {
-      this.value += 1;
-      return this.save ();
-    },
-    decrement () {
-      this.value = Math.max ( 0, this.value - 1 );
-      return this.save ();
-    }
-  },
-  resolvers: {
-    Query: {
-      counterGet () {
-        return model.get ();
-      }
-    },
-    Mutation: {
-      async counterIncrement () {
-        return ( await model.get () ).increment ();
-      },
-      async counterDecrement () {
-        return ( await model.get () ).decrement ();
-      }
-    }
   }
-});
+};
+
+if ( SERVER ) {
+
+  merge ( config, {
+    statics: {
+      get () {
+        return this.findAnyoneOrCreate ();
+      }
+    },
+    methods: {
+      increment () {
+        this.value += 1;
+        return this.save ();
+      },
+      decrement () {
+        this.value = Math.max ( 0, this.value - 1 );
+        return this.save ();
+      }
+    },
+    resolvers: {
+      Query: {
+        counterGet () {
+          return model.get ();
+        }
+      },
+      Mutation: {
+        async counterIncrement () {
+          return ( await model.get () ).increment ();
+        },
+        async counterDecrement () {
+          return ( await model.get () ).decrement ();
+        }
+      }
+    }
+  });
+
+}
+
+const {schema, model} = Mongease.make ( 'Counter', config );
 
 /* EXPORT */
 
