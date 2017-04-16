@@ -15,8 +15,8 @@ import {render as renderToDOM} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {configureApollo} from 'api/apollo';
 import {App} from 'ui/components';
-import {configureStore} from '../redux/store';
 import 'modules/settings';
+import {configure as configureStore} from 'store';
 
 /* RENDER */
 

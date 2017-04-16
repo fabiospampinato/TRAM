@@ -17,7 +17,7 @@ import {StaticRouter} from 'react-router-dom';
 import {configureApollo} from 'api';
 import Settings from 'modules/settings';
 import {App, HTML} from 'ui/components';
-import {configureStore} from '../redux/store';
+import {configure as configureStore} from 'store';
 import * as manifestClient from '../../dist/meta/manifest.client.json';
 import * as manifestClientVendor from '../../dist/meta/manifest.client.vendor.json';
 import {context} from './types';

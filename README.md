@@ -39,12 +39,12 @@ TRAM
 │ │ ├── render.tsx        # Client's render function
 │ │ └── vendor.ts         # Client's vendor entry point
 │ ├── modules             # Where to place modules
-│ ├── redux               # Redux-related files
 │ ├─┬ server              # Server-related files
 │ │ ├── hot.ts            # Hot Module Replacement server entry point
 │ │ ├── index.ts          # Server entry point
 │ │ ├── render.tsx        # Server's render function
 │ │ └── vendor.ts         # Server's vendor entry point
+│ ├── store               # Redux-related files
 │ └─┬ ui                  # UI-related files
 │   ├── components        # React components
 │   ├── routes            # App routes

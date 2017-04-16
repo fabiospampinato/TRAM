@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - Redux - Store
+ * TRAM - Store - Configure
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -15,7 +15,7 @@ import {configureReducers} from './reducers';
 
 /* CONFIGURE */
 
-function configureStore ( history, Apollo: ApolloClient, state?: object ) {
+function configure ( history, Apollo: ApolloClient, state?: object ) {
 
   const reducers = configureReducers ( Apollo ),
         enhancers: Function[] = [],
@@ -43,4 +43,4 @@ function configureStore ( history, Apollo: ApolloClient, state?: object ) {
 
 /* EXPORT */
 
-export {configureStore};
+export default configure;

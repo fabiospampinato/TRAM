@@ -1,6 +1,6 @@
 
 /* ================================================================================
- * TRAM - Redux - Reducers
+ * TRAM - Store - Reducers
  * ================================================================================
  * Copyright (c) 2016-present Fabio Spampinato
  * Licensed under MIT (https://github.com/fabiospampinato/TRAM/blob/master/LICENSE)
@@ -12,7 +12,7 @@ import ApolloClient from 'apollo-client';
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
-/* CONFIGURE */
+/* REDUCERS */
 
 function configureReducers ( Apollo: ApolloClient ) {
 
