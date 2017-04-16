@@ -19,6 +19,6 @@ render ();
 
 if ( Settings.hotServer.enabled && module.hot ) {
 
-  module.hot.accept ( './render', () => require ( './render' ).default () );
+  module.hot.accept ();
 
 }

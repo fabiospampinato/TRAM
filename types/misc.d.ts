@@ -14,7 +14,7 @@ interface Window {
 
 interface NodeModule {
   hot: {
-    accept ( module: string, callback: Function );
+    accept: ( module?: string | Function, callback?: Function ) => void
   }
 }
 
