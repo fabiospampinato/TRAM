@@ -9,29 +9,21 @@
 /* IMPORT */
 
 import merge from 'conf-merge';
-import * as fs from 'fs';
 import * as path from 'path';
 import * as webpack from 'webpack';
+import * as nodeExternals from 'webpack-node-externals';
 import baseConfig from '../base';
 
 /* ENVIRONMENT */
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
-/* EXTERNALS */
-
-const externals = {};
-
-fs.readdirSync ( 'node_modules' )
-  .filter ( mod => !mod.startsWith ( '.' ) )
-  .forEach ( mod => externals[mod] = `commonjs ${mod}` );
-
 /* CONFIG */
 
 const envConfig = require ( `./${ENVIRONMENT}` ).default;
 
 const config = {
-  externals,
+  externals: [nodeExternals ()],
   output: {
     path: path.resolve ( 'dist' ),
     libraryTarget: 'commonjs2'

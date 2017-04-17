@@ -11,18 +11,10 @@ process.env.TEST = true; //FIXME: A bit too hacky
 /* IMPORT */
 
 import merge from 'conf-merge';
-import * as fs from 'fs';
 import * as glob from 'glob';
 import * as path from 'path';
+import * as nodeExternals from 'webpack-node-externals';
 import baseConfig from './base';
-
-/* EXTERNALS */
-
-const externals = {};
-
-fs.readdirSync ( 'node_modules' )
-  .filter ( mod => !mod.startsWith ( '.' ) )
-  .forEach ( mod => externals[mod] = `commonjs ${mod}` );
 
 /* ENTRY */
 
@@ -43,7 +35,7 @@ files.forEach ( file => {
 
 const config = {
   entry,
-  externals,
+  externals: [nodeExternals ()],
   output: {
     path: path.resolve ( 'dist/tests' ),
     libraryTarget: 'commonjs2'
