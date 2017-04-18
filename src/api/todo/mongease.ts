@@ -11,6 +11,7 @@
 import * as _ from 'lodash';
 import merge from 'conf-merge';
 import Mongease from 'api/mongease';
+import Errors from './errors';
 
 /* MONGEASE */
 
@@ -28,7 +29,7 @@ const config = {
   statics: {
     visibilities: ['ALL', 'LEFT', 'DONE'],
     checkVisibility ( visibility ) {
-      if ( !model.visibilities.includes ( visibility ) ) throw new Error ( 'Invalid visibility' );
+      if ( !model.visibilities.includes ( visibility ) ) throw new Error ( Errors.INVALIDVISIBILITY );
     },
     filter ( list, visibility ) {
       model.checkVisibility ( visibility );
@@ -68,7 +69,7 @@ if ( SERVER ) {
         return this.save ();
       },
       add ( text: string ) {
-        if ( !text ) throw new Error ( 'The text cannot be empty' );
+        if ( !text ) throw new Error ( Errors.EMPTYTODOTEXT );
         const todo = this.makeTodo ( text );
         this.list.unshift ( todo );
         return this.save ();

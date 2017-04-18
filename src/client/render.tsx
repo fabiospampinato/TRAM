@@ -17,6 +17,7 @@ import {configureApollo} from 'api/apollo';
 import {App} from 'ui/components';
 import 'modules/settings';
 import {configure as configureStore} from 'store';
+import Errors from './errors';
 
 /* RENDER */
 
@@ -24,7 +25,7 @@ function render () {
 
   const root = document.getElementById ( 'app-root' );
 
-  if ( !root ) throw new Error ( 'Missing app root' );
+  if ( !root ) throw new Error ( Errors.NOROOT );
 
   const history = createHistory (),
         Apollo = configureApollo (),

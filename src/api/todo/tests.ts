@@ -10,6 +10,7 @@
 
 import * as _ from 'lodash';
 import {describe} from 'ava-spec';
+import Errors from './errors';
 import {model as Todo} from './mongease';
 import {todo} from './mocks';
 
@@ -37,7 +38,7 @@ describe ( 'Todo', it => {
 
     it ( 'Throws an error for invalid visibilities', t => {
 
-      t.throws ( () => Todo.checkVisibility ( '__test__' ), /Invalid visibility/ );
+      t.throws ( () => Todo.checkVisibility ( '__test__' ), Errors.INVALIDVISIBILITY );
 
     });
 
@@ -59,7 +60,7 @@ describe ( 'Todo', it => {
 
     it ( 'Throws an error for invalid visibility', t => {
 
-      t.throws ( () => Todo.filter ( t.context.T.list, 'TEST' ), /Invalid visibility/ );
+      t.throws ( () => Todo.filter ( t.context.T.list, 'TEST' ), Errors.INVALIDVISIBILITY );
 
     });
 
@@ -125,7 +126,7 @@ describe ( 'Todo', it => {
 
     it ( 'Throws an error for empty texts', t => {
 
-      t.throws ( () => t.context.T.add ( '' ), /The text cannot be empty/ );
+      t.throws ( () => t.context.T.add ( '' ), Errors.EMPTYTODOTEXT );
 
     });
 
@@ -161,7 +162,7 @@ describe ( 'Todo', it => {
 
     it ( 'Throws an error for invalid visibility', t => {
 
-      t.throws ( () => t.context.T.setVisibility ( 'TEST' ), /Invalid visibility/ );
+      t.throws ( () => t.context.T.setVisibility ( 'TEST' ), Errors.INVALIDVISIBILITY );
 
     });
 
