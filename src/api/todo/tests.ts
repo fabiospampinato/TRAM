@@ -23,6 +23,26 @@ describe ( 'Todo', it => {
 
   });
 
+  describe ( '.checkVisibility', it => {
+
+    it ( 'Does nothing if it gets a valid visibility', t => {
+
+      for ( let visibility of Todo.visibilities ) {
+
+        t.true ( _.isUndefined ( Todo.checkVisibility ( visibility ) ) );
+
+      }
+
+    });
+
+    it ( 'Throws an error for invalid visibilities', t => {
+
+      t.throws ( () => Todo.checkVisibility ( '__test__' ), /Invalid visibility/ );
+
+    });
+
+  });
+
   describe ( '.get', it => {
 
     it ( 'Returns a todo', async t => {

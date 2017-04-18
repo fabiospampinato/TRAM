@@ -27,8 +27,11 @@ const config = {
   },
   statics: {
     visibilities: ['ALL', 'LEFT', 'DONE'],
-    filter ( list, visibility ) {
+    checkVisibility ( visibility ) {
       if ( !model.visibilities.includes ( visibility ) ) throw new Error ( 'Invalid visibility' );
+    },
+    filter ( list, visibility ) {
+      model.checkVisibility ( visibility );
       switch ( visibility ) {
         case 'ALL':
           return list;
@@ -76,7 +79,7 @@ if ( SERVER ) {
         return this.save ();
       },
       setVisibility ( visibility: string ) {
-        if ( !model.visibilities.includes ( visibility ) ) throw new Error ( 'Invalid visibility' );
+        model.checkVisibility ( visibility );
         this.visibility = visibility;
         return this.save ();
       }
