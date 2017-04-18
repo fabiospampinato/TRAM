@@ -83,12 +83,12 @@ describe ( 'Todo', it => {
 
   });
 
-  describe ( '#makeItem', it => {
+  describe ( '#makeTodo', it => {
 
     it ( 'Returns an item object', t => {
 
       const text = 'test',
-            item = t.context.T.makeItem ( text );
+            item = t.context.T.makeTodo ( text );
 
       t.true ( _.isNumber ( item.id ) );
 
@@ -98,7 +98,7 @@ describe ( 'Todo', it => {
 
     it ( 'Adds an auto-incrementing id', t => {
 
-      const item = t.context.T.makeItem ( 'test' ),
+      const item = t.context.T.makeTodo ( 'test' ),
             prev = _.max ( t.context.T.list.filter ( i => i.id !== item.id ).map ( i => i.id ) ) as number;
 
       t.is ( item.id, prev + 1 );

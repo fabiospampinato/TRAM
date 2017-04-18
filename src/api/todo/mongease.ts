@@ -56,7 +56,7 @@ if ( SERVER ) {
       getTodo ( id: number ) {
         return _.find ( this.list, {id} );
       },
-      makeItem ( text: string ) {
+      makeTodo ( text: string ) {
         return {
           id: ( _.max ( _.map ( this.list, 'id' ) ) || 0 ) as number + 1,
           text,
@@ -69,8 +69,8 @@ if ( SERVER ) {
       },
       add ( text: string ) {
         if ( !text ) throw new Error ( 'The text cannot be empty' );
-        const item = this.makeItem ( text );
-        this.list.unshift ( item );
+        const todo = this.makeTodo ( text );
+        this.list.unshift ( todo );
         return this.save ();
       },
       toggleCheck ( id: number ) {
