@@ -1,37 +1,13 @@
 
 General:
-  ☐ Run with type checker
-  ☐ Move to react router 4
-  ☐ Improve console logging
-    ☐ maybe use the `debug` module
-    ☐ improve colors
-  ☐ Add some meaningful tests
-  ☐ Solve all TODO, FIXME, and Chrome's console errors
-  ☐ Reduce lodash usage, perhapse even remove it (otherwise add to the utilities section)
-  ☐ Remove flash of unstyled content
-
-Features:
-  ✔ Add link to GraphiQL @done (11/9/2016, 6:35:47 AM)
-  ✔ Add reachable RethinkDB data explorer @done (11/9/2016, 6:35:49 AM)
-  ☐ Maybe integrate Wallaby
-  ☐ Add easy support for testing just one/some files
-    ☐ Is refreshing very fast? If so we may not need to support the parent todo...
-
-Building:
-  ☐ Maybe move webpack config files to typescript
-  ☐ Add production building
-    ☐ Check it, the size should be as small al possible, time is not that important here
-    ☐ Add support for it to vendor
-    ☐ Add support for production (environment-specific actually) settings
-  ☐ Improve logging
-    ☐ Add a progressbar (parallelism problem...)
-    ☐ Remove chunks info and other extra infos (maybe not all, seeing how much the bundle size is might be useful)
-
-Auth:
-  ☐ Add signup
-  ☐ Add login
+  ☐ Add Docker support
+  ☐ Solve all TODO, FIXME, and Chrome's console errors/warnings (maybe try reinstalling node_modules)
 
 Todos:
-  ☐ Store list into database
-  ☐ Requires to be logged in to use it
+  ☐ Requires to be logged in to use it (Easy -- Just use AuthRoute)
   ☐ Store different users lists in the database
+
+Auth:
+  ☐ Add password email verification
+  ☐ Add password recovery
+  ☐ OAuth (Facebook, Google)
