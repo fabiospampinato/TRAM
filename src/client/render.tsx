@@ -14,9 +14,9 @@ import {ApolloProvider} from 'react-apollo';
 import {render as renderToDOM} from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import {configureApollo} from 'api/apollo';
-import {App} from 'ui/components';
 import 'modules/settings';
 import {configure as configureStore} from 'store';
+import {App} from 'ui/components';
 import Errors from './errors';
 
 /* RENDER */

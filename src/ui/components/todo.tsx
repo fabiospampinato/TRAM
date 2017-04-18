@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import graphqls from 'react-apollo-graphqls';
 import reformed from 'react-reformed';
-import {model, clear, add, toggleCheck, setVisibility} from 'api/todo';
+import {model as TodoModel, clear, add, toggleCheck, setVisibility} from 'api/todo';
 
 /* TODO */
 
@@ -41,7 +41,7 @@ class Todo extends React.Component<any, undefined> {
   render () {
 
     const {todo, clear, toggleCheck, setVisibility, bindInput} = this.props,
-          {visibilities, filter} = model,
+          {visibilities, filter} = TodoModel,
           {list, visibility} = todo,
           filtered = filter ( list, visibility );
 

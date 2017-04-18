@@ -21,7 +21,7 @@ describe ( 'Counter', it => {
 
   });
 
-  describe ( 'get', it => {
+  describe ( '.get', it => {
 
     it ( 'Returns a counter', async t => {
 

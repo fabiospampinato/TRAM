@@ -87,7 +87,9 @@
     "lint": "Lints TypeScript files"
   },
   "ava": {
-    "files": ["dist/tests/**"]
+    "files": [
+      "dist/tests/**"
+    ]
   },
   "dependencies": {
     "apollo-client": "^1.0.3",
