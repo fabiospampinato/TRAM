@@ -10,6 +10,7 @@ process.env.TEST = true; //FIXME: A bit too hacky
 
 /* IMPORT */
 
+import * as _ from 'lodash';
 import merge from 'conf-merge';
 import * as glob from 'glob';
 import * as path from 'path';
@@ -30,6 +31,8 @@ files.forEach ( file => {
   if ( skipRegex && file.match ( skipRegex ) ) return;
   entry[file.replace ( 'src/', '' )] = `./${file}`;
 });
+
+if ( !_.size ( entry ) ) process.exit ();
 
 /* CONFIG */
 
