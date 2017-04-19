@@ -1,7 +1,7 @@
 {
   "name": "@fabiospampinato/tram",
   "description": "Boilerplate for building reactive isomorphic applications. Built around TypeScript, React, Apollo, MongoDB.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "dist/server.js",
   "scripts": {
