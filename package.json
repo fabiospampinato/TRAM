@@ -174,7 +174,7 @@
     "typescript": "^2.3.0",
     "typings": "^2.1.1",
     "url-loader": "^0.5.0",
-    "webpack": "^2.4.1",
+    "webpack": "^2.5.1",
     "webpack-bundle-analyzer": "^2.4.0",
     "webpack-dev-middleware": "^1.8.0",
     "webpack-dev-server": "^2.4.2",

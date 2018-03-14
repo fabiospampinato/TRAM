@@ -14,12 +14,11 @@ import * as webpack from 'webpack';
 import * as devMiddleware from 'webpack-dev-middleware';
 import * as hotMiddleware from 'webpack-hot-middleware';
 import Settings from 'modules/settings';
-import configs from '../../webpack/client';
+import config from '../../webpack/client';
 
 /* APP */
 
 const app = express (),
-      config = configs[0], //FIXME: Webpack's stats issue: https://github.com/webpack/webpack/issues/4118
       compiler = webpack ( config );
 
 app.use ( devMiddleware ( compiler, {
