@@ -44,8 +44,7 @@
     "test:watch": "npm run clean:tests && ( npm run test:build:watch & ava --watch )",
     "coverage": "npm run clean:tests && npm run test:build && nyc --reporter=html ava",
     "report": "nyc report",
-    "report:html": "open coverage/index.html",
-    "lint": "tslint \"src/**/**.ts*\" --force"
+    "report:html": "open coverage/index.html"
   },
   "scripts-info": {
     "help": "Shows all the available scripts",
@@ -87,8 +86,7 @@
     "test:watch": "Builds the tests and runs them, both in watch mode",
     "coverage": "Generates coverage report",
     "report": "Shows coverage report",
-    "report:html": "Shows HTML coverage report",
-    "lint": "Lints TypeScript files"
+    "report:html": "Shows HTML coverage report"
   },
   "ava": {
     "files": [
@@ -169,8 +167,6 @@
     "sass-loader": "^6.0.0",
     "source-map-loader": "^0.2.1",
     "ts-node": "^3.0.2",
-    "tslint": "^5.1.0",
-    "tslint-react": "^2.4.0",
     "typescript": "^2.3.0",
     "typings": "^2.1.1",
     "url-loader": "^0.5.0",

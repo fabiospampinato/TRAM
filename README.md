@@ -62,7 +62,6 @@ TRAM
 ├── package.json          # NPM package.json
 ├── README.md             # This file
 ├── tsconfig.json         # TypeScript compiler configuration
-├── tslint.json           # tslint configuration
 └── typings.json          # Typings configuration
 ```
 
