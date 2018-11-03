@@ -1,9 +1,6 @@
 
 # TRAM
 
-![Issues](https://img.shields.io/github/issues/fabiospampinato/tram.svg)
-[![NPM version](https://img.shields.io/npm/v/@fabiospampinato/tram.svg)](https://www.npmjs.com/package/@fabiospampinato/tram)
-
 Boilerplate for building reactive isomorphic applications. Built around [TypeScript](http://www.typescriptlang.org), [React](https://github.com/facebook/react), [Apollo](http://www.apollodata.com), [MongoDB](https://www.mongodb.com).
 
 ## Features
